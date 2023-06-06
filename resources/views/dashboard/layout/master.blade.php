@@ -14,6 +14,8 @@
     <link href="{{ asset('asset-db/css/icons.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('asset-db/css/app.min.css') }}" rel="stylesheet" type="text/css" id="light-style">
     <link href="{{ asset('asset-db/css/app-dark.min.css') }}" rel="stylesheet" type="text/css" id="dark-style">
+    <link href="{{ asset('asset-db/css/vendor/dataTables.bootstrap5.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('asset-db/css/vendor/responsive.bootstrap5.css') }}" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -73,6 +75,16 @@
     <!-- demo app -->
     <script src="{{ asset('asset-db/js/pages/demo.dashboard-projects.js') }}"></script>
     <!-- end demo js-->
+
+    <!-- Datatables js -->
+    <script src="{{asset('asset-db/js/vendor/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('asset-db/js/vendor/dataTables.bootstrap5.js')}}"></script>
+    <script src="{{asset('asset-db/js/vendor/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('asset-db/js/vendor/responsive.bootstrap5.min.js')}}"></script>'
+
+    <!-- Datatable Init js -->
+    <script src="assets/js/pages/demo.datatable-init.js"></script>
+
 
 </body>
 

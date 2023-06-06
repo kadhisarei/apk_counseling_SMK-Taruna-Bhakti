@@ -47,6 +47,13 @@
             <p>Testimoni</p>
         </div>
     </div>
+    {{-- <form action="/logout" method="post">
+        @csrf
+        <button href="#" type="submit" class="dropdown-item notify-item">
+            <i class="mdi mdi-logout me-1"></i>
+            <span>Logout</span>
+        </button>
+    </form> --}}
 
     @include('components.footer')
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>

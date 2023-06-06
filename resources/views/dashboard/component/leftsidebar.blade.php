@@ -51,14 +51,22 @@
                 </div>
             </li>
 
-            <li class="side-nav-title side-nav-item">Apps</li>
-
+            @hasrole('admin')
+            <li class="side-nav-title side-nav-item">Crud</li>
             <li class="side-nav-item">
-                <a href="apps-calendar.html" class="side-nav-link">
+                <a href="/admin/dashboard/siswa" class="side-nav-link">
                     <i class="uil-calender"></i>
-                    <span> Calendar </span>
+                    <span> Siswa </span>
                 </a>
             </li>
+
+            <li class="side-nav-item">
+                <a href="/admin/dashboard/siswa" class="side-nav-link">
+                    <i class="uil-calender"></i>
+                    <span> Guru Bk </span>
+                </a>
+            </li>
+            @endhasrole
 
             <li class="side-nav-item">
                 <a href="apps-chat.html" class="side-nav-link">

@@ -14,24 +14,29 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $admin_role = Role::create(['name' => 'admin']);
-        $admin = User::create([
-            'name' => 'Admin',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('password')
-        ]);
 
-        $admin->assignRole($admin_role);
+        $this->call(RoleSeeder::class);
+        $this->call(SiswaSeeder::class);
+        $this->call(WaliKelasSeeder::class);
+        $this->call(GuruBkSeeder::class);
+        $this->call(AdminSeeder::class);
+        $this->call(KelasSeeder::class);
+        // $admin = User::create([
+        //     'name' => 'Admin',
+        //     'email' => 'admin@gmail.com',
+        //     'password' => bcrypt('password')
+        // ]);
 
+        // $admin->assignRole($admin_role);
 
-        $user_role = Role::create(['name' => 'user']);
-        $user = User::create([
-            'name' => 'User',
-            'email' => 'user@gmail.com',
-            'password' => bcrypt('password')
-        ]);
+        // $user = User::create([
+        //     'name' => 'User',
+        //     'email' => 'user@gmail.com',
+        //     'password' => bcrypt('password')
+        // ]);
 
-        $user->assignRole($user_role);
+        // $user->assignRole($user_role);
+
         // $permission = Permission::create(['name' => 'edit articles']);
         // \App\Models\User::factory(10)->create();
 

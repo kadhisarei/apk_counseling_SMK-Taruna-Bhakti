@@ -31,6 +31,21 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function siswa()
+    {
+        return $this->hasOne(Siswa::class);
+    }
+
+    public function guru()
+    {
+        return $this->hasOne(Guru::class);
+    }
+
+    public function walas()
+    {
+        return $this->hasOne(Walas::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
