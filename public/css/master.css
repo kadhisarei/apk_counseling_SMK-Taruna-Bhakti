@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'UniNeue';
+    src: url('/fonts/UniNeue/UniNeue-Trial-Heavy.ttf');
+}
+@font-face {
+    font-family: 'UniNeue-Regular';
+    src: url('/fonts/UniNeue/UniNeue-Trial-Regular.ttf');
+}
+@font-face {
+    font-family: 'Chubgothic';
+    src: url('/fonts/Chubgothic/chubgothic_1.ttf');
+}
+:root{
+    --bluePrimary: #314ECF;
+    --blueSecondary: #3D74DF;
+    --border: #5CA7EF;
+    --lightBlue: #43c4f3;
+    --yellow: #FFC303;
+    --white: #FEFDFF;
+}
+body{
+    background-color: var(--blueSecondary);
+}
