@@ -9,9 +9,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('css/master.css') }}">
     <link rel="stylesheet" href="{{ asset('css/nav.css') }}">
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
 </head>
 <body>
     @include('components.nav')
@@ -47,6 +49,7 @@
             <p>Testimoni</p>
         </div>
     </div>
+<<<<<<< HEAD
     {{-- <form action="/logout" method="post">
         @csrf
         <button href="#" type="submit" class="dropdown-item notify-item">
@@ -54,6 +57,9 @@
             <span>Logout</span>
         </button>
     </form> --}}
+=======
+    
+>>>>>>> 64d5457e7d9b07621d93c113ceb845525c965ab9
 
     @include('components.footer')
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
