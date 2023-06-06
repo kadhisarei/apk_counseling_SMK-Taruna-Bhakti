@@ -21,7 +21,7 @@ Route::get('/landing', function () {
     return view('home');
 });
 Route::get('/index', function () {
-    return view('dashboard.index');
+    return view('dashboard.page.index');
 })->name('dashboard.index');
 Route::get('/apa', function () {
     return view('dashboard.apa');
@@ -33,7 +33,7 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard', [HomeController::class,'redirectUser']);
+        return view('dashboard.page.index', [HomeController::class,'redirectUser']);
     })->name('dashboard');
 });
 
