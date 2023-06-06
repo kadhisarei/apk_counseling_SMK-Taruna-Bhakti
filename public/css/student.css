@@ -1,13 +1,14 @@
+.content{
+    background-color: var(--bluePrimary);
+}
 .bods {
-    width: 100%;
-    margin-top: 20%;
-    padding: 0 4rem 0 4rem;
+    padding: 20% 4rem 0 4rem;
     box-sizing: border-box;
 }
 
 .base {
     width: 100%;
-    background: var(--bluePrimary);
+    background: var(--blueSecondary);
     border-top-left-radius: 80px;
     border-top-right-radius: 80px;
     padding: 40px;
