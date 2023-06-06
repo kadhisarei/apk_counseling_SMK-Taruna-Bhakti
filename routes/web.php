@@ -26,6 +26,9 @@ Route::get('/index', function () {
 Route::get('/apa', function () {
     return view('dashboard.apa');
 })->name('dashboard.apa');
+Route::get('/student', function () {
+    return view('StudentInfo');
+})->name('StudentInfo');
 
 Route::middleware([
     'auth:sanctum',
