@@ -20,8 +20,7 @@ class GuruController extends Controller
      */
     public function create()
     {
-        $guru = Guru::all();
-        return view('');
+        //
     }
 
     /**

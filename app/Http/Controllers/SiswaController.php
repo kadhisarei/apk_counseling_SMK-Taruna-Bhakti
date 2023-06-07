@@ -10,9 +10,9 @@ class SiswaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
+    public function index(){
+        
+        return view('home');
     }
 
     /**
@@ -91,4 +91,5 @@ class SiswaController extends Controller
 
         return redirect()->route('resources.index');
     }
+    
 }

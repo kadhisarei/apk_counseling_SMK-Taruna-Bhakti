@@ -8,7 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Guru extends Model
 {
     use HasFactory;
-    protected $guarded = [
-        'id','created_at','updated_at'
+    protected $fillable = [
+        'nama',
+        'user_id',
+        'nipd',
+        'jenis_kelamin',
+        'kelas_id'
     ];
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class);
+    }
 }

@@ -4,9 +4,9 @@
     </div>
     <div class="menu-nav">
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Product</a></li>
+            <li><a href="{{ url('/landing') }}">Beranda</a></li>
+            <li><a href="#">Tentang</a></li>
+            <li><a href="{{ url('/student') }}">Konseling</a></li>
         </ul>
     </div>
 </nav>
