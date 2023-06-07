@@ -32,15 +32,6 @@
             </div>
 
             <div class="mb-3">
-                <label for="example-select" class="form-label">Kelas</label>
-                <select name="kelas_id" class="form-select" id="example-select">
-                    @foreach($kelas as $kelas)
-                    <option value="{{ $kelas->id }}" @if($kelas->id === $guru->kelas_id) selected @endif>{{ $kelas->nama }}</option>
-                @endforeach
-                </select>
-            </div>
-
-            <div class="mb-3">
                 <label for="jenis_kelamin">Jenis Kelamin</label>
                 <select name="jenis_kelamin" id="jenis_kelamin" class="form-control" required>
                     <option value="Pria" @if($guru->jenis_kelamin === 'Pria') selected @endif>Pria</option>

@@ -5,6 +5,8 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\WaliKelasController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -82,5 +84,33 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','r
     Route::put('/admin/dashboard/guru/edit/{id}',[AdminController::class,'guru_update']);
     Route::delete('/admin/dashboard/guru/delete/{id}', [AdminController::class, 'guru_delete']);
 
+    Route::get('/admin/dashboard/kelas',[AdminController::class,'kelas_index']);
+    Route::get('/admin/dashboard/kelas/create',[AdminController::class,'kelas_create']);
+    Route::post('/admin/dashboard/kelas/store',[AdminController::class,'kelas_store']);
+
+
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified','role:guru bk'
+])->group(function () {
+    // Route::get('/home', function () {
+    //     return view('dashboard');
+    // })->name('user.dashboard');
+    Route::get('/guru/dashboard',[GuruController::class,'index'])->name('guru.dashboard');
+
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified','role:wali kelas'
+])->group(function () {
+    // Route::get('/home', function () {
+    //     return view('dashboard');
+    // })->name('user.dashboard');
+    Route::get('/walas/dashboard',[WaliKelasController::class,'index'])->name('walas.dashboard');
 
 });

@@ -24,6 +24,7 @@ class Siswa extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
 
 }
 

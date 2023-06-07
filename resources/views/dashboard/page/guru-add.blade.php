@@ -31,15 +31,6 @@
             </div>
 
             <div class="mb-3">
-                <label for="example-select" class="form-label">Kelas</label>
-                <select name="kelas_id" class="form-select" id="example-select">
-                    @foreach ($kelas as $item)
-                        <option class="form-select" value="{{ $item->id }}">{{ $item->nama }}</option>
-                    @endforeach
-                </select>
-            </div>
-
-            <div class="mb-3">
                 <label for="example-select" class="form-label">Jenis Kelamin</label>
                 <select class="form-select" name="jenis_kelamin">
                     <option value="Pria">Pria</option>

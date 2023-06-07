@@ -6,8 +6,28 @@
         <ul>
             <li><a href="{{ url('/landing') }}">Beranda</a></li>
             <li><a href="#">Tentang</a></li>
-            {{-- <li><a href="{{ url('/student') }}">Konseling</a></li> --}}
-            <li><a href="#">Login</a></li>
+            @auth
+            @hasrole('user')
+            <li><a href="{{ url('/student') }}">Konseling</a></li>
+            @endhasrole
+            @endif
+            @guest
+            <li><a href="/login">Login</a></li>
+            @endguest
+
+            @auth
+            @hasrole('admin')
+            <li><a href="/login">Dashboard</a></li>
+            @endhasrole
+            @hasrole('guru bk')
+            <li><a href="/login">Dashboard</a></li>
+            @endhasrole
+            @hasrole('wali_kelas')
+            <li><a href="/login">Dashboard</a></li>
+            @endhasrole
+            @endif
+
+            @hasrole('user')
             <li>
             <button class="notif-button" onclick="notifOpen()">
                 <i class="fa fa-bell"></i>
@@ -23,6 +43,7 @@
                 </button>
             </div>
             </li>
+            @endhasrole
         </ul>
     </div>
 </nav>

@@ -73,6 +73,13 @@
                     <span> Wali kelas </span>
                 </a>
             </li>
+
+            <li class="side-nav-item">
+                <a href="/admin/dashboard/kelas" class="side-nav-link">
+                    <i class="uil-calender"></i>
+                    <span> Kelas </span>
+                </a>
+            </li>
             @endhasrole
 
             <li class="side-nav-item">
