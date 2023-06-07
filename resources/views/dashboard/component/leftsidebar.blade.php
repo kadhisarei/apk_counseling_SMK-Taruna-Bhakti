@@ -66,6 +66,13 @@
                     <span> Guru Bk </span>
                 </a>
             </li>
+
+            <li class="side-nav-item">
+                <a href="/admin/dashboard/wakel" class="side-nav-link">
+                    <i class="uil-calender"></i>
+                    <span> Wali kelas </span>
+                </a>
+            </li>
             @endhasrole
 
             <li class="side-nav-item">

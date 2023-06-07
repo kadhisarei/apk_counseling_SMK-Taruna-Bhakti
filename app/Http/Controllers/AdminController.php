@@ -7,7 +7,11 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Siswa;
 use App\Models\Kelas;
+<<<<<<< HEAD
 use App\Models\Guru;
+=======
+use App\Models\WaliKelas;
+>>>>>>> e9599e4f8ca22aa2b5d98fc3c94b0b2fd9bcb140
 
 
 class AdminController extends Controller
@@ -105,6 +109,7 @@ class AdminController extends Controller
     
         return redirect('/admin/dashboard/siswa')->with('success', 'Siswa berhasil dihapus');
     }
+<<<<<<< HEAD
 
     //  crud guru 
     public function guru_index(){
@@ -118,6 +123,19 @@ class AdminController extends Controller
     }
 
     public function guru_store(Request $request){
+=======
+    // wakel
+    public function wakel_index(){
+        $wakel = WaliKelas::all();
+        return view('dashboard.page.wakel', compact('wakel'));
+    }
+
+    public function wakel_create(){
+        $kelas = Kelas::all();
+        return view('dashboard.page.wakel-add', compact('kelas'));
+    }
+    public function wakel_store(Request $request){
+>>>>>>> e9599e4f8ca22aa2b5d98fc3c94b0b2fd9bcb140
         $request->validate([
             'nama' => 'required',
             'email' => 'required|email',
@@ -134,6 +152,7 @@ class AdminController extends Controller
         $user->assignRole('user');
         $user->save();
 
+<<<<<<< HEAD
         $guru = new Guru();
         $guru->nama = $request->input('nama');
         $guru->user_id = $user->id;
@@ -152,6 +171,26 @@ class AdminController extends Controller
     }
 
     public function guru_update(Request $request, $id){
+=======
+        $wakel = new WaliKelas();
+        $wakel->nama = $request->input('nama');
+        $wakel->user_id = $user->id;
+        $wakel->nipd = $request->input('nipd');
+        $wakel->jenis_kelamin = $request->input('jenis_kelamin');
+        $wakel->kelas_id = $request->input('kelas_id');
+        $wakel->save();
+        return redirect('/admin/dashboard/wakel')->with('success', 'WaliKelas berhasil dibuat');
+    }
+
+    public function wakel_edit($id){
+        $wakel = WaliKelas::findOrFail($id);
+        $user = $wakel->user;
+        $kelas = Kelas::all();
+        return view('dashboard.page.wakel-edit', compact('wakel', 'user', 'kelas'));
+    }
+
+    public function wakel_update(Request $request, $id){
+>>>>>>> e9599e4f8ca22aa2b5d98fc3c94b0b2fd9bcb140
         $request->validate([
             'nama' => 'required',
             'email' => 'required|email',
@@ -161,6 +200,7 @@ class AdminController extends Controller
             'kelas_id' => 'required|exists:kelas,id',
         ]);
 
+<<<<<<< HEAD
         $guru = Guru::findOrFail($id);
         $guru->nama = $request->input('nama');
         $guru->nipd = $request->input('nipd');
@@ -168,12 +208,23 @@ class AdminController extends Controller
         $guru->save();
 
         $user = $guru->user;
+=======
+        $wakel = WaliKelas::findOrFail($id);
+        $wakel->nama = $request->input('nama');
+        $wakel->nipd = $request->input('nipd');
+        $wakel->jenis_kelamin = $request->input('jenis_kelamin');
+        $wakel->kelas_id = $request->input('kelas_id');
+        $wakel->save();
+
+        $user = $wakel->user;
+>>>>>>> e9599e4f8ca22aa2b5d98fc3c94b0b2fd9bcb140
         $user->name = $request->input('nama');
         $user->email = $request->input('email');
         if ($request->filled('password')) {
             $user->password = Hash::make($request->input('password'));
         }
         $user->save();
+<<<<<<< HEAD
         return redirect('/admin/dashboard/guru')->with('success', 'guru berhasil diedit');
     }
 
@@ -184,11 +235,28 @@ class AdminController extends Controller
     
         // Hapus data siswa
         $guru->delete();
+=======
+        return redirect('/admin/dashboard/wakel')->with('success', 'siswa berhasil diedit');
+    }
+
+    public function wakel_delete($id)
+    {
+        $wakel = WaliKelas::findOrFail($id);
+        $user = $wakel->user;
+    
+        // Hapus data wakel
+        $wakel->delete();
+>>>>>>> e9599e4f8ca22aa2b5d98fc3c94b0b2fd9bcb140
     
         // Hapus data user 
         $user->delete();
     
+<<<<<<< HEAD
         return redirect('/admin/dashboard/guru')->with('success', 'Siswa berhasil dihapus');
     }
 
+=======
+        return redirect('/admin/dashboard/wakel')->with('success', 'Wali Kelas berhasil dihapus');
+    }
+>>>>>>> e9599e4f8ca22aa2b5d98fc3c94b0b2fd9bcb140
 }

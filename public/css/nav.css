@@ -1,5 +1,4 @@
-
-*{
+* {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -7,23 +6,25 @@
     color: var(--white);
 }
 
-.navbar{
+.navbar {
     width: 100%;
     padding: 25px 0px;
     display: flex;
     gap: 40vw;
     align-items: center;
-    justify-content:start;
+    justify-content: start;
     position: fixed;
     top: 0;
     z-index: 99;
     transition: all 0.5s;
 }
-.navbar-scrolled{
+
+.navbar-scrolled {
     background-color: var(--bluePrimary);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.logo-nav h1{
+
+.logo-nav h1 {
     font-family: 'Chubgothic';
     color: var(--white);
     letter-spacing: 4px;
@@ -31,20 +32,66 @@
     font-size: 26px;
 }
 
-.logo-nav h1 span{
+.logo-nav h1 span {
     color: var(--lightBlue);
     padding-bottom: 3px;
     border-bottom: 3.5px solid var(--yellow);
 }
-.menu-nav ul{
+
+.menu-nav ul {
     display: flex;
-    gap: 75px;
+    gap: 45px;
 }
-.menu-nav ul li{
+
+.menu-nav ul li {
     color: var(--white);
     font-size: 18px;
     font-family: 'Chubgothic';
     letter-spacing: 2px;
 }
 
+.notif-button {
+    width: 40px;
+    height: 40px;
+    margin-top: -12px;
+    background-color: var(--lightBlue);
+    border-radius: 100%;
+    border: none;
+}
 
+.notif-popup {
+    display: none;
+    position: fixed;
+    top: 15;
+    right: 10px;
+    /* border: 3px solid #f1f1f1; */
+    background-color: var(--white);
+    width: 35vw;
+    padding: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    filter: drop-shadow(0 1rem 0.75rem rgba(0, 0, 0, 0.396));
+}
+.notif-popup div {
+    background-color: var(--bluePrimary);
+    width: 85%;
+    margin-bottom: 10px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding: 20px;
+}
+.notif-popup button {
+    background-color: var(--yellow);
+    border-radius: 20px;
+    border: none;
+    width: 40%;
+    height: 4vh;
+}
+
+.message {
+    margin-top: 10px;
+    font-size: 10px;
+    text-align: justify;
+}

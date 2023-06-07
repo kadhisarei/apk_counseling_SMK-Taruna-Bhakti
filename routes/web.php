@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\GuruController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -65,7 +65,16 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','r
     Route::get('/admin/dashboard/siswa/edit/{id}',[AdminController::class,'siswa_edit']);
     Route::put('/admin/dashboard/siswa/edit/{id}',[AdminController::class,'siswa_update']);
     Route::delete('/admin/dashboard/siswa/delete/{id}', [AdminController::class, 'siswa_delete']);
+    // wakel
+    Route::get('/admin/dashboard',[AdminController::class,'index'])->name('admin.dashboard');
+    Route::get('/admin/dashboard/wakel',[AdminController::class,'wakel_index']);
+    Route::get('/admin/dashboard/wakel/create',[AdminController::class,'wakel_create']);
+    Route::post('/admin/dashboard/wakel/store',[AdminController::class,'wakel_store']);
+    Route::get('/admin/dashboard/wakel/edit/{id}',[AdminController::class,'wakel_edit']);
+    Route::put('/admin/dashboard/wakel/edit/{id}',[AdminController::class,'wakel_update']);
+    Route::delete('/admin/dashboard/wakel/delete/{id}', [AdminController::class, 'wakel_delete']);
 
+    // guru
     Route::get('/admin/dashboard/guru',[AdminController::class,'guru_index']);
     Route::get('/admin/dashboard/guru/create',[AdminController::class,'guru_create']);
     Route::post('/admin/dashboard/guru/store',[AdminController::class,'guru_store']);
