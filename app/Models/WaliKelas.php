@@ -14,10 +14,17 @@ class WaliKelas extends Model
     protected $fillable = [
         'nama',
         'user_id',
-        'nisn',
-        'tanggal_lahir',
+        'nipd',
         'alamat',
         'jenis_kelamin',
         'kelas_id'
     ];
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -20,7 +20,6 @@ return new class extends Migration
             $table->unsignedBigInteger('kelas_id');
             $table->foreign('kelas_id')->references('id')->on('kelas'); 
             $table->enum('jenis_kelamin',['Pria','perempuan']);
-            $table->date('tanggal_lahir');
             $table->timestamps();
         });
     }
