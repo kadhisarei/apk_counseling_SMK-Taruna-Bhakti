@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\GuruController;
+use App\Http\Controllers\BkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,3 +56,45 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','r
         return view('dashboard');
     })->name('admin.dashboard');
 });
+
+// siswa
+
+Route::get('',[Siswacontroller::class,'show']);
+
+Route::get('',[SiswaController::class,'create']);
+
+Route::post('',[SiswaController::class,'store']);
+
+Route::delete('{id}',[SiswaController::class,'destroy']);
+
+Route::get('{id}',[SiswaController::class,'edit']);
+
+Route::put('{id}',[SiswaController::class,'update']);
+
+// guru
+
+Route::get('',[Gurucontroller::class,'show']);
+
+Route::get('',[GuruController::class,'create']);
+
+Route::post('',[GuruController::class,'store']);
+
+Route::delete('{id}',[GuruController::class,'destroy']);
+
+Route::get('{id}',[GuruController::class,'edit']);
+
+Route::put('{id}',[GuruController::class,'update']);
+
+// gurubk
+
+Route::get('',[Bkcontroller::class,'show']);
+
+Route::get('',[BkController::class,'create']);
+
+Route::post('',[BkController::class,'store']);
+
+Route::delete('{id}',[BkController::class,'destroy']);
+
+Route::get('{id}',[BkController::class,'edit']);
+
+Route::put('{id}',[BkController::class,'update']);
