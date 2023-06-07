@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Siswa;
 use App\Models\Kelas;
+use App\Models\Guru;
 
 
 class AdminController extends Controller
@@ -104,4 +105,90 @@ class AdminController extends Controller
     
         return redirect('/admin/dashboard/siswa')->with('success', 'Siswa berhasil dihapus');
     }
+
+    //  crud guru 
+    public function guru_index(){
+        $guru = Guru::all();
+        return view('dashboard.page.guru', compact('guru'));   
+    }
+
+    public function guru_create(){
+        $kelas = Kelas::all();
+        return view('dashboard.page.guru-add', compact('kelas'));
+    }
+
+    public function guru_store(Request $request){
+        $request->validate([
+            'nama' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:6',
+            'nipd' => 'required',
+            'jenis_kelamin' => 'required|in:Pria,perempuan',
+            'kelas_id' => 'required|exists:kelas,id',
+        ]);
+
+        $user = new User();
+        $user->name = $request->input('nama');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
+        $user->assignRole('user');
+        $user->save();
+
+        $guru = new Guru();
+        $guru->nama = $request->input('nama');
+        $guru->user_id = $user->id;
+        $guru->nipd = $request->input('nipd');
+        $guru->jenis_kelamin = $request->input('jenis_kelamin');
+        $guru->kelas_id = $request->input('kelas_id');
+        $guru->save();
+        return redirect('/admin/dashboard/guru')->with('success', 'siswa berhasil dibuat');
+    }
+
+    public function guru_edit($id){
+        $guru = Guru::findOrFail($id);
+        $user = $guru->user;
+        $kelas = Kelas::all();
+        return view('dashboard.page.guru-edit', compact('guru', 'user', 'kelas'));
+    }
+
+    public function guru_update(Request $request, $id){
+        $request->validate([
+            'nama' => 'required',
+            'email' => 'required|email',
+            'password' => 'nullable|min:6',
+            'nipd' => 'required',
+            'jenis_kelamin' => 'required|in:Pria,perempuan',
+            'kelas_id' => 'required|exists:kelas,id',
+        ]);
+
+        $guru = Guru::findOrFail($id);
+        $guru->nama = $request->input('nama');
+        $guru->nipd = $request->input('nipd');
+        $guru->kelas_id = $request->input('kelas_id');
+        $guru->save();
+
+        $user = $guru->user;
+        $user->name = $request->input('nama');
+        $user->email = $request->input('email');
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->input('password'));
+        }
+        $user->save();
+        return redirect('/admin/dashboard/guru')->with('success', 'guru berhasil diedit');
+    }
+
+    public function guru_delete($id)
+    {
+        $guru = Guru::findOrFail($id);
+        $user = $guru->user;
+    
+        // Hapus data siswa
+        $guru->delete();
+    
+        // Hapus data user 
+        $user->delete();
+    
+        return redirect('/admin/dashboard/guru')->with('success', 'Siswa berhasil dihapus');
+    }
+
 }

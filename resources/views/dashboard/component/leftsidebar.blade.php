@@ -61,7 +61,7 @@
             </li>
 
             <li class="side-nav-item">
-                <a href="/admin/dashboard/siswa" class="side-nav-link">
+                <a href="/admin/dashboard/guru" class="side-nav-link">
                     <i class="uil-calender"></i>
                     <span> Guru Bk </span>
                 </a>

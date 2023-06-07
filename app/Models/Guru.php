@@ -13,13 +13,15 @@ class Guru extends Model
         'nama',
         'user_id',
         'nipd',
-        'tanggal_lahir',
-        'alamat',
         'jenis_kelamin',
         'kelas_id'
     ];
     public function kelas()
     {
         return $this->belongsTo(Kelas::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

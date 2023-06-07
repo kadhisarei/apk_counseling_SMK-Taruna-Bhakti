@@ -66,4 +66,12 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','r
     Route::put('/admin/dashboard/siswa/edit/{id}',[AdminController::class,'siswa_update']);
     Route::delete('/admin/dashboard/siswa/delete/{id}', [AdminController::class, 'siswa_delete']);
 
+    Route::get('/admin/dashboard/guru',[AdminController::class,'guru_index']);
+    Route::get('/admin/dashboard/guru/create',[AdminController::class,'guru_create']);
+    Route::post('/admin/dashboard/guru/store',[AdminController::class,'guru_store']);
+    Route::get('/admin/dashboard/guru/edit/{id}',[AdminController::class,'guru_edit']);
+    Route::put('/admin/dashboard/guru/edit/{id}',[AdminController::class,'guru_update']);
+    Route::delete('/admin/dashboard/guru/delete/{id}', [AdminController::class, 'guru_delete']);
+
+
 });

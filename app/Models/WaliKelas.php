@@ -15,7 +15,6 @@ class WaliKelas extends Model
         'nama',
         'user_id',
         'nisn',
-        'tanggal_lahir',
         'alamat',
         'jenis_kelamin',
         'kelas_id'
