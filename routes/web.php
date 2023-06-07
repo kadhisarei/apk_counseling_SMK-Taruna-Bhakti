@@ -17,12 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/landing', function () {
     return view('home');
 });
-
+// Route::get('/landing', function () {
+//     return view('home');
+// });
 
 Route::get('/apa', function () {
     return view('dashboard.apa');
