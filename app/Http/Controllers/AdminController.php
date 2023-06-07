@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Siswa;
 use App\Models\Kelas;
+use App\Models\WaliKelas;
 
 
 class AdminController extends Controller
@@ -103,5 +104,89 @@ class AdminController extends Controller
         $user->delete();
     
         return redirect('/admin/dashboard/siswa')->with('success', 'Siswa berhasil dihapus');
+    }
+    // wakel
+    public function wakel_index(){
+        $wakel = WaliKelas::all();
+        return view('dashboard.page.wakel', compact('wakel'));
+    }
+
+    public function wakel_create(){
+        $kelas = Kelas::all();
+        return view('dashboard.page.wakel-add', compact('kelas'));
+    }
+    public function wakel_store(Request $request){
+        $request->validate([
+            'nama' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:6',
+            'nipd' => 'required',
+            'jenis_kelamin' => 'required|in:Pria,perempuan',
+            'kelas_id' => 'required|exists:kelas,id',
+        ]);
+
+        $user = new User();
+        $user->name = $request->input('nama');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
+        $user->assignRole('user');
+        $user->save();
+
+        $wakel = new WaliKelas();
+        $wakel->nama = $request->input('nama');
+        $wakel->user_id = $user->id;
+        $wakel->nipd = $request->input('nipd');
+        $wakel->jenis_kelamin = $request->input('jenis_kelamin');
+        $wakel->kelas_id = $request->input('kelas_id');
+        $wakel->save();
+        return redirect('/admin/dashboard/wakel')->with('success', 'WaliKelas berhasil dibuat');
+    }
+
+    public function wakel_edit($id){
+        $wakel = WaliKelas::findOrFail($id);
+        $user = $wakel->user;
+        $kelas = Kelas::all();
+        return view('dashboard.page.wakel-edit', compact('wakel', 'user', 'kelas'));
+    }
+
+    public function wakel_update(Request $request, $id){
+        $request->validate([
+            'nama' => 'required',
+            'email' => 'required|email',
+            'password' => 'nullable|min:6',
+            'nipd' => 'required',
+            'jenis_kelamin' => 'required|in:Pria,perempuan',
+            'kelas_id' => 'required|exists:kelas,id',
+        ]);
+
+        $wakel = WaliKelas::findOrFail($id);
+        $wakel->nama = $request->input('nama');
+        $wakel->nipd = $request->input('nipd');
+        $wakel->jenis_kelamin = $request->input('jenis_kelamin');
+        $wakel->kelas_id = $request->input('kelas_id');
+        $wakel->save();
+
+        $user = $wakel->user;
+        $user->name = $request->input('nama');
+        $user->email = $request->input('email');
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->input('password'));
+        }
+        $user->save();
+        return redirect('/admin/dashboard/wakel')->with('success', 'siswa berhasil diedit');
+    }
+
+    public function wakel_delete($id)
+    {
+        $wakel = WaliKelas::findOrFail($id);
+        $user = $wakel->user;
+    
+        // Hapus data wakel
+        $wakel->delete();
+    
+        // Hapus data user 
+        $user->delete();
+    
+        return redirect('/admin/dashboard/wakel')->with('success', 'Wali Kelas berhasil dihapus');
     }
 }
