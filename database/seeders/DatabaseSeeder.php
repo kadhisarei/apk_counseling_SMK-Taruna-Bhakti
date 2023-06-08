@@ -16,11 +16,12 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call(RoleSeeder::class);
-        $this->call(SiswaSeeder::class);
         $this->call(WaliKelasSeeder::class);
         $this->call(GuruBkSeeder::class);
         $this->call(AdminSeeder::class);
         $this->call(KelasSeeder::class);
+        $this->call(SiswaSeeder::class);
+
         // $admin = User::create([
         //     'name' => 'Admin',
         //     'email' => 'admin@gmail.com',

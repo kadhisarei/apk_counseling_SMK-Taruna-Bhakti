@@ -17,11 +17,10 @@ class WaliKelas extends Model
         'nipd',
         'alamat',
         'jenis_kelamin',
-        'kelas_id'
     ];
     public function kelas()
     {
-        return $this->belongsTo(Kelas::class);
+        return $this->hasOne(Kelas::class);
     }
     public function user()
     {

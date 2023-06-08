@@ -11,12 +11,12 @@
                     </ul>
                 </div>
             @endif
-        <form action="/admin/dashboard/wakel/edit/{{$wakel->id}}'" method="post" class="needs-validation" novalidate>
+        <form action="/admin/dashboard/guru/edit/{{$guru->id}}'" method="post" class="needs-validation" novalidate>
             @csrf
             @method('PUT')
             <div class="mb-3">
-                <label class="form-label" for="validationCustom01">Nisn</label>
-                <input type="text" name="nipd" value="{{$wakel->nipd}}" class="form-control" id="validationCustom01" placeholder="First name"
+                <label class="form-label" for="validationCustom01">Nipd</label>
+                <input type="text" name="nipd" value="{{$guru->nipd}}" class="form-control" id="validationCustom01" placeholder="First name"
                     required>
                 <div class="valid-feedback">
                     Looks good!
@@ -24,7 +24,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="validationCustom02">Nama</label>
-                <input type="text" name="nama" value="{{$wakel->nama}}" class="form-control" id="validationCustom02" placeholder="Last name"
+                <input type="text" name="nama" value="{{$guru->nama}}" class="form-control" id="validationCustom02" placeholder="Last name"
                     required>
                 <div class="valid-feedback">
                     Looks good!
@@ -34,14 +34,14 @@
             <div class="mb-3">
                 <label for="jenis_kelamin">Jenis Kelamin</label>
                 <select name="jenis_kelamin" id="jenis_kelamin" class="form-control" required>
-                    <option value="Pria" @if($wakel->jenis_kelamin === 'Pria') selected @endif>Pria</option>
-                    <option value="perempuan" @if($wakel->jenis_kelamin === 'perempuan') selected @endif>Perempuan</option>
+                    <option value="Pria" @if($guru->jenis_kelamin === 'Pria') selected @endif>Pria</option>
+                    <option value="perempuan" @if($guru->jenis_kelamin === 'perempuan') selected @endif>Perempuan</option>
                 </select>
             </div>
 
             <div class="mb-3">
                 <label class="form-label" for="validationCustom02">Email</label>
-                <input type="text" name="email" value="{{ $wakel->user->email }}" class="form-control" id="validationCustom02" placeholder="Email" required>
+                <input type="text" name="email" value="{{ $guru->user->email }}" class="form-control" id="validationCustom02" placeholder="Email" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
