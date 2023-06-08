@@ -5,6 +5,8 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\WaliKelasController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -74,32 +76,41 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','r
     Route::put('/admin/dashboard/wakel/edit/{id}',[AdminController::class,'wakel_update']);
     Route::delete('/admin/dashboard/wakel/delete/{id}', [AdminController::class, 'wakel_delete']);
 
+    // guru
+    Route::get('/admin/dashboard/guru',[AdminController::class,'guru_index']);
+    Route::get('/admin/dashboard/guru/create',[AdminController::class,'guru_create']);
+    Route::post('/admin/dashboard/guru/store',[AdminController::class,'guru_store']);
+    Route::get('/admin/dashboard/guru/edit/{id}',[AdminController::class,'guru_edit']);
+    Route::put('/admin/dashboard/guru/edit/{id}',[AdminController::class,'guru_update']);
+    Route::delete('/admin/dashboard/guru/delete/{id}', [AdminController::class, 'guru_delete']);
+
+    Route::get('/admin/dashboard/kelas',[AdminController::class,'kelas_index']);
+    Route::get('/admin/dashboard/kelas/create',[AdminController::class,'kelas_create']);
+    Route::post('/admin/dashboard/kelas/store',[AdminController::class,'kelas_store']);
+
+
 });
 
-// siswa
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified','role:guru bk'
+])->group(function () {
+    // Route::get('/home', function () {
+    //     return view('dashboard');
+    // })->name('user.dashboard');
+    Route::get('/guru/dashboard',[GuruController::class,'index'])->name('guru.dashboard');
 
-Route::get('',[Siswacontroller::class,'show']);
+});
 
-Route::get('',[SiswaController::class,'create']);
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified','role:wali kelas'
+])->group(function () {
+    // Route::get('/home', function () {
+    //     return view('dashboard');
+    // })->name('user.dashboard');
+    Route::get('/walas/dashboard',[WaliKelasController::class,'index'])->name('walas.dashboard');
 
-Route::post('',[SiswaController::class,'store']);
-
-Route::delete('{id}',[SiswaController::class,'destroy']);
-
-Route::get('{id}',[SiswaController::class,'edit']);
-
-Route::put('{id}',[SiswaController::class,'update']);
-
-// guru
-
-Route::get('',[Gurucontroller::class,'show']);
-
-Route::get('',[GuruController::class,'create']);
-
-Route::post('',[GuruController::class,'store']);
-
-Route::delete('{id}',[GuruController::class,'destroy']);
-
-Route::get('{id}',[GuruController::class,'edit']);
-
-Route::put('{id}',[GuruController::class,'update']);
+});

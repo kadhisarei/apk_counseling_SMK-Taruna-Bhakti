@@ -61,7 +61,7 @@
             </li>
 
             <li class="side-nav-item">
-                <a href="/admin/dashboard/siswa" class="side-nav-link">
+                <a href="/admin/dashboard/guru" class="side-nav-link">
                     <i class="uil-calender"></i>
                     <span> Guru Bk </span>
                 </a>
@@ -71,6 +71,13 @@
                 <a href="/admin/dashboard/wakel" class="side-nav-link">
                     <i class="uil-calender"></i>
                     <span> Wali kelas </span>
+                </a>
+            </li>
+
+            <li class="side-nav-item">
+                <a href="/admin/dashboard/kelas" class="side-nav-link">
+                    <i class="uil-calender"></i>
+                    <span> Kelas </span>
                 </a>
             </li>
             @endhasrole

@@ -32,7 +32,6 @@
                     <tr>
                         <th>NIPD</th>
                         <th>Nama</th>
-                        <th>Wali Kelas</th>
                         <th>Jenis Kelamin</th>
                         <th>action</th>
                     </tr>
@@ -42,7 +41,6 @@
                     <tr>
                         <td>{{$item->nipd}}</td>
                         <td>{{$item->nama}}</td>
-                        <td>{{$item->kelas->nama}}</td>
                         <td>{{$item->jenis_kelamin}}</td>
                         <td class="table-action">
                             <a href="" class="action-icon"> <i class="mdi mdi-eye"></i></a>

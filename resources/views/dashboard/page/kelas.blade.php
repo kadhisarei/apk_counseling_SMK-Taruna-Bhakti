@@ -12,16 +12,16 @@
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Siswa</li>
+                        <li class="breadcrumb-item active">Kelas</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Guru</h4>
+                <h4 class="page-title">Kelas</h4>
             </div>
         </div>
     </div>     
     <!-- end page title --> 
     <div class="mb-3">
-    <a href="/admin/dashboard/guru/create" type="button" class="btn btn-success">Add New</a>
+    <a href="/admin/dashboard/kelas/create" type="button" class="btn btn-success">Add New</a>
 
     </div>
 
@@ -30,18 +30,18 @@
             <table class="table table-hover table-centered mb-0">
                 <thead>
                     <tr>
-                        <th>Nipd</th>
-                        <th>Nama</th>
-                        <th>Jenis Kelamin</th>
+                        <th>Kelas</th>
+                        <th>Guru Bk</th>
+                        <th>Walas</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($guru as $item)
+                    @foreach($kelas as $item)
                     <tr>
-                        <td>{{$item->nipd}}</td>
-                        <td>{{$item->nama}}</td>
-                        <td>{{$item->jenis_kelamin}}</td>
+                        <td>{{ $item->nama}}</td>
+                        <td>{{ $item->guru->nama }}</td>
+                        <td>{{ $item->wali_kelas->nama}}</td>
                         <td class="table-action">
                             <a href="" class="action-icon"> <i class="mdi mdi-eye"></i></a>
                             <a href="/admin/dashboard/guru/edit/{{$item->id}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>

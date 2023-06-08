@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Siswa;
 use App\Models\Kelas;
+use App\Models\Guru;
 use App\Models\WaliKelas;
 
 
@@ -105,6 +106,86 @@ class AdminController extends Controller
     
         return redirect('/admin/dashboard/siswa')->with('success', 'Siswa berhasil dihapus');
     }
+
+    //  crud guru 
+    public function guru_index(){
+        $guru = Guru::all();
+        return view('dashboard.page.guru', compact('guru'));   
+    }
+
+    public function guru_create(){
+        return view('dashboard.page.guru-add');
+    }
+
+    public function guru_store(Request $request){
+        $request->validate([
+            'nama' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:6',
+            'nipd' => 'required',
+            'jenis_kelamin' => 'required|in:Pria,perempuan',
+        ]);
+
+        $user = new User();
+        $user->name = $request->input('nama');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
+        $user->assignRole('guru bk');
+        $user->save();
+
+        $guru = new Guru();
+        $guru->nama = $request->input('nama');
+        $guru->user_id = $user->id;
+        $guru->nipd = $request->input('nipd');
+        $guru->jenis_kelamin = $request->input('jenis_kelamin');
+        $guru->save();
+        return redirect('/admin/dashboard/guru')->with('success', 'siswa berhasil dibuat');
+    }
+
+    public function guru_edit($id){
+        $guru = Guru::findOrFail($id);
+        $user = $guru->user;
+        return view('dashboard.page.guru-edit', compact('guru', 'user'));
+    }
+
+    public function guru_update(Request $request, $id){
+        $request->validate([
+            'nama' => 'required',
+            'email' => 'required|email',
+            'password' => 'nullable|min:6',
+            'nipd' => 'required',
+            'jenis_kelamin' => 'required|in:Pria,perempuan',
+        ]);
+
+        $guru = Guru::findOrFail($id);
+        $guru->nama = $request->input('nama');
+        $guru->nipd = $request->input('nipd');
+        $guru->save();
+
+        $user = $guru->user;
+        $user->name = $request->input('nama');
+        $user->email = $request->input('email');
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->input('password'));
+        }
+        $user->save();
+        return redirect('/admin/dashboard/guru')->with('success', 'guru berhasil diedit');
+    }
+
+    public function guru_delete($id)
+    {
+        $guru = Guru::findOrFail($id);
+        $user = $guru->user;
+    
+        // Hapus data siswa
+        $guru->delete();
+    
+        // Hapus data user 
+        $user->delete();
+    
+        return redirect('/admin/dashboard/guru')->with('success', 'Siswa berhasil dihapus');
+    }
+    
     // wakel
     public function wakel_index(){
         $wakel = WaliKelas::all();
@@ -112,8 +193,7 @@ class AdminController extends Controller
     }
 
     public function wakel_create(){
-        $kelas = Kelas::all();
-        return view('dashboard.page.wakel-add', compact('kelas'));
+        return view('dashboard.page.wakel-add');
     }
     public function wakel_store(Request $request){
         $request->validate([
@@ -122,14 +202,13 @@ class AdminController extends Controller
             'password' => 'required|min:6',
             'nipd' => 'required',
             'jenis_kelamin' => 'required|in:Pria,perempuan',
-            'kelas_id' => 'required|exists:kelas,id',
         ]);
 
         $user = new User();
         $user->name = $request->input('nama');
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
-        $user->assignRole('user');
+        $user->assignRole('wali kelas');
         $user->save();
 
         $wakel = new WaliKelas();
@@ -137,7 +216,6 @@ class AdminController extends Controller
         $wakel->user_id = $user->id;
         $wakel->nipd = $request->input('nipd');
         $wakel->jenis_kelamin = $request->input('jenis_kelamin');
-        $wakel->kelas_id = $request->input('kelas_id');
         $wakel->save();
         return redirect('/admin/dashboard/wakel')->with('success', 'WaliKelas berhasil dibuat');
     }
@@ -145,8 +223,7 @@ class AdminController extends Controller
     public function wakel_edit($id){
         $wakel = WaliKelas::findOrFail($id);
         $user = $wakel->user;
-        $kelas = Kelas::all();
-        return view('dashboard.page.wakel-edit', compact('wakel', 'user', 'kelas'));
+        return view('dashboard.page.wakel-edit', compact('wakel', 'user'));
     }
 
     public function wakel_update(Request $request, $id){
@@ -156,14 +233,12 @@ class AdminController extends Controller
             'password' => 'nullable|min:6',
             'nipd' => 'required',
             'jenis_kelamin' => 'required|in:Pria,perempuan',
-            'kelas_id' => 'required|exists:kelas,id',
         ]);
 
         $wakel = WaliKelas::findOrFail($id);
         $wakel->nama = $request->input('nama');
         $wakel->nipd = $request->input('nipd');
         $wakel->jenis_kelamin = $request->input('jenis_kelamin');
-        $wakel->kelas_id = $request->input('kelas_id');
         $wakel->save();
 
         $user = $wakel->user;
@@ -189,4 +264,32 @@ class AdminController extends Controller
     
         return redirect('/admin/dashboard/wakel')->with('success', 'Wali Kelas berhasil dihapus');
     }
+    
+    public function kelas_index(){
+        $kelas = Kelas::with('wali_kelas','guru')->get();
+        return view('dashboard.page.Kelas', compact('kelas'));
+    }
+
+    public function kelas_create(){
+        $guru = Guru::all();
+        $walas = WaliKelas::all();
+        return view('dashboard.page.kelas-add', compact('guru','walas'));
+    }
+    
+    public function kelas_store(Request $request){
+        $request->validate([
+            'nama' => 'required',
+            'wali_kelas_id' =>'required',
+            'guru_id' =>'required'
+        ]);
+
+        $kelas = New Kelas();
+        $kelas->nama = $request->input('nama');
+        $kelas->wali_kelas_id = $request->input('wali_kelas_id');
+        $kelas->guru_id = $request->input('guru_id');
+        $kelas->save();
+        return redirect('/admin/dashboard/kelas')->with('success', 'Kelas berhasil di tambah');
+    }
+
+
 }

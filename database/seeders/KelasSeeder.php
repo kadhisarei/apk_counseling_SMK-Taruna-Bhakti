@@ -16,14 +16,20 @@ class KelasSeeder extends Seeder
     {
         $kelas = Kelas::create([
             'nama' => 'XI PPLG 1',
+            'wali_kelas_id' => '1',
+            'guru_id' => '1',
         ]);
 
         $kelas = Kelas::create([
             'nama' => 'XI PPLG 2',
+            'wali_kelas_id' => '2',
+            'guru_id' => '2',
         ]);
 
         $kelas = Kelas::create([
-            'nama' => 'X PPLG', 
+            'nama' => 'X PPLG 1',
+            'wali_kelas_id' => '3',
+            'guru_id' => '3',
         ]);
     }
 }
