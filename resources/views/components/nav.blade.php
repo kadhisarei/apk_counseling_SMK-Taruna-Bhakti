@@ -4,7 +4,7 @@
     </div>
     <div class="menu-nav">
         <ul>
-            <li><a href="{{ url('/landing') }}">Beranda</a></li>
+            <li><a href="{{ route('index') }}">Beranda</a></li>
             <li><a href="#">Tentang</a></li>
             {{-- <li><a href="{{ url('/student') }}">Konseling</a></li> --}}
             <li><a href="#">Login</a></li>

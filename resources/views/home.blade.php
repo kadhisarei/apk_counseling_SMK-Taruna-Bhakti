@@ -35,9 +35,18 @@
             <p>Testimoni</p>
         </div>
     </div>
-    
+    <div class="content-about">
+        <div class="about">
+            <div class="left-about">
+                <lottie-player class="image" src="{{ asset('lottie/aboutUs.json') }}" background="transparent"  speed="1"  style="width: 75%;"  loop autoplay></lottie-player>
+            </div>
+            <div class="right-about">
+                <h1>TENTANG KAMI</h1>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum earum laboriosam commodi atque incidunt provident animi voluptate nam nesciunt reprehenderit. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem fugit est officia! Asperiores dolores optio sint quia aperiam id sapiente?</p>
+            </div>
+        </div>
+    </div>
 
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script src="{{ asset('js/script.js') }}"></script>
 </body>
 </html>

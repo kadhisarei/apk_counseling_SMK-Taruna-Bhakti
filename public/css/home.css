@@ -91,3 +91,32 @@ header .description-header p .o{
     color: var(--lightBlue);
     font-size: 20px;
 }
+/* ABOUT */
+.content-about{
+    background-color: var(--blueSecondary);
+    width: 100%;
+    border-bottom: 4px solid var(--border);
+}
+.about{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 4rem;
+}
+.right-about{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.right-about h1{
+    font-family: 'UniNeue';
+    font-size: 54px;
+}
+.right-about p{
+    font-size: 18px;
+    letter-spacing: 4px;
+    font-family: 'Quicksand';
+    font-weight: 400;
+}
+

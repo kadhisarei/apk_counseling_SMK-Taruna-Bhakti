@@ -16,9 +16,9 @@ use App\Http\Controllers\GuruController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/landing', function () {
     return view('home');
-});
+})->name('index');
 // Route::get('/landing', function () {
 //     return view('home');
 // });
@@ -78,28 +78,28 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','r
 
 // siswa
 
-Route::get('',[Siswacontroller::class,'show']);
+// Route::get('',[Siswacontroller::class,'show']);
 
-Route::get('',[SiswaController::class,'create']);
+// Route::get('',[SiswaController::class,'create']);
 
-Route::post('',[SiswaController::class,'store']);
+// Route::post('',[SiswaController::class,'store']);
 
-Route::delete('{id}',[SiswaController::class,'destroy']);
+// Route::delete('{id}',[SiswaController::class,'destroy']);
 
-Route::get('{id}',[SiswaController::class,'edit']);
+// Route::get('{id}',[SiswaController::class,'edit']);
 
-Route::put('{id}',[SiswaController::class,'update']);
+// Route::put('{id}',[SiswaController::class,'update']);
 
-// guru
+// // guru
 
-Route::get('',[Gurucontroller::class,'show']);
+// Route::get('',[Gurucontroller::class,'show']);
 
-Route::get('',[GuruController::class,'create']);
+// Route::get('',[GuruController::class,'create']);
 
-Route::post('',[GuruController::class,'store']);
+// Route::post('',[GuruController::class,'store']);
 
-Route::delete('{id}',[GuruController::class,'destroy']);
+// Route::delete('{id}',[GuruController::class,'destroy']);
 
-Route::get('{id}',[GuruController::class,'edit']);
+// Route::get('{id}',[GuruController::class,'edit']);
 
-Route::put('{id}',[GuruController::class,'update']);
+// Route::put('{id}',[GuruController::class,'update']);
