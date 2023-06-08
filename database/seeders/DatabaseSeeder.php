@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminSeeder::class);
         $this->call(KelasSeeder::class);
         $this->call(SiswaSeeder::class);
+        $this->call(LayananSeeder::class);
 
         // $admin = User::create([
         //     'name' => 'Admin',

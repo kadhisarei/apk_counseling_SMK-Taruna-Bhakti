@@ -18,7 +18,7 @@ use App\Http\Controllers\WaliKelasController;
 |
 */
 
-Route::get('/landing', function () {
+Route::get('/', function () {
     return view('home');
 })->name('index');
 // Route::get('/landing', function () {
