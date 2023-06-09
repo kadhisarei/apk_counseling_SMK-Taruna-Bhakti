@@ -10,7 +10,7 @@
     width: 100%;
     padding: 25px 0px;
     display: flex;
-    gap: 40vw;
+    gap: 50vw;
     align-items: center;
     justify-content: start;
     position: fixed;
@@ -40,7 +40,7 @@
 
 .menu-nav ul {
     display: flex;
-    gap: 45px;
+    gap: 50px;
 }
 
 .menu-nav ul li {
@@ -50,29 +50,64 @@
     letter-spacing: 2px;
 }
 
+
+.profile-hoverable:hover div {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bluePrimary);
+}
+
+.profile-hoverable div {
+    display: none;
+    position: fixed;
+    height: 8vh;
+    gap: 4vh;
+    right: 6vw;
+    width: 10vw;
+    padding-top: 4vh;
+    padding-bottom: 4vh;
+    text-align: center;
+}
+
+.profile-hoverable div a {
+    transition: 0.2s;
+}
+
+.profile-hoverable div a:hover {
+    font-size: small;
+    transition: 0.2s;
+}
+
+
 .notif-button {
     width: 40px;
     height: 40px;
-    margin-top: -12px;
-    background-color: var(--lightBlue);
+    margin-top: -10px;
+    background-color: var(--white);
     border-radius: 100%;
     border: none;
+}
+
+.notif-button i {
+    color: var(--bluePrimary);
+    font-size: large;
 }
 
 .notif-popup {
     display: none;
     position: fixed;
     top: 15;
-    right: 10px;
+    right: 2vw;
     /* border: 3px solid #f1f1f1; */
     background-color: var(--white);
-    width: 35vw;
+    width: 38vw;
     padding: 20px;
     border-top-left-radius: 20px;
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
     filter: drop-shadow(0 1rem 0.75rem rgba(0, 0, 0, 0.396));
 }
+
 .notif-popup div {
     background-color: var(--bluePrimary);
     width: 85%;
@@ -82,6 +117,7 @@
     border-bottom-left-radius: 20px;
     padding: 20px;
 }
+
 .notif-popup button {
     background-color: var(--yellow);
     border-radius: 20px;
