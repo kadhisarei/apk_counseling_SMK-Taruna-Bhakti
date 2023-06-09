@@ -1,25 +1,29 @@
-header{
+header {
     padding: 13% 5% 8% 5%;
     background-color: var(--bluePrimary);
     border-bottom: 4px solid var(--border);
 }
-.top-header{
+
+.top-header {
     display: flex;
 }
-header .small-text h1{
+
+header .small-text h1 {
     color: var(--lightBlue);
     font-size: 18px;
     font-family: 'Chubgothic';
     font-weight: bold;
     letter-spacing: 8px;
 }
-header .title-header h1{
+
+header .title-header h1 {
     color: var(--white);
     font-size: 56px;
     font-family: 'UniNeue';
     text-transform: uppercase;
     letter-spacing: 2px;
 }
+
 header .description-header p {
     width: 40%;
     font-family: 'Quicksand';
@@ -27,22 +31,26 @@ header .description-header p {
     letter-spacing: 3px;
     line-height: 22px;
 }
-header .description-header p .logo-desc{
+
+header .description-header p .logo-desc {
     font-family: 'Chubgothic';
 }
-header .description-header p .o{
+
+header .description-header p .o {
     color: var(--lightBlue);
     padding-bottom: 2.5px;
     border-bottom: 1.5px solid var(--yellow);
 
 }
-.right-header{
+
+.right-header {
     position: absolute;
     top: 0;
     right: 0;
     width: 40%;
 }
-.button-header{
+
+.button-header {
     display: flex;
     border: 4px solid var(--border);
     border-radius: 10px;
@@ -50,73 +58,375 @@ header .description-header p .o{
     margin-top: -38px;
     margin-left: 150px;
 }
-.button-header .button{
+
+.button-header .button {
     display: flex;
     gap: 10px;
     justify-content: center;
     align-items: center;
     padding: 10px;
 }
-.button-header .button p{
+
+.button-header .button p {
     font-size: 22px;
     font-family: 'Quicksand';
     font-weight: 500;
 }
-.button-header .button:first-child{
+
+.button-header .button:first-child {
     width: 130px;
     background-color: var(--blueSecondary);
     border-radius: 6px 0px 0px 6px;
 }
-.button-header .button:last-child{
+
+.button-header .button:last-child {
     width: 170px;
     background-color: var(--bluePrimary);
     border-radius: 0px 6px 6px 0px;
+}
 
+.circle-logo i {
+    width: 45px;
+    height: 45px;
+    background-color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 51%;
+    box-sizing: border-box;
 }
-.circle-logo i{
-    width:45px;
-    height:45px;
-    background-color:var(--white);
-    display:flex;
-    align-items:center;
-    justify-content:space-around;
-    border-radius:51%;
-    box-sizing:border-box;
-}
-.button:first-child .circle-logo i{
+
+.button:first-child .circle-logo i {
     color: #03C988;
     font-size: 20px;
 }
-.button:last-child .circle-logo i{
+
+.button:last-child .circle-logo i {
     color: var(--lightBlue);
     font-size: 20px;
 }
+
 /* ABOUT */
-.content-about{
+.content-about {
     background-color: var(--blueSecondary);
     width: 100%;
     border-bottom: 4px solid var(--border);
 }
-.about{
+
+.about {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 100px 4rem;
+    padding: 70px 4rem;
 }
-.right-about{
+
+.right-about {
     width: 50%;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-.right-about h1{
+
+.right-about h1 {
     font-family: 'UniNeue';
     font-size: 54px;
 }
-.right-about p{
+
+.right-about p {
     font-size: 18px;
     letter-spacing: 4px;
     font-family: 'Quicksand';
     font-weight: 400;
+}
+
+/* ALUR KONSULTASI */
+.alur-consult {
+    background-color: var(--bluePrimary);
+    padding: 100px 0px;
+    border-bottom: 4px solid var(--border);
+}
+
+.alur {
+    width: 85%;
+    height: 65%;
+    border: 4px solid var(--border);
+    background-color: var(--blueSecondary);
+    border-radius: 20px;
+    margin: auto;
+}
+
+.title-alur {
+    background-color: var(--yellow);
+    border: 4px solid var(--border);
+    border-radius: 10px;
+    margin: -38px auto 0px auto;
+    padding: 12px 4px;
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.circle-alur {
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    background-color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle-alur i {
+    color: var(--yellow);
+    text-align: center;
+    font-size: 20px;
+}
+
+.title-alur h1 {
+    font-family: 'UniNeue-Regular';
+    font-size: 26px;
+}
+
+.card-alur {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 5vh;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.illustration {
+    width: 250px;
+    height: 280px;
+    background-color: #AABBDB;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-alur .card h1 {
+    font-family: 'Quicksand';
+    font-size: 24px;
+}
+
+.card-alur .card p {
+    width: 220px;
+    text-align: center;
+    font-family: 'Quicksand';
+    font-weight: 400;
+    font-size: 16px;
+}
+
+
+/* CONTENT GURU */
+
+.container-guru {
+    background-color: var(--blueSecondary);
+    padding: 70px 0px;
+    border-bottom: 4px solid var(--border);
+}
+
+.content-guru {
+    margin: auto;
+    display: flex;
+    gap: 100px;
+    width: 90%;
+}
+
+.bar {
+    height: 10px;
+    width: 150px;
+    background-color: var(--yellow);
+    border-radius: 30px;
+}
+
+.left-guru {
+    width: 40%;
+}
+
+.left-guru .text {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.left-guru h1 {
+    font-family: 'Quicksand';
+    font-size: 38px;
+}
+
+.left-guru p {
+    font-family: 'Quicksand';
+    font-weight: 400;
+    letter-spacing: 2px;
+    font-style: 22px;
+    width: 70%;
+}
+
+.cards-guru {
+    display: flex;
+    gap: 100px;
+}
+
+.card-guru {
+    transition: all .2s;
+    border-radius: 10px;
+    height: 100%;
+}
+
+.card-guru img {
+    object-fit: fill;
+    width: 220px;
+    border-radius: 10px 10px 0 0;
+}
+
+.card-guru:hover {
+    outline: 8px solid var(--yellow);
+}
+
+.body-card {
+    width: 200px;
+    background-color: var(--white);
+    border-radius: 0px 0px 10px 10px;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.body-card h1 {
+    font-family: 'Quicksand';
+    color: #343434;
+    font-size: 24px;
+}
+
+.body-card .line {
+    width: 85px;
+    height: 2px;
+    background-color: #343434;
+    border-radius: 10px;
+}
+
+.body-card p {
+    color: #343434;
+    font-family: 'Quicksand';
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+}
+.box {
+    position: relative;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.slide {
+    height: auto;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+figure {
+    border-radius: 3px;
+    height: 200px;
+    margin: 2px;
+    background: #ccc;
+    max-width: 200px;
+    min-width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: montserrat;
+    font-weight: 600;
+    font-size: 20px;
+    color: grey;
+}
+
+.slick-next:before {
+    color: grey;
+}
+
+.slick-prev:before {
+    color: grey;
+}
+
+.slick-dots li.slick-active button:before {
+    opacity: 1;
+    color: orange;
+}
+
+
+/* REVIEW */
+.container-review {
+    background-color: var(--bluePrimary);
+    padding: 70px 0px;
+}
+
+.review {
+    width: 85%;
+    margin: auto;
+}
+
+.review .title-review {
+    font-family: 'UniNeue';
+    font-size: 54px;
+    text-align: center;
+    margin-bottom: 100px;
+}
+.cards-review{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cards-review .card-review {
+    width: 300px;
+    background-color: var(--white);
+    padding: 20px 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cards-review .card-review .avatar-review img {
+    width: 100px;
+    height: 100px;
+    margin-top: -80px;
+}
+
+.cards-review .card-review h1 {
+    font-family: "Quicksand";
+    font-weight: 600;
+    font-size: 24px;
+    color: #343434;
+}
+
+.cards-review .card-review h2 {
+    font-family: 'Quicksand';
+    font-weight: 500;
+    font-size: 18px;
+    color: #343434;
+    margin: 5px 0px 15px 0px;
+}
+
+.cards-review .card-review p {
+    font-family: 'Quicksand';
+    font-weight: 400;
+    font-size: 16px;
+    color: #343434;
+    text-align: center;
 }
 

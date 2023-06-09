@@ -21,6 +21,9 @@ use App\Http\Controllers\WaliKelasController;
 Route::get('/', function () {
     return view('home');
 })->name('index');
+Route::get('/carousell', function () {
+    return view('carousell');
+});
 // Route::get('/landing', function () {
 //     return view('home');
 // });
