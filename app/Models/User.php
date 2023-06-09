@@ -29,6 +29,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile_photo_url'
     ];
 
     public function siswa()
@@ -42,6 +43,10 @@ class User extends Authenticatable
     }
 
     public function wali_kelas()
+    {
+        return $this->hasOne(WaliKelas::class);
+    }
+    public function role()
     {
         return $this->hasOne(WaliKelas::class);
     }

@@ -25,7 +25,7 @@
         <!--- Sidemenu -->
         <ul class="side-nav">
 
-            <li class="side-nav-title side-nav-item">Navigation</li>
+            {{-- <li class="side-nav-title side-nav-item">Navigation</li>
 
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarDashboards" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
@@ -49,160 +49,71 @@
                         </li>
                     </ul>
                 </div>
-            </li>
+            </li> --}}
 
             @hasrole('admin')
-            <li class="side-nav-title side-nav-item">Crud</li>
-            <li class="side-nav-item">
-                <a href="/admin/dashboard/siswa" class="side-nav-link">
-                    <i class="uil-calender"></i>
-                    <span> Siswa </span>
-                </a>
-            </li>
-
-            <li class="side-nav-item">
-                <a href="/admin/dashboard/guru" class="side-nav-link">
-                    <i class="uil-calender"></i>
-                    <span> Guru Bk </span>
-                </a>
-            </li>
-
-            <li class="side-nav-item">
-                <a href="/admin/dashboard/wakel" class="side-nav-link">
-                    <i class="uil-calender"></i>
-                    <span> Wali kelas </span>
-                </a>
-            </li>
-
-            <li class="side-nav-item">
-                <a href="/admin/dashboard/kelas" class="side-nav-link">
-                    <i class="uil-calender"></i>
-                    <span> Kelas </span>
-                </a>
-            </li>
-            @endhasrole
-
-            <li class="side-nav-item">
-                <a href="apps-chat.html" class="side-nav-link">
-                    <i class="uil-comments-alt"></i>
-                    <span> Chat </span>
-                </a>
-            </li>
-
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarEcommerce" aria-expanded="false" aria-controls="sidebarEcommerce" class="side-nav-link">
-                    <i class="uil-store"></i>
-                    <span> Ecommerce </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="sidebarEcommerce">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a href="apps-ecommerce-products.html">Products</a>
-                        </li>
-                        <li>
-                            <a href="apps-ecommerce-products-details.html">Products Details</a>
-                        </li>
-                        <li>
-                            <a href="apps-ecommerce-orders.html">Orders</a>
-                        </li>
-                        <li>
-                            <a href="apps-ecommerce-orders-details.html">Order Details</a>
-                        </li>
-                        <li>
-                            <a href="apps-ecommerce-customers.html">Customers</a>
-                        </li>
-                        <li>
-                            <a href="apps-ecommerce-shopping-cart.html">Shopping Cart</a>
-                        </li>
-                        <li>
-                            <a href="apps-ecommerce-checkout.html">Checkout</a>
-                        </li>
-                        <li>
-                            <a href="apps-ecommerce-sellers.html">Sellers</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
-                    <i class="uil-envelope"></i>
-                    <span> Email </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="sidebarEmail">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a href="apps-email-inbox.html">Inbox</a>
-                        </li>
-                        <li>
-                            <a href="apps-email-read.html">Read Email</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarProjects" aria-expanded="false" aria-controls="sidebarProjects" class="side-nav-link">
-                    <i class="uil-briefcase"></i>
-                    <span> Projects </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="sidebarProjects">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a href="apps-projects-list.html">List</a>
-                        </li>
-                        <li>
-                            <a href="apps-projects-details.html">Details</a>
-                        </li>
-                        <li>
-                            <a href="apps-projects-gantt.html">Gantt <span class="badge rounded-pill badge-light-lighten font-10 float-end">New</span></a>
-                        </li>
-                        <li>
-                            <a href="apps-projects-add.html">Create Project <span class="badge rounded-pill badge-success-lighten font-10 float-end">New</span></a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-
-            <li class="side-nav-item">
-                <a href="apps-social-feed.html" class="side-nav-link">
-                    <i class="uil-rss"></i>
-                    <span> Social Feed </span>
-                </a>
-            </li>
+            <li class="side-nav-title side-nav-item">Data User</li>
 
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
                     <i class="uil-clipboard-alt"></i>
-                    <span> Tasks </span>
+                    <span> Data User </span>
                     <span class="menu-arrow"></span>
                 </a>
                 <div class="collapse" id="sidebarTasks">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="apps-tasks.html">List</a>
+                            <a href="/admin/dashboard/siswa">Siswa</a>
                         </li>
                         <li>
-                            <a href="apps-tasks-details.html">Details</a>
+                            <a href="/admin/dashboard/guru">Guru Bk</a>
                         </li>
                         <li>
-                            <a href="apps-kanban.html">Kanban Board</a>
+                            <a href="/admin/dashboard/wakel">Wali Kelas</a>
+                        </li>
+                        <li>
+                            <a href="/admin/dashboard/kelas">Kelas</a>
                         </li>
                     </ul>
                 </div>
             </li>
+            @endhasrole
 
+            @hasrole('wali kelas')
             <li class="side-nav-item">
-                <a href="apps-file-manager.html" class="side-nav-link">
-                    <i class="uil-folder-plus"></i>
-                    <span> File Manager </span>
+                <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+                    <i class="uil-clipboard-alt"></i>
+                    <span> Data kerawanan siswa </span>
+                    <span class="menu-arrow"></span>
                 </a>
+                <div class="collapse" id="sidebarTasks">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="/admin/dashboard/siswa">kerawanan Siswa</a>
+                        </li>
+                    </ul>
+                </div>
             </li>
+            @endhasrole
 
-            <li class="side-nav-title side-nav-item">Custom</li>
+            @hasrole('guru bk')
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+                    <i class="uil-clipboard-alt"></i>
+                    <span> Data Kerawanan </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarTasks">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="/admin/dashboard/siswa">Kerawanan Siswa</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            @endhasrole
+
+            {{-- <li class="side-nav-title side-nav-item">Custom</li>
 
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarPages" aria-expanded="false" aria-controls="sidebarPages" class="side-nav-link">
@@ -332,9 +243,9 @@
                         </li>
                     </ul>
                 </div>
-            </li>
+            </li> --}}
 
-            <li class="side-nav-title side-nav-item mt-1">Components</li>
+            {{-- <li class="side-nav-title side-nav-item mt-1">Components</li>
 
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarBaseUI" aria-expanded="false" aria-controls="sidebarBaseUI" class="side-nav-link">
@@ -663,7 +574,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </li>

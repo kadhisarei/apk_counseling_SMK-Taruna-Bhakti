@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gurus', function (Blueprint $table) {
+        Schema::create('jenis_kerawanan', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users'); 
-            $table->string('nipd')->unique();
             $table->string('nama');
-            $table->enum('jenis_kelamin',['Pria','perempuan']);
-            $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gurus');
+        Schema::dropIfExists('jenis_kerawanan');
     }
 };
