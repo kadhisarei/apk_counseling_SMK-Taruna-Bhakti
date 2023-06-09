@@ -22,7 +22,7 @@
             @hasrole('guru bk')
             <li><a href="/login">Dashboard</a></li>
             @endhasrole
-            @hasrole('wali_kelas')
+            @hasrole('wali kelas')
             <li><a href="/login">Dashboard</a></li>
             @endhasrole
             @endif

@@ -52,13 +52,13 @@
                 <input class="form-control" id="validationCustom01" id="example-date" type="date" name="tanggal_lahir" required>
             </div>
 
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label class="form-label" for="validationCustom02">Email</label>
                 <input type="text" name="email" class="form-control" id="validationCustom02" placeholder="Email" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
-            </div>
+            </div> --}}
 
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>

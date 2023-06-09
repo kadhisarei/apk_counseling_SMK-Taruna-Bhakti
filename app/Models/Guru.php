@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Jetstream\HasProfilePhoto;
 
 class Guru extends Model
 {
@@ -13,15 +14,17 @@ class Guru extends Model
         'user_id',
         'nipd',
         'jenis_kelamin',
+        'profile_photo_path',
         'kelas_id'
     ];
-    public function kelas()
-    {
-        return $this->hasOne(Kelas::class);
-    }
+ 
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function kelas()
+    {
+        return $this->hasMany(Kelas::class);
     }
 }

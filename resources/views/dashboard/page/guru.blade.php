@@ -30,18 +30,30 @@
             <table class="table table-hover table-centered mb-0">
                 <thead>
                     <tr>
+                        <th>Foto</th>
                         <th>Nipd</th>
                         <th>Nama</th>
-                        <th>Jenis Kelamin</th>
+                        <th>Kelas Yang Diampuh</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($guru as $item)
                     <tr>
+                        <td>
+                            @if($item->profile_photo_path == null)
+                            Belum ada foto
+                            @else
+                            <img src="{{ asset('storage/' . $item->profile_photo_path) }}" height="90px" width="100px" alt="Foto Profil Guru">
+                            @endif
+                        </td>
                         <td>{{$item->nipd}}</td>
                         <td>{{$item->nama}}</td>
-                        <td>{{$item->jenis_kelamin}}</td>
+                        <td>
+                            @foreach($item->kelas as $item)
+                            {{$item->nama}}
+                            @endforeach
+                        </td>
                         <td class="table-action">
                             <a href="" class="action-icon"> <i class="mdi mdi-eye"></i></a>
                             <a href="/admin/dashboard/guru/edit/{{$item->id}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>

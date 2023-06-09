@@ -40,7 +40,7 @@ Route::middleware([
     // Route::get('/dashboard', function () {
     //     return view('dashboard.page.index', [HomeController::class,'redirectUser']);
     // })->name('dashboard');
-    Route:: get('/dashboard', [HomeController::class, 'redirectUser']);
+    Route:: get('/dashboard', [HomeController::class, 'redirectUser'])->name('dashboard');
 });
 
 Route::middleware([
@@ -61,6 +61,10 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','r
     //     return view('dashboard');
     // })->name('admin.dashboard');
     Route::get('/admin/dashboard',[AdminController::class,'index'])->name('admin.dashboard');
+
+    // profil
+
+    // siswa
     Route::get('/admin/dashboard/siswa',[AdminController::class,'siswa_index']);
     Route::get('/admin/dashboard/siswa/create',[AdminController::class,'siswa_create']);
     Route::post('/admin/dashboard/siswa/store',[AdminController::class,'siswa_store']);
@@ -76,6 +80,7 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','r
     Route::put('/admin/dashboard/wakel/edit/{id}',[AdminController::class,'wakel_update']);
     Route::delete('/admin/dashboard/wakel/delete/{id}', [AdminController::class, 'wakel_delete']);
 
+
     // guru
     Route::get('/admin/dashboard/guru',[AdminController::class,'guru_index']);
     Route::get('/admin/dashboard/guru/create',[AdminController::class,'guru_create']);
@@ -87,8 +92,12 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','r
     Route::get('/admin/dashboard/kelas',[AdminController::class,'kelas_index']);
     Route::get('/admin/dashboard/kelas/create',[AdminController::class,'kelas_create']);
     Route::post('/admin/dashboard/kelas/store',[AdminController::class,'kelas_store']);
+    Route::get('/admin/dashboard/kelas/edit/{id}',[AdminController::class,'kelas_edit']);
+    Route::put('/admin/dashboard/kelas/edit/{id}',[AdminController::class,'kelas_update']);
 
-
+    // Route::get('/admin/dashboard/profile/admin', function(){
+    //     return view('profile.show');
+    // })->name('profile');
 });
 
 Route::middleware([
@@ -100,6 +109,9 @@ Route::middleware([
     //     return view('dashboard');
     // })->name('user.dashboard');
     Route::get('/guru/dashboard',[GuruController::class,'index'])->name('guru.dashboard');
+    // Route::get('/admin/dashboard/profile', function(){
+    //     return view('profile.show');
+    // })->name('profile');
 
 });
 // Route::get('',[Siswacontroller::class,'show']);
@@ -113,5 +125,10 @@ Route::middleware([
     //     return view('dashboard');
     // })->name('user.dashboard');
     Route::get('/walas/dashboard',[WaliKelasController::class,'index'])->name('walas.dashboard');
-
+    
 });
+
+Route::get('/profile', function(){
+    return view('profile.show');
+})->name('profile'); 
+
