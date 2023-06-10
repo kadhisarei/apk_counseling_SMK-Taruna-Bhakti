@@ -15,12 +15,11 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_layanan');
             $table->unsignedBigInteger('id_bk');
-            $table->unsignedBigInteger('id_siswa');
             $table->unsignedBigInteger('id_walas');
             $table->foreign('id_layanan')->references('id')->on('layanan_bk');
             $table->foreign('id_bk')->references('id')->on('gurus');
-            $table->foreign('id_siswa')->references('id')->on('siswas');
             $table->foreign('id_walas')->references('id')->on('wali_kelas');
+            $table->string('status');
             $table->date('tanggal_konseling');
             $table->string('hasil_konseling');
             $table->timestamps();

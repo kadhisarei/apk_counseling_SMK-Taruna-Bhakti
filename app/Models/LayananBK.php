@@ -15,4 +15,6 @@ class LayananBK extends Model
         'jenis_layanan'
     ];
 
+    
+
 }

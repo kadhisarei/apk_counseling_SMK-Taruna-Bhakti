@@ -27,9 +27,9 @@
                 <form action="">
                     <select name="" id="" class="service">
                         <option value="" selected hidden>Jenis Layanan</option>
-                        <option value="">op2</option>
-                        <option value="">op3</option>
-                        <option value="">op4</option>
+                        @foreach ($layananBK as $layanan)
+                        <option value="">{{ $layanan->jenis_layanan }}</option>
+                        @endforeach
                     </select>
                     <input type="date" placeholder="Tanggal" class="service">
                     <button>Ajukan</button>

@@ -198,7 +198,9 @@ class AdminController extends Controller
         $user = $guru->user;
         $poto = $guru->profile_photo_path;
         $poto = $user->profile_photo_path;
-        $poto = Storage::delete($poto);
+        $poto = !is_null($user->poto) && Storage::delete($user->poto);
+        $poto = !is_null($guru->poto) && Storage::delete($guru->poto);
+
         // Hapus data siswa
         Schema::disableForeignKeyConstraints();
         $guru->delete();
