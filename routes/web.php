@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\WaliKelasController;
+use App\Http\Controllers\PetaKerawananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -127,8 +128,11 @@ Route::middleware([
     // Route::get('/home', function () {
     //     return view('dashboard');
     // })->name('user.dashboard');
-    Route::get('/walas/dashboard',[WaliKelasController::class,'index'])->name('walas.dashboard');
-    
+    Route::get('/walas/dashboard',[WaliKelasController::class,'index_walas'])->name('walas.dashboard');
+    Route::get('/walas/kerawanan', [PetaKerawananController::class, 'kerawanan_index']);
+    Route::get('/walas/kerawanan/create', [PetaKerawananController::class, 'kerawanan_create']);
+    Route::post('/walas/kerawanan/store', [PetaKerawananController::class, 'kerawanan_store']);
+    Route::get('/walas/kerawanan/edit/{id}', [PetaKerawananController::class, 'kerawanan_edit']);
 });
 
 Route::get('/profile', function(){
