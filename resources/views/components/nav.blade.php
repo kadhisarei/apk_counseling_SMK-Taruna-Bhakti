@@ -14,7 +14,10 @@
                     <a href="">Profile</a>
                     <div>
                         <a href="">Add Email</a>
-                        <a href="">Logout</a>
+                        <form action="/logout" method="post" id="logoutform">
+                            @csrf
+                            <a onclick="document.getElementById('logoutform').submit(); return false;" >Logout</a>
+                        </form>
                     </div>
                 </div>
             </li>
