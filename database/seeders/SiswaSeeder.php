@@ -30,6 +30,21 @@ class SiswaSeeder extends Seeder
              'kelas_id' => '1'
          ]);
         $siswa->assignRole('user');
+        $date = Carbon::now();
+        $siswa = User::create([
+            'name' => 'siswa2',
+            'email' => 'siswa2@gmail.com',
+            'password' => bcrypt('password')
+        ]);
+         Siswa::create([
+             'nama' => $siswa->name,
+             'user_id'=> $siswa->id,
+             'nisn' => '1231515',
+             'tanggal_lahir' => $date,
+             'jenis_kelamin' => 'Pria',
+             'kelas_id' => '1'
+         ]);
+        $siswa->assignRole('user');
         
     }
 }

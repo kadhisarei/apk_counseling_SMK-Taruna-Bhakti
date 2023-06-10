@@ -91,5 +91,6 @@ class SiswaController extends Controller
 
         return redirect()->route('resources.index');
     }
+
     
 }
