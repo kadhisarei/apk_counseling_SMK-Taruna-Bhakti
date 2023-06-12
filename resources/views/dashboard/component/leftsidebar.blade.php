@@ -111,6 +111,21 @@
                     </ul>
                 </div>
             </li>
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarrequest" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+                    <i class="uil-clipboard-alt"></i>
+                    <span> Data Konseling </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarrequest">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="/guru/layanan/request">Request Konseling</a>
+                            <a href="/guru/kerawanan">Data Konseling</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
             @endhasrole
 
             {{-- <li class="side-nav-title side-nav-item">Custom</li>
