@@ -21,7 +21,7 @@
     </div>     
     <!-- end page title --> 
     <div class="mb-3">
-    <a href="/walas/kerawanan/create" type="button" class="btn btn-primary">Add New</a>
+    <a href="/guru/kerawanan/index" type="button" class="btn btn-primary">Add New</a>
 
     </div>
 
@@ -34,19 +34,22 @@
                         <th>Siswa</th>
                         <th>Kelas</th>
                         <th>Kerawanan</th>
+                        <th>Wali Kelas</th>
+                        <th>Kesimpulan</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($peta as $item)
+                    @foreach($petaKerawanan as $item)
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$item->siswa->nama}}</td>
                         <td>{{$item->siswa->kelas->nama}}</td>
                         <td>{{$item->jenis_kerawanan}}</td>
+                        <td>{{$item->siswa->kelas->wali_kelas->nama}}</td>
+                        <td>{{$item->kesimpulan}}</td>
                         <td>
-                            <a href="" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                            <a href="/walas/kerawanan/edit/{{$item->id}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                            <a href="/guru/kerawanan/edit/{{$item->id}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
                             <a href="javascript:void(0);" class="action-icon" onclick="showDeleteModal({{ $item->id }})"><i class="mdi mdi-delete"></i></a>
                         </td>
                     </tr>
@@ -84,7 +87,7 @@
     <script>
         function showDeleteModal(guruId) {
             var deleteForm = document.getElementById('deleteForm');
-            deleteForm.action = '/walas/kerawanan/delete/' + guruId;
+            deleteForm.action = '/guru/kerawanan/delete/' + guruId;
             var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
             deleteModal.show();
         }

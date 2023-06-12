@@ -106,7 +106,7 @@
                 <div class="collapse" id="sidebarTasks">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="/admin/dashboard/siswa">Kerawanan Siswa</a>
+                            <a href="/guru/kerawanan">Kerawanan Siswa</a>
                         </li>
                     </ul>
                 </div>

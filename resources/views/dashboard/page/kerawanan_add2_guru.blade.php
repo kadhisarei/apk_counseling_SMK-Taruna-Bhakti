@@ -1,6 +1,11 @@
 @extends('dashboard.layout.master')
 
 @section('content')
+    <style>
+        #man{
+            resize: none;
+        }
+    </style>
     <div class="container-fluid">
         @if ($errors->any())
             <div class="mt-2 alert alert-danger">
@@ -11,10 +16,15 @@
                 </ul>
             </div>
         @endif
-        <form method="POST" action="/walas/kerawanan/store">
+        <form method="POST" action="/guru/kerawanan/store">
             @csrf
 
-            <input type="hidden" name="wali_kelas_id" value="{{ $walas->id }}">
+            <div class="mt-2">
+                <label for="siswa_id">Wali Kelas</label>
+                <select class="select2 form-control" name="wali_kelas_id" data-toggle="select2">
+                        <option value="{{ $wakel->id }}">{{ $wakel->nama }}</option>
+                </select>
+            </div>
             
             <div class="mt-2">
                 <label for="siswa_id">Siswa</label>
@@ -25,18 +35,6 @@
                 </select>
             </div>
             
-
-            {{-- <div class="form-group">
-                <label>Jenis Kerawanan</label>
-                @foreach ($jenisKerawanan as $jk)
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="jenis_kerawanan[]" value="{{ $jk }}">
-                        <label class="form-check-label">
-                            {{ $jk }}
-                        </label>
-                    </div>
-                @endforeach
-            </div> --}}
             <div class="mt-2">
                 <label for="">Jenis Kerawanan</label>
             </div>
@@ -46,10 +44,15 @@
                 @endforeach
             </select>
 
+            <div class="mt-2">
+                <label class="form-label" for="validationCustom02">Kesimpulan</label>  
+                <textarea name="kesimpulan" required  class="form-control" id="man" rows="5"></textarea>
+            </div>
+
             <div class="mt-3">
-                <button type="submit" class="btn btn-primary">Add</button>
+                <button type="submit" class="btn btn-primary">Tambah</button>
     
-                </div>
+            </div>
         </form>
 
     </div>

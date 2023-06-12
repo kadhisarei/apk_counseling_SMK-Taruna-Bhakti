@@ -15,43 +15,37 @@
                         <li class="breadcrumb-item active">Siswa</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Data Kerawanan</h4>
+                <h4 class="page-title">Data Kelas </h4>
             </div>
         </div>
     </div>     
     <!-- end page title --> 
-    <div class="mb-3">
-    <a href="/walas/kerawanan/create" type="button" class="btn btn-primary">Add New</a>
-
-    </div>
-
     <div class="card">
         <div class="card-body">
             <table class="table table-hover table-centered mb-0">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>No</th>
-                        <th>Siswa</th>
                         <th>Kelas</th>
-                        <th>Kerawanan</th>
+                        <th>Walas</th>
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
-                    @foreach($peta as $item)
+                 <tbody>
+                    @foreach($kelas as $s)
                     <tr>
+                        <td></td>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$item->siswa->nama}}</td>
-                        <td>{{$item->siswa->kelas->nama}}</td>
-                        <td>{{$item->jenis_kerawanan}}</td>
-                        <td>
-                            <a href="" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                            <a href="/walas/kerawanan/edit/{{$item->id}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                            <a href="javascript:void(0);" class="action-icon" onclick="showDeleteModal({{ $item->id }})"><i class="mdi mdi-delete"></i></a>
-                        </td>
+                        <td>{{$s->nama}}</td>
+                        <td>{{$s->wali_kelas->nama}}</td>
+                        <td> <a
+                            href="/guru/kerawanan/create/{{ $s->id }}"><button 
+                           type="button" class="btn btn-primary mb-2" 
+                           >+</button></a>  </td>
                     </tr>
                     @endforeach
-                </tbody>
+                </tbody> 
             </table>
         </div>
     </div>
