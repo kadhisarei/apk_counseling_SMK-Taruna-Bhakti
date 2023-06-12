@@ -14,9 +14,9 @@
                     <a href="">Profile</a>
                     <div>
                         <a href="">Add Email</a>
-                        <form action="/logout" method="post">
+                        <form action="/logout" method="post" id="logoutform">
                             @csrf
-                            <button type="submit">Logout</button>
+                            <a onclick="document.getElementById('logoutform').submit(); return false;" >Logout</a>
                         </form>
                     </div>
                 </div>

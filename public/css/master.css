@@ -21,3 +21,6 @@
 body{
     background-color: var(--blueSecondary);
 }
+body::-webkit-scrollbar {
+    display: none;
+}
