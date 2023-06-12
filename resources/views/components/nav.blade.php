@@ -1,4 +1,4 @@
-<nav class="navbar">
+<nav class="navbar" id="nv">
     <div class="logo-nav">
         <h1>C<span>O</span>UNSELING</h1>
     </div>
@@ -9,6 +9,15 @@
             @auth
             @hasrole('user')
             <li><a href="{{ url('/student') }}">Konseling</a></li>
+            <li>
+                <div class="profile-hoverable">
+                    <a href="">Profile</a>
+                    <div>
+                        <a href="">Add Email</a>
+                        <a href="">Logout</a>
+                    </div>
+                </div>
+            </li>
             @endhasrole
             @endif
             @guest
@@ -29,19 +38,21 @@
 
             @hasrole('user')
             <li>
-            <button class="notif-button" onclick="notifOpen()">
-                <i class="fa fa-bell"></i>
-            </button>
-            <div class="notif-popup" id="notif">
-                <div>
-                    <h3>Pesan Baru</h3>
-                    <p class="message">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo minima dicta aspernatur, repellat minus ipsum, molestias, deleniti ratione ipsam non expedita. Autem labore asperiores expedita sequi, cupiditate omnis ipsam nam!</p>
-                </div>
-                
-                <button onclick="notifClose()">
-                    TUTUP
+                <button class="notif-button" id="notif-button" onclick="notifOpen()">
+                    <i class="fa fa-bell"></i>
                 </button>
-            </div>
+                <div class="notif-popup" id="notif">
+                    <div>
+                        <h3>Pesan Baru</h3>
+                        <p class="message">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo minima dicta
+                            aspernatur, repellat minus ipsum, molestias, deleniti ratione ipsam non expedita. Autem
+                            labore asperiores expedita sequi, cupiditate omnis ipsam nam!</p>
+                    </div>
+
+                    <button onclick="notifClose()">
+                        TUTUP
+                    </button>
+                </div>
             </li>
             @endhasrole
         </ul>

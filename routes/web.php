@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\LayananController;
 use App\Http\Controllers\WaliKelasController;
 use App\Http\Controllers\PetaKerawananController;
 
@@ -32,9 +33,9 @@ Route::get('/carousell', function () {
 Route::get('/apa', function () {
     return view('dashboard.apa');
 })->name('dashboard.apa');
-Route::get('/student', function () {
-    return view('StudentInfo');
-})->name('StudentInfo');
+// Route::get('/student', function () {
+//     return view('StudentInfo');
+// })->name('StudentInfo');
 
 Route::middleware([
     'auth:sanctum',
@@ -56,7 +57,7 @@ Route::middleware([
     //     return view('dashboard');
     // })->name('user.dashboard');
     Route::get('/user',[SiswaController::class,'index'])->name('user.dashboard');
-
+    Route::get('/layanan',[LayananController::class,'create'])->name('layanan');
 });
 
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','role:admin'

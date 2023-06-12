@@ -3,7 +3,7 @@
     <!-- LOGO -->
     <a href="index.html" class="logo text-center logo-light">
         <span class="logo-lg">
-            <img src="{{asset('asset-db/images/logo.png')}}" alt="" height="16">
+            <img src="{{asset('asset-db/images/logo.png')}}" alt="" height="20">
         </span>
         <span class="logo-sm">
             <img src="{{asset('asset-db/images/logo_sm.png')}}" alt="" height="16">
