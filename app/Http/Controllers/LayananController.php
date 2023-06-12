@@ -69,17 +69,23 @@ class LayananController extends Controller
             foreach($request->teman as $item) {
                 SiswaKonseling::insert([
                     'id_siswa' => $item,
-                    'id_konseling' => $konseling->id
+                    'id_konseling' => $konseling->id,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
                 ]);
             }
             SiswaKonseling::insert([
                 'id_siswa' => Auth::user()->siswa->id,
-                'id_konseling' => $konseling->id
+                'id_konseling' => $konseling->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]);
         }else{
             SiswaKonseling::insert([
                 'id_siswa' => Auth::user()->siswa->id,
-                'id_konseling' => $konseling->id
+                'id_konseling' => $konseling->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]);
         }
 

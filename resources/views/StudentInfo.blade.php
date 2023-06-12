@@ -9,6 +9,9 @@
     <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     @section('content')
 <div class="content">
     <div class="bods">
@@ -46,7 +49,7 @@
                         @endforeach
                     </select>
 
-                    <select name="teman[]" id="sosialField" multiple placeholder="Select a state..." autocomplete="off">
+                    {{-- <select name="teman[]" id="sosialField" multiple placeholder="Select a state..." autocomplete="off">
                             <option value="">Select a state...</option>
                             @foreach ($siswa as $siswas)    
                                 @if(auth()->user()->siswa->id == $siswas->id )
@@ -54,7 +57,13 @@
                                 <option value="{{ $siswas->id }}">{{ $siswas->nama }}</option>
                                 @endif                        
                             @endforeach
-                    </select>                   
+                    </select>                    --}}
+
+                    <select class="js-example-basic-multiple" name="states[]" multiple="multiple">
+                        <option value="AL">Alabama</option>
+                          ...
+                        <option value="WY">Wyoming</option>
+                      </select>
                     <input type="date" placeholder="Tanggal" class="service" name="tanggal_konseling">
                     <button type="submit">Ajukan</button>
                 </form>
@@ -141,16 +150,19 @@
 </div>
 
 <script>
+    // $(document).ready(function() {
+    //         $('#service').change(function() {
+    //             var selectedService = $(this).val();
+    //             if (selectedService == 4) {     
+    //                 $('#sosialField').show();
+    //             } else {
+    //                 $('#sosialField').hide();
+    //             }
+    //         });
+    //     });
     $(document).ready(function() {
-            $('#service').change(function() {
-                var selectedService = $(this).val();
-                if (selectedService == 4) {     
-                    $('#sosialField').show();
-                } else {
-                    $('#sosialField').hide();
-                }
-            });
-        });
+    $('.js-example-basic-multiple').select2();
+});
 
 
         new TomSelect("#sosialField",{
