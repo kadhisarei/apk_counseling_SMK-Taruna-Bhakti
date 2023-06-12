@@ -9,9 +9,18 @@
     <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <style>
+        
+        .show{
+            display: block;
+        }
+        .hide{
+            display: none !important
+        }
+        /* .select2-container--default .select2-selection--multiple{
+            display: none
+        } */
+    </style>
     @section('content')
 <div class="content">
     <div class="bods">
@@ -32,12 +41,7 @@
             <br> <br>
             <div class="whitebox2">
                 <h2>Pilihan Layanan</h2>
-                {{-- <div class="jenis-layanan">
-                    <div class="layanan">
-                        <div class="blur"></div>
-                        <h1>Bimbingan Pribadi</h1>
-                    </div>
-                </div> --}}
+                
                 <form action="{{ route('layanan-store') }}" method="POST">
                     @csrf
                     <input type="hidden" name="id_bk" value="{{ $profile->kelas->guru->id }}">
@@ -48,22 +52,28 @@
                         <option value="{{ $layanan->id }}">{{ $layanan->jenis_layanan }}</option>
                         @endforeach
                     </select>
-
-                    {{-- <select name="teman[]" id="sosialField" multiple placeholder="Select a state..." autocomplete="off">
-                            <option value="">Select a state...</option>
+                    <div class="apakek hide">
+                        <select name="teman[]" id="sosialbro" multiple placeholder="Select a state..." autocomplete="off">
+                                <option value="">Select a state...</option>
+                                @foreach ($siswa as $siswas)    
+                                    @if(auth()->user()->siswa->id == $siswas->id )
+                                    @else
+                                    <option value="{{ $siswas->id }}">{{ $siswas->nama }}</option>
+                                    @endif                        
+                                @endforeach
+                        </select>                   
+                    </div>
+                    {{-- <div class="apakek hide">
+                        <select class="js-example-basic-multiple" name="teman[]" multiple="multiple" id="sosialbro" placeholder="Select a state...">
                             @foreach ($siswa as $siswas)    
                                 @if(auth()->user()->siswa->id == $siswas->id )
                                 @else
                                 <option value="{{ $siswas->id }}">{{ $siswas->nama }}</option>
                                 @endif                        
                             @endforeach
-                    </select>                    --}}
+                        </select>
+                    </div> --}}
 
-                    <select class="js-example-basic-multiple" name="states[]" multiple="multiple">
-                        <option value="AL">Alabama</option>
-                          ...
-                        <option value="WY">Wyoming</option>
-                      </select>
                     <input type="date" placeholder="Tanggal" class="service" name="tanggal_konseling">
                     <button type="submit">Ajukan</button>
                 </form>
@@ -150,23 +160,20 @@
 </div>
 
 <script>
-    // $(document).ready(function() {
-    //         $('#service').change(function() {
-    //             var selectedService = $(this).val();
-    //             if (selectedService == 4) {     
-    //                 $('#sosialField').show();
-    //             } else {
-    //                 $('#sosialField').hide();
-    //             }
-    //         });
-    //     });
     $(document).ready(function() {
-    $('.js-example-basic-multiple').select2();
-});
+            $('#service').change(function() {
+                var selectedService = $(this).val();
+                if (selectedService == 4) {
+                    $('.apakek').toggleClass('hide show')
+                    new tomSelect('#sosialbro')
+                    // $('#sosialbro').select2()
+                } else{
+                    if ($('.apakek').hasClass('show')) {
+                        $('.apakek').toggleClass('show hide')
+                    }
+                }    
+            });
 
-
-        new TomSelect("#sosialField",{
-            maxItems: 3
         });
         
 </script>
