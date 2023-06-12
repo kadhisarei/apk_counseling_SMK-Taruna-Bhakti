@@ -111,6 +111,7 @@
                     </ul>
                 </div>
             </li>
+<<<<<<< HEAD
 
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
@@ -122,6 +123,19 @@
                     <ul class="side-nav-second-level">
                         <li>
                             <a href="/guru/sosialisasi">Sosialisasi</a>
+=======
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarrequest" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+                    <i class="uil-clipboard-alt"></i>
+                    <span> Data Konseling </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarrequest">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="/guru/layanan/request">Request Konseling</a>
+                            <a href="/guru/kerawanan">Data Konseling</a>
+>>>>>>> 7ffcc4b57d0e0f3d9cf1601220a0268de6c65a05
                         </li>
                     </ul>
                 </div>

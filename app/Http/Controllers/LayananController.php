@@ -97,7 +97,12 @@ class LayananController extends Controller
 
         
     }
-
+    public function indexRequest() {
+        $user = Auth::user();
+        $bk = $user->guru;
+        $konseling = KonselingBK::where('id_bk', $bk->id)->where('status', 'Waiting')->get();
+        return view('dashboard.page.guru-request', compact('konseling'));
+    }
     /**
      * Display the specified resource.
      */

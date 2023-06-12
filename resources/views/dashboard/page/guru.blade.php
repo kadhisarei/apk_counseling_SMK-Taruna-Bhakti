@@ -56,7 +56,11 @@
                         </td>
                         <td class="table-action">
                             <a href="" class="action-icon"> <i class="mdi mdi-eye"></i></a>
+<<<<<<< HEAD
                             <a href="/admin/dashboard/guru/edit/{{$item->guru_id}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+=======
+                            <a href="/admin/dashboard/guru/edit/{{ $item->guru_id }}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+>>>>>>> 7ffcc4b57d0e0f3d9cf1601220a0268de6c65a05
                             <a href="javascript:void(0);" class="action-icon" onclick="showDeleteModal({{ $item->guru_id }})"><i class="mdi mdi-delete"></i></a>
                         </td>
                     </tr>
