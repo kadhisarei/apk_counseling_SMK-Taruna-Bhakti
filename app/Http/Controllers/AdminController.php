@@ -113,6 +113,7 @@ class AdminController extends Controller
         $guru = Guru::all();
         return view('dashboard.page.guru', compact('guru'));   
     }
+    
 
     public function guru_create(){
         return view('dashboard.page.guru-add');
@@ -147,7 +148,7 @@ class AdminController extends Controller
     }
 
     public function guru_edit($id){
-        $guru = Guru::with(['user'])->findOrFail($id);
+        $guru = Guru::findOrFail($id);
         return view('dashboard.page.guru-edit', compact('guru'));
     }
 
@@ -341,4 +342,5 @@ class AdminController extends Controller
         Schema::enableForeignKeyConstraints();
         return redirect('/admin/dashboard/kelas')->with('success', 'siswa berhasil dibuat');
     }
+    
 }

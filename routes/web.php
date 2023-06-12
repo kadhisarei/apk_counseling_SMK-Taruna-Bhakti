@@ -8,6 +8,7 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\WaliKelasController;
 use App\Http\Controllers\PetaKerawananController;
+use App\Http\Controllers\SosialisasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -121,6 +122,14 @@ Route::middleware([
     Route::get('/guru/kerawanan/edit/{id}', [PetaKerawananController::class,'kerawanan_guru_edit']);
     Route::put('/guru/kerawanan/update/{id}', [PetaKerawananController::class,'kerawanan_guru_update']);
     Route::delete('/guru/kerawanan/delete/{id}', [PetaKerawananController::class, 'kerawanan_delete_guru']);
+
+    // sosialisasi
+    Route::get('/guru/sosialisasi', [SosialisasiController::class,'sosialisasi_index']);
+    Route::get('/guru/sosialisasi/create', [SosialisasiController::class,'sosialisasi_create']);
+    Route::post('/guru/sosialisasi/store', [SosialisasiController::class,'sosialisasi_store']);
+    Route::get('/guru/sosialisasi/edit/{id}', [SosialisasiController::class,'sosialisasi_edit']);
+    Route::put('/guru/sosialisasi/update/{id}', [SosialisasiController::class,'sosialisasi_update']);
+    Route::delete('/guru/sosialisasi/delete/{id}', [SosialisasiController::class,'sosialisasi_delete']);
 
 });
 

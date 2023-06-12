@@ -12,16 +12,16 @@
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Siswa</li>
+                        <li class="breadcrumb-item active">Sosialisasi</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Guru</h4>
+                <h4 class="page-title">Sosialisasi</h4>
             </div>
         </div>
     </div>     
     <!-- end page title --> 
     <div class="mb-3">
-    <a href="/admin/dashboard/guru/create" type="button" class="btn btn-success">Add New</a>
+    <a href="/guru/sosialisasi/create" type="button" class="btn btn-primary">Add New</a>
 
     </div>
 
@@ -30,34 +30,31 @@
             <table class="table table-hover table-centered mb-0">
                 <thead>
                     <tr>
-                        <th>Foto</th>
-                        <th>Nipd</th>
-                        <th>Nama</th>
-                        <th>Kelas Yang Diampuh</th>
-                        <th>Action</th>
+                        <th>No</th>
+                        <th>Photo</th>
+                        <th>Judul</th>
+                        <th>Waktu</th>
+                        <th>Tempat</th>
+                        <th>action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($guru as $item)
+                    @foreach($Sosialisasi as $item)
                     <tr>
+                        <td>{{$loop->iteration}}</td>
                         <td>
-                            @if($item->profile_photo_path == null)
+                            @if($item->photo == null)
                             Belum ada foto
                             @else
-                            <img src="{{ asset('storage/' . $item->profile_photo_path) }}" height="90px" width="100px" alt="Foto Profil Guru">
+                            <img src="{{ asset('storage/' . $item->photo) }}" height="90px" width="100px" alt="Foto Profil Guru">
                             @endif
                         </td>
-                        <td>{{$item->nipd}}</td>
-                        <td>{{$item->nama}}</td>
-                        <td>
-                            @foreach($item->kelas as $item)
-                            {{$item->nama}}
-                            @endforeach
-                        </td>
+                        <td>{{$item->judul}}</td>
+                        <td>{{$item->tanggal}}</td>
+                        <td>{{$item->tempat}}</td>
                         <td class="table-action">
-                            <a href="" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                            <a href="/admin/dashboard/guru/edit/{{$item->guru_id}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                            <a href="javascript:void(0);" class="action-icon" onclick="showDeleteModal({{ $item->guru_id }})"><i class="mdi mdi-delete"></i></a>
+                            <a href="/guru/sosialisasi/edit/{{$item->id}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                            <a href="javascript:void(0);" class="action-icon" onclick="showDeleteModal({{ $item->id }})"><i class="mdi mdi-delete"></i></a>
                         </td>
                     </tr>
                     @endforeach
@@ -73,11 +70,11 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus Siswa</h5>
+                    <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus Data</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Apakah Anda yakin ingin menghapus guru ini?
+                    Apakah Anda yakin ingin menghapus Data ini?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -92,9 +89,9 @@
     </div>
 
     <script>
-        function showDeleteModal(guruId) {
+        function showDeleteModal(siswaId) {
             var deleteForm = document.getElementById('deleteForm');
-            deleteForm.action = '/admin/dashboard/guru/delete/' + guruId;
+            deleteForm.action = '/guru/sosialisasi/delete/' + siswaId;
             var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
             deleteModal.show();
         }

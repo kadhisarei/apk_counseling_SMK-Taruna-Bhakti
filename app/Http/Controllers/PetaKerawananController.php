@@ -79,7 +79,7 @@ public function kerawanan_update(Request $request, $id)
     $jenisKerawanan = implode(',', $request->jenis_kerawanan);
     $petaKerawanan = PetaKerawanan::findOrFail($id);
     $petaKerawanan->siswa_id = $request->siswa_id;
-    $petaKerawanan->jenis_kerawanan = $jenisKerawanan;
+    $petaKerawanan->jenis_kerawanan = $jenisKerawanan; 
     $petaKerawanan->save();
     return redirect('/walas/kerawanan')->with('success', 'Data peta kerawanan berhasil diperbarui.');
 }
