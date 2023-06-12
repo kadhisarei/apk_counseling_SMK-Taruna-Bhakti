@@ -12,4 +12,9 @@ class JenisKerawanan extends Model
     protected $fillable = [
         'jenis_kerawanan'
     ];
+
+    public function siswa()
+    {
+        return $this->belongsToMany(Siswa::class, 'kerawanan', 'jenis_kerawanan_id', 'siswa_id');
+    }
 }

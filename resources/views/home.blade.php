@@ -99,7 +99,7 @@
                     akan bersedia menjadi teman ceritamu atau mentormu</p>
             </div>
         </div>
-        <div class="cards-guru">
+        {{-- <div class="cards-guru">
                 <div class="card-guru">
                     <img src="{{ asset('img/guru1.jpg') }}" alt="">
                     <div class="body-card">
@@ -127,7 +127,57 @@
                             third way is to be kind.”</p>
                     </div>
                 </div>
-        </div>  
+        </div>   --}}
+        <div class="wrapper">
+            <div class="carousell">
+                <div class="card-guru" draggable="false">
+                    <img src="{{ asset('img/guru1.jpg') }}" alt="" draggable="false">
+                    <div class="body-card">
+                        <h1>Ricky Sudrajat</h1>
+                        <div class="line"></div>
+                        <p>“There are three ways to ultimate success: The first way is to be kind. The second way is to be kind. The
+                            third way is to be kind.”</p>
+                    </div>
+                </div>
+                <div class="card-guru" draggable="false">
+                    <img src="{{ asset('img/guru1.jpg') }}" alt="" draggable="false">
+                    <div class="body-card">
+                        <h1>Ricky Sudrajat</h1>
+                        <div class="line"></div>
+                        <p>“There are three ways to ultimate success: The first way is to be kind. The second way is to be kind. The
+                            third way is to be kind.”</p>
+                    </div>
+                </div>
+                <div class="card-guru" draggable="false">
+                    <img src="{{ asset('img/guru1.jpg') }}" alt="" draggable="false">
+                    <div class="body-card">
+                        <h1>Ricky Sudrajat</h1>
+                        <div class="line"></div>
+                        <p>“There are three ways to ultimate success: The first way is to be kind. The second way is to be kind. The
+                            third way is to be kind.”</p>
+                    </div>
+                </div>
+                <div class="card-guru" draggable="false">
+                    <img src="{{ asset('img/guru1.jpg') }}" alt="" draggable="false">
+                    <div class="body-card">
+                        <h1>Ricky Sudrajat</h1>
+                        <div class="line"></div>
+                        <p>“There are three ways to ultimate success: The first way is to be kind. The second way is to be kind. The
+                            third way is to be kind.”</p>
+                    </div>
+                </div>
+                <div class="card-guru" draggable="false">
+                    <img src="{{ asset('img/guru1.jpg') }}" alt="" draggable="false">
+                    <div class="body-card">
+                        <h1>Ricky Sudrajat</h1>
+                        <div class="line"></div>
+                        <p>“There are three ways to ultimate success: The first way is to be kind. The second way is to be kind. The
+                            third way is to be kind.”</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
 </div>
 </div>
 <div class="container-review">
@@ -161,40 +211,8 @@
         </div>
     </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<script>
-    var swiper = new Swiper(".slide-content", {
-    slidesPerView: 3,
-    spaceBetween: 25,
-    loop: true,
-    centerSlide: 'true',
-    fade: 'true',
-    grabCursor: 'true',
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-      dynamicBullets: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-
-    breakpoints:{
-        0: {
-            slidesPerView: 1,
-        },
-        520: {
-            slidesPerView: 2,
-        },
-        950: {
-            slidesPerView: 3,
-        },
-    },
-  });
-</script>
-<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script src="{{ asset('js/carousell.js') }}"></script>
+{{-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> --}}
 </body>
 
 </html>

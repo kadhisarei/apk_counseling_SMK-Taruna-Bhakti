@@ -8,7 +8,7 @@
             <li><a href="#">Tentang</a></li>
             @auth
             @hasrole('user')
-            <li><a href="{{ url('/student') }}">Konseling</a></li>
+            <li><a href="{{ route('layanan') }}">Konseling</a></li>
             <li>
                 <div class="profile-hoverable">
                     <a href="">Profile</a>

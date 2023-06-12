@@ -25,8 +25,8 @@ class Kelas extends Model
         return $this->belongsTo(WaliKelas::class);
     }
 
-        public function guru()
-        {
-            return $this->belongsTo(Guru::class);
-        }
+    public function guru()
+    {
+        return $this->belongsTo(Guru::class);
+    }
 }

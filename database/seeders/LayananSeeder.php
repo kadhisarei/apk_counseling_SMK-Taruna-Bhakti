@@ -17,13 +17,13 @@ class LayananSeeder extends Seeder
             'jenis_layanan' => 'Bimbingan Pribadi'
         ]);
         $jenis_layanan = LayananBK::create([
-            'jenis_layanan' => 'Bimbingan Sosial'
+            'jenis_layanan' => 'Bimbingan Belajar'
         ]);
         $jenis_layanan = LayananBK::create([
             'jenis_layanan' => 'Bimbingan Karir'
         ]);
         $jenis_layanan = LayananBK::create([
-            'jenis_layanan' => 'Bimbingan Belajar'
+            'jenis_layanan' => 'Bimbingan Sosial'
         ]);
     }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\WaliKelasController;
+use App\Http\Controllers\PetaKerawananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,7 @@ Route::middleware([
     // })->name('user.dashboard');
     Route::get('/user',[SiswaController::class,'index'])->name('user.dashboard');
     Route::get('/layanan',[LayananController::class,'create'])->name('layanan');
+    Route::post('/layanan-store',[LayananController::class,'store'])->name('layanan-store');
 });
 
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','role:admin'
@@ -109,27 +111,30 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified','role:guru bk'
 ])->group(function () {
-    // Route::get('/home', function () {
-    //     return view('dashboard');
-    // })->name('user.dashboard');
     Route::get('/guru/dashboard',[GuruController::class,'index'])->name('guru.dashboard');
-    // Route::get('/admin/dashboard/profile', function(){
-    //     return view('profile.show');
-    // })->name('profile');
+    Route::get('/guru/kerawanan', [PetaKerawananController::class,'kerawanan_guru_index']);
+    Route::get('/guru/kerawanan/index', [PetaKerawananController::class,'kerawanan_guru_index_kelas']);
+    Route::get('/guru/kerawanan/create/{id}', [PetaKerawananController::class,'kerawanan_guru_create']);
+    Route::post('/guru/kerawanan/store', [PetaKerawananController::class,'kerawanan_guru_store']);
+    Route::get('/guru/kerawanan/edit/{id}', [PetaKerawananController::class,'kerawanan_guru_edit']);
+    Route::put('/guru/kerawanan/update/{id}', [PetaKerawananController::class,'kerawanan_guru_update']);
+    Route::delete('/guru/kerawanan/delete/{id}', [PetaKerawananController::class, 'kerawanan_delete_guru']);
 
 });
-// Route::get('',[Siswacontroller::class,'show']);
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified','role:wali kelas'
 ])->group(function () {
-    // Route::get('/home', function () {
-    //     return view('dashboard');
-    // })->name('user.dashboard');
-    Route::get('/walas/dashboard',[WaliKelasController::class,'index'])->name('walas.dashboard');
-    
+    Route::get('/walas/dashboard',[WaliKelasController::class,'index_walas'])->name('walas.dashboard');
+    Route::get('/walas/kerawanan', [PetaKerawananController::class, 'kerawanan_index']);
+    Route::get('/walas/kerawanan/create', [PetaKerawananController::class, 'kerawanan_create']);
+    Route::post('/walas/kerawanan/store', [PetaKerawananController::class, 'kerawanan_store']);
+    Route::get('/walas/kerawanan/edit/{id}', [PetaKerawananController::class, 'kerawanan_edit']);
+    Route::put('/walas/kerawanan/edit/{id}', [PetaKerawananController::class, 'kerawanan_update']);
+    Route::delete('/walas/kerawanan/delete/{id}', [PetaKerawananController::class, 'kerawanan_delete']);
+
 });
 
 Route::get('/profile', function(){

@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SiswaSeeder::class);
         $this->call(LayananSeeder::class);
 
+
         // $admin = User::create([
         //     'name' => 'Admin',
         //     'email' => 'admin@gmail.com',
