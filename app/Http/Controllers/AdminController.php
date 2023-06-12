@@ -60,10 +60,9 @@ class AdminController extends Controller
     }
 
     public function siswa_edit($id){
-        $siswa = Siswa::findOrFail($id);
-        $user = $siswa->user;
+        $siswa = Siswa::with(['kelas', 'user'])->findOrFail($id);
         $kelas = Kelas::all();
-        return view('dashboard.page.siswa-edit', compact('siswa', 'user', 'kelas'));
+        return view('dashboard.page.siswa-edit', compact('siswa', 'kelas'));
     }
 
     public function siswa_update(Request $request, $id){
@@ -148,9 +147,8 @@ class AdminController extends Controller
     }
 
     public function guru_edit($id){
-        $guru = Guru::findOrFail($id);
-        $user = $guru->user;
-        return view('dashboard.page.guru-edit', compact('guru', 'user'));
+        $guru = Guru::with(['user'])->findOrFail($id);
+        return view('dashboard.page.guru-edit', compact('guru'));
     }
 
     public function guru_update(Request $request, $id){
@@ -162,8 +160,6 @@ class AdminController extends Controller
             'nipd' => 'required',
             'jenis_kelamin' => 'required|in:Pria,perempuan',
         ]);
-
-
         $guru = Guru::findOrFail($id);
         $guru->nama = $request->input('nama');
         $guru->nipd = $request->input('nipd');
@@ -246,9 +242,8 @@ class AdminController extends Controller
     }
 
     public function wakel_edit($id){
-        $wakel = WaliKelas::findOrFail($id);
-        $user = $wakel->user;
-        return view('dashboard.page.wakel-edit', compact('wakel', 'user'));
+        $wakel = WaliKelas::with(['user'])->findOrFail($id);
+        return view('dashboard.page.wakel-edit', compact('wakel'));
     }
 
     public function wakel_update(Request $request, $id){
@@ -299,7 +294,7 @@ class AdminController extends Controller
 
     public function kelas_create(){
         $guru = Guru::all();
-        $walas = WaliKelas::all();
+        $walas = WaliKelas::whereDoesntHave('kelas')->get();
         return view('dashboard.page.kelas-add', compact('guru','walas'));
     }
     
@@ -319,9 +314,9 @@ class AdminController extends Controller
     }
 
     public function kelas_edit($id){
-        $kelas = Kelas::with('wali_kelas','guru')->find($id);
-        $guru = guru::where('id', '!=', $kelas->guru_id)->get(['id','nama']);
-        $walas = WaliKelas::where('id', '!=', $kelas->wali_kelas_id)->get(['id','nama']);
+        $kelas = Kelas::findOrFail($id);
+        $guru = Guru::all();
+        $walas = WaliKelas::all();
         return view('dashboard.page.kelas-edit', compact('kelas','guru','walas'));
     }
 
@@ -337,5 +332,13 @@ class AdminController extends Controller
     $kelas->guru_id = $request->input('guru_id');
     $kelas->save();
     return redirect('/admin/dashboard/kelas')->with('success', 'Kelas berhasil di ubah');
+    }
+
+    public function kelas_delete($id){
+        $kelas = Kelas::findOrFail($id);
+        Schema::disableForeignKeyConstraints();
+        $kelas->delete();
+        Schema::enableForeignKeyConstraints();
+        return redirect('/admin/dashboard/kelas')->with('success', 'siswa berhasil dibuat');
     }
 }
