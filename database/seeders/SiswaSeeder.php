@@ -24,7 +24,71 @@ class SiswaSeeder extends Seeder
          Siswa::create([
              'nama' => $siswa->name,
              'user_id'=> $siswa->id,
-             'nisn' => '1211515',
+             'nisn' => '15632',
+             'tanggal_lahir' => $date,
+             'jenis_kelamin' => 'Pria',
+             'kelas_id' => '1'
+         ]);
+        $siswa->assignRole('user');
+
+        $date = Carbon::now();
+        $siswa = User::create([
+            'name' => 'Icad',
+            'email' => 'irsyadgmail.com',
+            'password' => bcrypt('password')
+        ]);
+         Siswa::create([
+             'nama' => $siswa->name,
+             'user_id'=> $siswa->id,
+             'nisn' => '02356',
+             'tanggal_lahir' => $date,
+             'jenis_kelamin' => 'Pria',
+             'kelas_id' => '2'
+         ]);
+        $siswa->assignRole('user');
+
+        $date = Carbon::now();
+        $siswa = User::create([
+            'name' => 'Jeffry',
+            'email' => 'jeffrygmail.com',
+            'password' => bcrypt('password')
+        ]);
+         Siswa::create([
+             'nama' => $siswa->name,
+             'user_id'=> $siswa->id,
+             'nisn' => '02146',
+             'tanggal_lahir' => $date,
+             'jenis_kelamin' => 'Pria',
+             'kelas_id' => '2'
+         ]);
+        $siswa->assignRole('user');
+
+        $date = Carbon::now();
+        $siswa = User::create([
+            'name' => 'Hana',
+            'email' => 'hanagmail.com',
+            'password' => bcrypt('password')
+        ]);
+         Siswa::create([
+             'nama' => $siswa->name,
+             'user_id'=> $siswa->id,
+             'nisn' => '12345',
+             'tanggal_lahir' => $date,
+             'jenis_kelamin' => 'perempuan',
+             'kelas_id' => '2'
+         ]);
+        $siswa->assignRole('user');
+
+        $date = Carbon::now();
+        $siswa = User::create([
+            'name' => 'Habibi',
+            'email' => 'habibgmail.com',
+            'password' => bcrypt('password')
+        ]);
+         Siswa::create([
+             'nama' => $siswa->name,
+             'user_id'=> $siswa->id,
+             'nisn' => '56234',
              'tanggal_lahir' => $date,
              'jenis_kelamin' => 'Pria',
              'kelas_id' => '1'
