@@ -15,7 +15,6 @@ class Guru extends Model
         'nipd',
         'jenis_kelamin',
         'profile_photo_path',
-        'kelas_id'
     ];
  
 

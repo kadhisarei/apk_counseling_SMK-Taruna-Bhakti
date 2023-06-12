@@ -83,13 +83,13 @@
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
                     <i class="uil-clipboard-alt"></i>
-                    <span> Data kerawanan siswa </span>
+                    <span> Data kerawanan </span>
                     <span class="menu-arrow"></span>
                 </a>
                 <div class="collapse" id="sidebarTasks">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="/admin/dashboard/siswa">kerawanan Siswa</a>
+                            <a href="/walas/kerawanan">kerawanan Siswa</a>
                         </li>
                     </ul>
                 </div>
@@ -106,7 +106,7 @@
                 <div class="collapse" id="sidebarTasks">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="/admin/dashboard/siswa">Kerawanan Siswa</a>
+                            <a href="/guru/kerawanan">Kerawanan Siswa</a>
                         </li>
                     </ul>
                 </div>
