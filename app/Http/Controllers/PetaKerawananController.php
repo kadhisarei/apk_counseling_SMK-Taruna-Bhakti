@@ -122,7 +122,7 @@ public function kerawanan_delete($id)
     }
     public function kerawanan_guru_create($id)
     {
-        $siswa = Siswa::where("kelas_id",$id)->get();
+        $siswa = Siswa::where("kelas_id",$id)->whereDoesntHave('Kerawanan')->get();
         $kelas = Kelas::findOrFail($id);
         $wakel = $kelas->wali_kelas;
         $jenisKerawanan = [

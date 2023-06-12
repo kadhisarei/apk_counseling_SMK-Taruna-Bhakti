@@ -100,6 +100,8 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','r
     Route::post('/admin/dashboard/kelas/store',[AdminController::class,'kelas_store']);
     Route::get('/admin/dashboard/kelas/edit/{id}',[AdminController::class,'kelas_edit']);
     Route::put('/admin/dashboard/kelas/edit/{id}',[AdminController::class,'kelas_update']);
+    Route::delete('/admin/dashboard/kelas/delete/{id}',[AdminController::class,'kelas_delete']);
+
 
     // Route::get('/admin/dashboard/profile/admin', function(){
     //     return view('profile.show');
