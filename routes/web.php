@@ -58,6 +58,7 @@ Route::middleware([
     // })->name('user.dashboard');
     Route::get('/user',[SiswaController::class,'index'])->name('user.dashboard');
     Route::get('/layanan',[LayananController::class,'create'])->name('layanan');
+    Route::post('/layanan-store',[LayananController::class,'store'])->name('layanan-store');
 });
 
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','role:admin'

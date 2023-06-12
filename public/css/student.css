@@ -1,6 +1,9 @@
-.content{
+/* Default styles */
+
+.content {
     background-color: var(--bluePrimary);
 }
+
 .bods {
     padding: 20% 4rem 0 4rem;
     box-sizing: border-box;
@@ -42,10 +45,28 @@
     align-items: center;
     justify-content: space-evenly;
 }
-
+.layanan{
+    width: 250px;
+    height: 250px;
+    background-size: cover;
+    background-image: url("/img/consule.jpg");
+    border-radius: 10px;
+    backdrop-filter: blur(1.8px); 
+}
+.blur {
+    background: #ffc40367;
+    backdrop-filter: blur(1.8px);
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+}
+.layanan h1{
+    position: absolute;
+    font-family: 'Quicksand';
+}
 .whitebox h2 {
     color: var(--blueSecondary);
-    font-family: 'Chubgothic';
+    font-family: 'UniNeue';
     font-size: 40px;
     margin-bottom: 50px;
 }
@@ -86,9 +107,7 @@
     font-family: 'Chubgothic';
     display: flex;
     align-items: center;
-    /* justify-content: center; */
 }
-
 
 .avatar {
     width: 250px;
@@ -190,10 +209,12 @@ input::-webkit-inner-spin-button {
     display: flex;
     justify-content: center;
 }
+
 .status p {
     font-family: 'Chubgothic';
     font-size: 20px;
 }
+
 .field {
     height: 190px;
     width: 180px;
@@ -206,11 +227,13 @@ input::-webkit-inner-spin-button {
     box-sizing: border-box;
     justify-content: space-evenly;
 }
+
 .field p {
     font-family: 'Chubgothic';
     font-size: 20px;
     text-align: center;
 }
+
 .field div {
     width: 100px;
     height: 30px;
@@ -220,4 +243,62 @@ input::-webkit-inner-spin-button {
     justify-content: center;
     align-items: center;
     font-family: 'Chubgothic';
+}
+
+/* responsiv kali */
+
+@media (max-width: 768px) {
+    .bods {
+        padding: 10% 2rem 0 2rem;
+    }
+
+    .whitebox,
+    .whitebox2 {
+        width: 90%;
+    }
+
+    .whitebox h2,
+    .whitebox2 h2 {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+
+    .profile-container {
+        padding: 30px;
+    }
+
+    .form div {
+        width: 90%;
+    }
+
+    .avatar {
+        width: 150px;
+        height: 150px;
+    }
+
+    .service {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .whitebox2 button {
+        width: 150px;
+    }
+
+    .box {
+        width: 100%;
+        margin: 10px;
+    }
+
+    .datebox {
+        width: 80px;
+    }
+
+    .minidatebox input {
+        width: 60px;
+    }
+
+    .descbox {
+        width: calc(100% - 100px);
+    }
 }

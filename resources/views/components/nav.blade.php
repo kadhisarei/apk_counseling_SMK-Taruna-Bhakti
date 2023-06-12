@@ -8,13 +8,16 @@
             <li><a href="#">Tentang</a></li>
             @auth
             @hasrole('user')
-            <li><a href="{{ url('/student') }}">Konseling</a></li>
+            <li><a href="{{ route('layanan') }}">Konseling</a></li>
             <li>
                 <div class="profile-hoverable">
                     <a href="">Profile</a>
                     <div>
                         <a href="">Add Email</a>
-                        <a href="">Logout</a>
+                        <form action="/logout" method="post" id="logoutform">
+                            @csrf
+                            <a onclick="document.getElementById('logoutform').submit(); return false;" >Logout</a>
+                        </form>
                     </div>
                 </div>
             </li>

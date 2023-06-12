@@ -1,3 +1,7 @@
+
+html, body{
+    scroll-behavior: smooth;
+}
 header {
     padding: 13% 5% 8% 5%;
     background-color: var(--bluePrimary);
@@ -288,6 +292,8 @@ header .description-header p .o {
     object-fit: fill;
     width: 220px;
     border-radius: 10px 10px 0 0;
+    user-select: none;
+    cursor: grab;
 }
 
 .card-guru:hover {
@@ -429,4 +435,19 @@ figure {
     color: #343434;
     text-align: center;
 }
-
+.wrapper{
+    max-width: 800px;
+    width: 100%;
+}
+.wrapper .carousell{
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% / 3) -12px);
+    gap: 35px;
+    padding: 10px;
+    overflow: hidden;
+}
+.carousell.dragging .card-guru{
+    cursor: grab;
+    user-select: none;
+}
