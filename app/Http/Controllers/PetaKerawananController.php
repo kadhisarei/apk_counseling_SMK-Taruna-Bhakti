@@ -10,17 +10,18 @@ use App\Models\PetaKerawanan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
 use App\Models\Guru;
+use App\Models\LogActivity;
 use App\Models\Kelas;
 
 class PetaKerawananController extends Controller
 {
-        public function kerawanan_index(){
-            $user = Auth::user();
-            $walas = $user->wali_kelas;
-            $peta = PetaKerawanan::where('wali_kelas_id', $walas->id)->get();
-            // $peta->with('siswa',)
-            return view('dashboard.page.kerawanan_walas', compact('walas','peta'));
-        }
+    public function kerawanan_index(){
+        $user = Auth::user();
+        $walas = $user->wali_kelas;
+        $peta = PetaKerawanan::where('wali_kelas_id', $walas->id)->get();
+        // $peta->with('siswa',)
+        return view('dashboard.page.kerawanan_walas', compact('walas','peta'));
+    }
     public function kerawanan_create(){
         $user = Auth::user();
         $walas = $user->wali_kelas;
@@ -40,6 +41,9 @@ class PetaKerawananController extends Controller
             'siswa_id' => $request->siswa_id,
             'wali_kelas_id' => $request->wali_kelas_id,
             'jenis_kerawanan' => $jenisKerawanan,
+        ]);
+        LogActivity::create([
+            'Activity' => auth()->user()->name. ' telah menambahkan data kerawanan '
         ]);
         return redirect('/walas/kerawanan')->with('success', 'Data peta kerawanan berhasil disimpan.');
     }
@@ -81,6 +85,9 @@ public function kerawanan_update(Request $request, $id)
     $petaKerawanan->siswa_id = $request->siswa_id;
     $petaKerawanan->jenis_kerawanan = $jenisKerawanan; 
     $petaKerawanan->save();
+    LogActivity::create([
+        'Activity' => auth()->user()->name. ' telah mengubah data kerawanan '
+    ]);
     return redirect('/walas/kerawanan')->with('success', 'Data peta kerawanan berhasil diperbarui.');
 }
 public function kerawanan_delete($id)
@@ -89,6 +96,9 @@ public function kerawanan_delete($id)
     Schema::disableForeignKeyConstraints();
     $petaKerawanan->delete();
     Schema::enableForeignKeyConstraints();
+    LogActivity::create([
+        'Activity' => auth()->user()->name. ' telah menghapus data kerawanan '
+    ]);
     return redirect('/walas/kerawanan')->with('success', 'Data peta kerawanan berhasil dihapus.');
 }
 
@@ -141,6 +151,9 @@ public function kerawanan_delete($id)
             'jenis_kerawanan' => $jenisKerawanan,
             'kesimpulan' => $request->kesimpulan
         ]);
+        LogActivity::create([
+            'Activity' => auth()->user()->name. ' telah menambahkan data kerawanan '
+        ]);
         return redirect('/guru/kerawanan')->with('success', 'Data peta kerawanan berhasil disimpan.');
     }
 
@@ -166,6 +179,9 @@ public function kerawanan_delete($id)
         $petaKerawanan->kesimpulan = $request->kesimpulan;
         $petaKerawanan->jenis_kerawanan = $jenisKerawanan;
         $petaKerawanan->save();
+        LogActivity::create([
+            'Activity' => auth()->user()->name. ' telah mengubah data kerawanan '
+        ]);
         return redirect('/guru/kerawanan')->with('success', 'Data peta kerawanan berhasil diperbarui.');
     }
 
@@ -174,6 +190,9 @@ public function kerawanan_delete($id)
         Schema::disableForeignKeyConstraints();
         $petaKerawanan->delete();
         Schema::enableForeignKeyConstraints();
+        LogActivity::create([
+            'Activity' => auth()->user()->name. ' telah menghapus data kerawanan '
+        ]);
     return redirect('/guru/kerawanan')->with('success', 'Data peta kerawanan berhasil dihapus.');
     }
 

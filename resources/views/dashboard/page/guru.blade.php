@@ -21,8 +21,7 @@
     </div>     
     <!-- end page title --> 
     <div class="mb-3">
-    <a href="/admin/dashboard/guru/create" type="button" class="btn btn-success">Add New</a>
-
+        <a href="/admin/dashboard/guru/create" type="button" class="btn btn-success">Add New</a>
     </div>
 
     <div class="card">
@@ -50,18 +49,18 @@
                         <td>{{$item->nipd}}</td>
                         <td>{{$item->nama}}</td>
                         <td>
-                            @foreach($item->kelas as $item)
-                            {{$item->nama}}
-                            @endforeach
+                            @if($item->kelas->count() > 0)
+                                @foreach($item->kelas as $kelas)
+                                    {{$kelas->nama}}
+                                @endforeach
+                            @else
+                                Tidak ada kelas
+                            @endif
                         </td>
                         <td class="table-action">
                             <a href="" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-<<<<<<< HEAD
-                            <a href="/admin/dashboard/guru/edit/{{$item->guru_id}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-=======
-                            <a href="/admin/dashboard/guru/edit/{{ $item->guru_id }}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
->>>>>>> 7ffcc4b57d0e0f3d9cf1601220a0268de6c65a05
-                            <a href="javascript:void(0);" class="action-icon" onclick="showDeleteModal({{ $item->guru_id }})"><i class="mdi mdi-delete"></i></a>
+                            <a href="/admin/dashboard/guru/edit/{{$item->id}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                            <a href="javascript:void(0);" class="action-icon" onclick="showDeleteModal({{ $item->id }})"><i class="mdi mdi-delete"></i></a>
                         </td>
                     </tr>
                     @endforeach
@@ -70,39 +69,37 @@
         </div>
     </div>
                                                     
-  </div>
+</div>
 
-      <!-- Delete Modal -->
-      <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus Siswa</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Apakah Anda yakin ingin menghapus guru ini?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <form id="deleteForm" method="POST" class="d-inline">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Hapus</button>
-                    </form>
-                </div>
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus Data</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Apakah Anda yakin ingin menghapus guru ini?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                <form id="deleteForm" method="POST" class="d-inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Hapus</button>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
-    <script>
-        function showDeleteModal(guruId) {
-            var deleteForm = document.getElementById('deleteForm');
-            deleteForm.action = '/admin/dashboard/guru/delete/' + guruId;
-            var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
-            deleteModal.show();
-        }
-    </script>
+<script>
+    function showDeleteModal(guruId) {
+        var deleteForm = document.getElementById('deleteForm');
+        deleteForm.action = '/admin/dashboard/guru/delete/' + guruId;
+        var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+        deleteModal.show();
+    }
+</script>
 @endsection
-
-  
