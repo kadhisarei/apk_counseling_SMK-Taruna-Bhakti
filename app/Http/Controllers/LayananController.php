@@ -31,7 +31,7 @@ class LayananController extends Controller
         $user = Auth::user();
         $profile = $user->siswa;
         $siswa = Siswa::all();
-        return view('StudentInfo', compact('layananBK', 'siswa', 'profile'));
+        return view('profile', compact('layananBK', 'siswa', 'profile'));
     }
 
     /**
