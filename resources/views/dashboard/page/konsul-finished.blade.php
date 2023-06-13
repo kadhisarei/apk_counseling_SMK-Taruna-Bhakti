@@ -1,8 +1,13 @@
 @extends('dashboard.layout.master')
 
 @section('content')
+
 <div class="container-fluid">
-                        
+    @if ($message = Session::get('success'))
+      <div class="alert alert-success">
+        {{ $message }}
+    </div>
+    @endif
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -14,20 +19,14 @@
                         <li class="breadcrumb-item active">Siswa</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Data Kerawanan</h4>
+                <h4 class="page-title">Data Hasil Konseling</h4>
             </div>
         </div>
     </div>     
     <!-- end page title --> 
-    <div class="mb-3">
-    <a href="/guru/kerawanan/index" type="button" class="btn btn-primary">Add New</a>
 
-    </div>
 
     <div class="card">
-        @foreach ($konseling as $item)
-            <p>{{ $item->id_bk }}</p>
-        @endforeach
         <div class="card-body">
             <table class="table table-hover table-centered mb-0">
                 <thead>
@@ -35,18 +34,28 @@
                         <th>No</th>
                         <th>Siswa</th>
                         <th>Layanan</th>
-                        <th>Tanggal</th>
-                        <th>Action</th>
+                        <th>Tanggal Pengajuan</th>
+                        <th>Hasil Konseling</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($konseling as $item)
+                    @foreach ($konselingFinished as $item)
+                    @foreach ($item->siswa as $siswa)                            
+                    <tr style="height: 70px;">
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item }}</td>
+                        <td>{{ $siswa->nama }}</td>
+                        <td>{{ $item->layanan->jenis_layanan }}</td>
+                        <td>{{ $item->tanggal_konseling }}</td>
+                        <td>{{ $item->hasil_konseling }}</td>
+                    </tr>
                     @endforeach
-                </tbody>
+                    @endforeach
+                </tbody>    
             </table>
         </div>
     </div>                                  
   </div>
+
+
+
 @endsection

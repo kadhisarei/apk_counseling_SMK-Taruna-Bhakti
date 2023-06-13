@@ -33,7 +33,6 @@ class LayananController extends Controller
         $siswa = Siswa::all();
         return view('profile', compact('layananBK', 'siswa', 'profile'));
     }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -44,12 +43,18 @@ class LayananController extends Controller
             'id_bk' => 'required',
             'id_walas' => 'required',
             'tanggal_konseling' => 'required',
+            'jam_mulai' => 'required',
+            'tempat' => 'required',
+            'pesan' => 'required',
         ]);
             $konseling = KonselingBK::create([
                 'id_layanan' => $request->id_layanan,
                 'id_bk' => $request->id_bk,
                 'id_walas' => $request->id_walas,
                 'tanggal_konseling' => $request->tanggal_konseling,
+                'jam_mulai' => $request->jam_mulai,
+                'tempat' => $request->tempat,
+                'pesan' => $request->pesan
             ]);
 
             // dd($request->teman);
@@ -61,7 +66,7 @@ class LayananController extends Controller
             };
             if(Auth::user()->hasRole('guru')) {
                 $konseling->update([
-                    'status' => 'Accepted',
+                    'status' => 'Approve',
                 ]);
             };
 
@@ -101,14 +106,50 @@ class LayananController extends Controller
         $user = Auth::user();
         $bk = $user->guru;
         $konseling = KonselingBK::where('id_bk', $bk->id)->where('status', 'Waiting')->get();
-        return view('dashboard.page.guru-request', compact('konseling'));
+        return view('dashboard.page.konsul-request', compact('konseling'));
     }
-    /**
-     * Display the specified resource.
-     */
+    public function approve($id) {
+        $konseling = KonselingBK::findOrFail($id);
+        $konseling->update([
+            'status' => 'Approve'
+        ]);
+        return redirect('/guru/layanan/request')->with(['success' => 'Data sudah di approve']);
+    }
+    public function reschedule(Request $request,$id) {
+        $konseling = KonselingBK::findOrFail($id);
+        $konseling->update([
+            'status' => 'Reschedule',
+            'tanggal_konseling' => $request->tanggal_konseling,
+            'jam_mulai' => $request->jam_konseling,
+            'tempat' => $request->tempat_konseling,
+        ]);
+        return redirect('/guru/layanan/request')->with(['success' => 'Data sudah di reschedule']);
+    }
+    public function dataConfirm() {
+        $user = Auth::user();
+        $bk = $user->guru;
+        $konselingConfirm = KonselingBK::where('id_bk', $bk->id)->where('status', 'Approve')->orWhere('status', 'Reschedule')->get();
+        return view('dashboard.page.konsul-confirm', compact('konselingConfirm'));
+    }
+    public function confirmStore(Request $request,$id) {
+        $konseling = KonselingBK::findOrFail($id);
+        $konseling->update([
+            'status' => 'Finished',
+            'hasil_konseling' => $request->hasil_konseling
+        ]);
+        return redirect('/guru/layanan/data')->with(['success' => 'Data konseling sudah selesai']);
+    }
+    public function konselingFinished() {
+        $user = Auth::user();
+        $bk = $user->guru;
+        $konselingFinished = KonselingBK::where('id_bk', $bk->id)->where('status', 'Finished')->get();
+        return view('dashboard.page.konsul-finished', compact('konselingFinished'));
+    }
+
+
     public function show(string $id)
     {
-        //
+        
     }
 
     /**

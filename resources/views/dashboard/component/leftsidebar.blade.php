@@ -77,6 +77,21 @@
                     </ul>
                 </div>
             </li>
+
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+                    <i class="uil-clipboard-alt"></i>
+                    <span> Activity </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarTasks">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="/admin/dashboard/activity">activity</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
             @endhasrole
 
             @hasrole('wali kelas')
@@ -111,6 +126,8 @@
                     </ul>
                 </div>
             </li>
+
+            
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarrequest" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
                     <i class="uil-clipboard-alt"></i>
@@ -120,8 +137,23 @@
                 <div class="collapse" id="sidebarrequest">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="/guru/layanan/request">Request Konseling</a>
-                            <a href="/guru/kerawanan">Data Konseling</a>
+                            <a href="/guru/layanan/request">Data Permintaan</a>
+                            <a href="/guru/layanan/data">Data Konfirmasi</a>
+                            <a href="{{ route('data-finished') }}">Data Hasil</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+                    <i class="uil-clipboard-alt"></i>
+                    <span> Sosialisasi </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarTasks">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="/guru/sosialisasi">Sosialisasi</a>
                         </li>
                     </ul>
                 </div>
