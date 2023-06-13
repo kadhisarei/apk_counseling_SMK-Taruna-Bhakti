@@ -12,11 +12,33 @@ use App\Models\WaliKelas;
 use App\Models\LogActivity;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
+use App\Exports\SiswaExport;
+use App\Exports\WakelExport;
+use App\Exports\KelasExport;
+use App\Exports\GuruExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 
 class AdminController extends Controller
 {
-    
+    public function export() 
+    {
+        return Excel::download(new SiswaExport, 'siswa.xlsx');
+    }
+
+    public function export2() 
+    {
+        return Excel::download(new WakelExport, 'Wali.xlsx');
+    }
+    public function export3() 
+    {
+        return Excel::download(new KelasExport, 'Kelas.xlsx');
+    }
+    public function export4() 
+    {
+        return Excel::download(new GuruExport, 'guruBK.xlsx');
+    }
     public function index(){
         return view('dashboard.page.index');
     }

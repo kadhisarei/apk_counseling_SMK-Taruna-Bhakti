@@ -21,6 +21,7 @@
         <!-- end page title -->
         <div class="mb-3">
             <a href="/admin/dashboard/kelas/create" type="button" class="btn btn-success">Add New</a>
+            <a href="/admin/dashboard/kelas/export/" type="button" class="btn btn-success">Download Data</a>
 
         </div>
 

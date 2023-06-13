@@ -73,6 +73,7 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','r
 
     // siswa
     Route::get('/admin/dashboard/siswa',[AdminController::class,'siswa_index']);
+    Route::get('/admin/dashboard/siswa/export/', [AdminController::class, 'export']);
     Route::get('/admin/dashboard/siswa/create',[AdminController::class,'siswa_create']);
     Route::post('/admin/dashboard/siswa/store',[AdminController::class,'siswa_store']);
     Route::get('/admin/dashboard/siswa/edit/{id}',[AdminController::class,'siswa_edit']);
@@ -81,6 +82,7 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','r
     // wakel
     Route::get('/admin/dashboard',[AdminController::class,'index'])->name('admin.dashboard');
     Route::get('/admin/dashboard/wakel',[AdminController::class,'wakel_index']);
+    Route::get('/admin/dashboard/wakel/export/', [AdminController::class, 'export2']);
     Route::get('/admin/dashboard/wakel/create',[AdminController::class,'wakel_create']);
     Route::post('/admin/dashboard/wakel/store',[AdminController::class,'wakel_store']);
     Route::get('/admin/dashboard/wakel/edit/{id}',[AdminController::class,'wakel_edit']);
@@ -91,12 +93,14 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','r
     // guru
     Route::get('/admin/dashboard/guru',[AdminController::class,'guru_index']);
     Route::get('/admin/dashboard/guru/create',[AdminController::class,'guru_create']);
+    Route::get('/admin/dashboard/guru/export/', [AdminController::class, 'export4']);
     Route::post('/admin/dashboard/guru/store',[AdminController::class,'guru_store']);
     Route::get('/admin/dashboard/guru/edit/{id}',[AdminController::class,'guru_edit']);
     Route::put('/admin/dashboard/guru/edit/{id}',[AdminController::class,'guru_update']);
     Route::delete('/admin/dashboard/guru/delete/{id}', [AdminController::class, 'guru_delete']);
 
     Route::get('/admin/dashboard/kelas',[AdminController::class,'kelas_index']);
+    Route::get('/admin/dashboard/kelas/export/', [AdminController::class, 'export3']);
     Route::get('/admin/dashboard/kelas/create',[AdminController::class,'kelas_create']);
     Route::post('/admin/dashboard/kelas/store',[AdminController::class,'kelas_store']);
     Route::get('/admin/dashboard/kelas/edit/{id}',[AdminController::class,'kelas_edit']);
