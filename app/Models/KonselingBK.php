@@ -16,10 +16,19 @@ class KonselingBK extends Model
         'id_walas',
         'status',
         'tanggal_konseling',
+        'jam_mulai',
+        'tempat',
+        'pesan',
         'hasil_konseling'
     ];
 
     public function siswa() {
-        return $this->belongsToMany(Siswa::class);
+        return $this->belongsToMany(Siswa::class,'siswa_konseling', 'id_konseling', 'id_siswa', 'id', 'id')->withPivot('id_konseling');
     }
+    public function layanan() {
+        return $this->belongsTo(LayananBK::class, 'id_layanan');
+    }
+    
+
+
 }

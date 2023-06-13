@@ -9,6 +9,7 @@ use App\Models\Siswa;
 use App\Models\Kelas;
 use App\Models\Guru;
 use App\Models\WaliKelas;
+use App\Models\LogActivity;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 use App\Exports\SiswaExport;
@@ -77,6 +78,11 @@ class AdminController extends Controller
         $siswa->tanggal_lahir = $request->input('tanggal_lahir');
         $siswa->jenis_kelamin = $request->input('jenis_kelamin');
         $siswa->kelas_id = $request->input('kelas_id');
+
+        LogActivity::create([
+            'Activity' => auth()->user()->name. ' telah menambahkan siswa baru dengan nama '.$siswa->user->name
+        ]);
+        
         $siswa->save();
         return redirect('/admin/dashboard/siswa')->with('success', 'siswa berhasil dibuat');
     }
@@ -113,6 +119,7 @@ class AdminController extends Controller
             $user->password = Hash::make($request->input('password'));
         }
         $user->save();
+
         return redirect('/admin/dashboard/siswa')->with('success', 'siswa berhasil diedit');
     }
 
@@ -126,7 +133,10 @@ class AdminController extends Controller
         $siswa->delete();
         // Hapus data user 
         $user->delete();
-        Schema::enableForeignKeyConstraints();    
+        Schema::enableForeignKeyConstraints();
+        LogActivity::create([
+            'Activity' => auth()->user()->name. ' telah menghapus data siswa '
+        ]);    
         return redirect('/admin/dashboard/siswa')->with('success', 'Siswa berhasil dihapus');
     }
 
@@ -135,6 +145,7 @@ class AdminController extends Controller
         $guru = Guru::all();
         return view('dashboard.page.guru', compact('guru'));   
     }
+    
 
     public function guru_create(){
         return view('dashboard.page.guru-add');
@@ -165,11 +176,14 @@ class AdminController extends Controller
         $guru->jenis_kelamin = $request->input('jenis_kelamin');
         $guru->profile_photo_path = $request->file('profile_photo_path')->store('profile-photos', 'public');
         $guru->save();
+        LogActivity::create([
+            'Activity' => auth()->user()->name. ' telah menambahkan guru baru dengan nama '.$guru->user->name
+        ]);
         return redirect('/admin/dashboard/guru')->with('success', 'siswa berhasil dibuat');
     }
 
     public function guru_edit($id){
-        $guru = Guru::with(['user'])->findOrFail($id);
+        $guru = Guru::findOrFail($id);
         return view('dashboard.page.guru-edit', compact('guru'));
     }
 
@@ -206,6 +220,9 @@ class AdminController extends Controller
 
         $user->save();
         $guru->save();
+        LogActivity::create([
+            'Activity' => auth()->user()->name. ' telah mengubah data guru '
+        ]);
 
         return redirect('/admin/dashboard/guru')->with('success', 'guru berhasil diedit');
     }
@@ -225,6 +242,9 @@ class AdminController extends Controller
         // Hapus data user 
         $user->delete();
         Schema::enableForeignKeyConstraints();
+        LogActivity::create([
+            'Activity' => auth()->user()->name. ' telah menghapus data guru '
+        ]);    
     
         return redirect('/admin/dashboard/guru')->with('success', 'Siswa berhasil dihapus');
     }
@@ -260,6 +280,9 @@ class AdminController extends Controller
         $wakel->nipd = $request->input('nipd');
         $wakel->jenis_kelamin = $request->input('jenis_kelamin');
         $wakel->save();
+        LogActivity::create([
+            'Activity' => auth()->user()->name. ' telah menambahkan walikelas baru dengan nama '.$wakel->user->name
+        ]);
         return redirect('/admin/dashboard/wakel')->with('success', 'WaliKelas berhasil dibuat');
     }
 
@@ -290,6 +313,9 @@ class AdminController extends Controller
             $user->password = Hash::make($request->input('password'));
         }
         $user->save();
+        LogActivity::create([
+            'Activity' => auth()->user()->name. ' telah mengubah data wali kelas '
+        ]);
         return redirect('/admin/dashboard/wakel')->with('success', 'siswa berhasil diedit');
     }
 
@@ -305,6 +331,9 @@ class AdminController extends Controller
         // Hapus data user 
         $user->delete();
         Schema::enableForeignKeyConstraints();
+        LogActivity::create([
+            'Activity' => auth()->user()->name. ' telah menghapus data wali kelas  '
+        ]);    
     
         return redirect('/admin/dashboard/wakel')->with('success', 'Wali Kelas berhasil dihapus');
     }
@@ -332,6 +361,9 @@ class AdminController extends Controller
         $kelas->wali_kelas_id = $request->input('wali_kelas_id');
         $kelas->guru_id = $request->input('guru_id');
         $kelas->save();
+        LogActivity::create([
+            'Activity' => auth()->user()->name. ' telah menambahkan kelas baru dengan nama '.$kelas->nama
+        ]);
         return redirect('/admin/dashboard/kelas')->with('success', 'Kelas berhasil di tambah');
     }
 
@@ -353,6 +385,9 @@ class AdminController extends Controller
     $kelas->wali_kelas_id = $request->input('wali_kelas_id');
     $kelas->guru_id = $request->input('guru_id');
     $kelas->save();
+    LogActivity::create([
+        'Activity' => auth()->user()->name. ' telah mengubah data siswa '
+    ]);
     return redirect('/admin/dashboard/kelas')->with('success', 'Kelas berhasil di ubah');
     }
 
@@ -361,6 +396,19 @@ class AdminController extends Controller
         Schema::disableForeignKeyConstraints();
         $kelas->delete();
         Schema::enableForeignKeyConstraints();
+        LogActivity::create([
+            'Activity' => auth()->user()->name. ' telah menghapus data siswa '
+        ]);
         return redirect('/admin/dashboard/kelas')->with('success', 'siswa berhasil dibuat');
     }
+
+    public function index_activity(){
+        $activity = LogActivity::all();
+        $guru = Guru::all();
+        $siswa = Siswa::all();
+        $walas = WaliKelas::all();
+        $kelas = Kelas::all();
+        return view('dashboard.page.index',  compact('activity','guru','siswa','walas','kelas'));
+    }
+    
 }
