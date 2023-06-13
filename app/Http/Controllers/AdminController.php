@@ -96,6 +96,9 @@ class AdminController extends Controller
         if ($request->filled('password')) {
             $user->password = Hash::make($request->input('password'));
         }
+        LogActivity::create([
+            'Activity' => auth()->user()->name. ' telah mengubah data guru '
+        ]);
         $user->save();
 
         return redirect('/admin/dashboard/siswa')->with('success', 'siswa berhasil diedit');

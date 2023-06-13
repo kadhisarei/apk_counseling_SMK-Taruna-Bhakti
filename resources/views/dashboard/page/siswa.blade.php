@@ -3,7 +3,6 @@
 @section('content')
 
 <div class="container-fluid">
-                        
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -19,27 +18,34 @@
             </div>
         </div>
     </div>     
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{ $message }}
+    </div>
+    @endif
     <!-- end page title --> 
     <div class="mb-3">
-    <a href="/admin/dashboard/siswa/create" type="button" class="btn btn-success">Add New</a>
-
+        <a href="/admin/dashboard/siswa/create" type="button" class="btn btn-success">Add New</a>
+        
     </div>
-
     <div class="card">
         <div class="card-body">
-            <table class="table table-hover table-centered mb-0">
-                <thead>
-                    <tr>
-                        <th>Nisn</th>
-                        <th>Nama</th>
-                        <th>Kelas</th>
-                        <th>Tanggal lahir</th>
-                        <th>Jenis Kelamin</th>
-                        <th>action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($siswa as $item)
+            <h5 class="card-title">Data Siswa</h5>
+            <div class="table-responsive">
+                <table id="scroll-vertical-datatable" class="table dt-responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th>Nisn</th>
+                            <th>Nama</th>
+                            <th>Kelas</th>
+                            <th>Tanggal lahir</th>
+                            <th>Jenis Kelamin</th>
+                            <th>action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($siswa as $item)
                     <tr>
                         <td>{{$item->nisn}}</td>
                         <td>{{$item->nama}}</td>
@@ -53,8 +59,9 @@
                         </td>
                     </tr>
                     @endforeach
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
                                                     

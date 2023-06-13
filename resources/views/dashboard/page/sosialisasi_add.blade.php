@@ -41,6 +41,14 @@
                 </div>
             </div>
 
+            <div class="mt2">
+                <label class="form-label">Pilih Waktu</label>
+                <div class="input-group">
+                    <input  type="time" name="waktu" class="form-control" required>
+                    <span class="input-group-text"><i class="dripicons-clock"></i></span>
+                </div>
+            </div>
+
             <div class="mt-3">
                 <button class="btn btn-primary" type="submit">Submit form</button>
             </div>

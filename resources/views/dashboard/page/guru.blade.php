@@ -3,7 +3,6 @@
 @section('content')
 
 <div class="container-fluid">
-                        
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -18,7 +17,13 @@
                 <h4 class="page-title">Guru</h4>
             </div>
         </div>
-    </div>     
+    </div>
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{ $message }}
+    </div>
+    @endif
     <!-- end page title --> 
     <div class="mb-3">
         <a href="/admin/dashboard/guru/create" type="button" class="btn btn-success">Add New</a>
@@ -26,18 +31,20 @@
 
     <div class="card">
         <div class="card-body">
-            <table class="table table-hover table-centered mb-0">
-                <thead>
-                    <tr>
-                        <th>Foto</th>
-                        <th>Nipd</th>
-                        <th>Nama</th>
-                        <th>Kelas Yang Diampuh</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($guru as $item)
+            <h5 class="card-title">Data Guru</h5>
+            <div class="table-responsive">
+                <table id="scroll-vertical-datatable" class="table dt-responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th>Foto</th>
+                            <th>Nipd</th>
+                            <th>Nama</th>
+                            <th>Kelas Yang Diampuh</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($guru as $item)
                     <tr>
                         <td>
                             @if($item->profile_photo_path == null)
@@ -64,8 +71,9 @@
                         </td>
                     </tr>
                     @endforeach
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
                                                     

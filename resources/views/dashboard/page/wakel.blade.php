@@ -3,7 +3,6 @@
 @section('content')
 
 <div class="container-fluid">
-                        
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -19,38 +18,45 @@
             </div>
         </div>
     </div>     
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{ $message }}
+    </div>
+    @endif
     <!-- end page title --> 
     <div class="mb-3">
     <a href="/admin/dashboard/wakel/create" type="button" class="btn btn-success">Add New</a>
-
     </div>
-
     <div class="card">
         <div class="card-body">
-            <table class="table table-hover table-centered mb-0">
-                <thead>
-                    <tr>
-                        <th>NIPD</th>
-                        <th>Nama</th>
-                        <th>Jenis Kelamin</th>
-                        <th>action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($wakel as $item)
-                    <tr>
-                        <td>{{$item->nipd}}</td>
-                        <td>{{$item->nama}}</td>
-                        <td>{{$item->jenis_kelamin}}</td>
-                        <td class="table-action">
-                            <a href="" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                            <a href="/admin/dashboard/wakel/edit/{{$item->id}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                            <a href="javascript:void(0);" class="action-icon" onclick="showDeleteModal({{ $item->id }})"><i class="mdi mdi-delete"></i></a>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <h5 class="card-title">Data Wali Kelas</h5>
+            <div class="table-responsive">
+                <table id="scroll-vertical-datatable" class="table dt-responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th>NIPD</th>
+                            <th>Nama</th>
+                            <th>Jenis Kelamin</th>
+                            <th>action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($wakel as $item)
+                        <tr>
+                            <td>{{$item->nipd}}</td>
+                            <td>{{$item->nama}}</td>
+                            <td>{{$item->jenis_kelamin}}</td>
+                            <td class="table-action">
+                                <a href="" class="action-icon"> <i class="mdi mdi-eye"></i></a>
+                                <a href="/admin/dashboard/wakel/edit/{{$item->id}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                <a href="javascript:void(0);" class="action-icon" onclick="showDeleteModal({{ $item->id }})"><i class="mdi mdi-delete"></i></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
                                                     

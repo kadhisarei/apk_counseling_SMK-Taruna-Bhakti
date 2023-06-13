@@ -79,7 +79,7 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','r
     Route::put('/admin/dashboard/siswa/edit/{id}',[AdminController::class,'siswa_update']);
     Route::delete('/admin/dashboard/siswa/delete/{id}', [AdminController::class, 'siswa_delete']);
     // wakel
-    Route::get('/admin/dashboard',[AdminController::class,'index'])->name('admin.dashboard');
+    // Route::get('/admin/dashboard',[AdminController::class,'index'])->name('admin.dashboard');
     Route::get('/admin/dashboard/wakel',[AdminController::class,'wakel_index']);
     Route::get('/admin/dashboard/wakel/create',[AdminController::class,'wakel_create']);
     Route::post('/admin/dashboard/wakel/store',[AdminController::class,'wakel_store']);
@@ -103,7 +103,7 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','r
     Route::put('/admin/dashboard/kelas/edit/{id}',[AdminController::class,'kelas_update']);
     Route::delete('/admin/dashboard/kelas/delete/{id}',[AdminController::class,'kelas_delete']);
 
-    Route::get('/admin/dashboard',[AdminController::class,'index_activity']);
+    Route::get('/admin/dashboard',[AdminController::class,'index_activity'])->name('admin.dashboard');
 
     // Route::get('/admin/dashboard/profile/admin', function(){
     //     return view('profile.show');
