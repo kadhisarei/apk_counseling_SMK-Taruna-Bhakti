@@ -26,8 +26,9 @@
     @endif
     <!-- end page title --> 
     <div class="mb-3">
-        <a href="/admin/dashboard/siswa/create" type="button" class="btn btn-success">Add New</a>
-        
+    <a href="/admin/dashboard/siswa/create" type="button" class="btn btn-success">Add New</a>
+    <a href="/admin/dashboard/siswa/export/" type="button" class="btn btn-success">Download Data</a>
+
     </div>
     <div class="card">
         <div class="card-body">

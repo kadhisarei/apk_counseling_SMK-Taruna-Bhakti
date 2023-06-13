@@ -15,7 +15,6 @@ class WaliKelas extends Model
         'nama',
         'user_id',
         'nipd',
-        'alamat',
         'jenis_kelamin',
     ];
     public function kelas()

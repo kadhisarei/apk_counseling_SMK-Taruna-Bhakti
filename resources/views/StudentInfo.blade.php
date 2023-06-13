@@ -10,7 +10,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
-        
         .show{
             display: block;
         }
@@ -20,6 +19,8 @@
         /* .select2-container--default .select2-selection--multiple{
             display: none
         } */
+
+
     </style>
     @section('content')
 <div class="content">
@@ -41,7 +42,9 @@
             <br> <br>
             <div class="whitebox2">
                 <h2>Pilihan Layanan</h2>
-                
+                {{-- @foreach ($siswa as $item)
+                    {{ $item->kons }}
+                @endforeach --}}
                 <form action="{{ route('layanan-store') }}" method="POST">
                     @csrf
                     <input type="hidden" name="id_bk" value="{{ $profile->kelas->guru->id }}">
@@ -84,78 +87,28 @@
             <br> <br>
             <div class="whitebox2">
                 <div>
-                    <div class="box">
-                        <div class="datebox">
-                            <div class="minidatebox">
-                                <input type="number">
-                                <input type="number">
-                                <input type="number">
+                    @foreach ($konselingBK as $item)
+                        <h1 style="color: aqua"></h1>
+                        <div class="box">
+                            <div class="datebox">
+                                <div class="minidatebox">
+                                    <p>{{ $tahun }}</p>
+                                    <p>{{ $bulan }}</p>
+                                    <p>{{ $hari }}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="descbox">
-                            <div class="status">
-                                <p>Keterangan</p>
+                            <div class="descbox">
+                                <div class="status">
+                                    <p>Keterangan</p>
+                                </div>
+                                <div class="field">
+                                    <p>{{ $item->layanan->jenis_layanan }}</p>
+                                    {{-- <p>{{ $item->layanan->jenis_layanan }}</p> --}}
+                                    <div>{{ $item->status }}</div>
+                                </div>
                             </div>
-                            <div class="field">
-                                <p>Bimbingan Sosial</p>
-                                <div>DITERIMA</div>
-                            </div>
-                        </div>
-                    </div>  
-                    <div class="box">
-                        <div class="datebox">
-                            <div class="minidatebox">
-                                <h5>2023</h5>
-                                <h5>NOV</h5>
-                                <h5>23</h5>
-                            </div>
-                        </div>
-                        <div class="descbox">
-                            <div class="status">
-                                <p>Keterangan</p>
-                            </div>
-                            <div class="field">
-                                <p>Bimbingan Sosial</p>
-                                <div>DITERIMA</div>
-                            </div>
-                        </div>
-                    </div>   
-                    <div class="box">
-                        <div class="datebox">
-                            <div class="minidatebox">
-                                <input type="number">
-                                <input type="number">
-                                <input type="number">
-                            </div>
-                        </div>
-                        <div class="descbox">
-                            <div class="status">
-                                <p>Keterangan</p>
-                            </div>
-                            <div class="field">
-                                <p>Bimbingan Sosial</p>
-                                <div>DITERIMA</div>
-                            </div>
-                        </div>
-                    </div>   
-                    <div class="box">
-                        <div class="datebox">
-                            <div class="minidatebox">
-                                <input type="number">
-                                <input type="number">
-                                <input type="number">
-                            </div>
-                        </div>
-                        <div class="descbox">
-                            <div class="status">
-                                <p>Keterangan</p>
-                            </div>
-                            <div class="field">
-                                <p>Bimbingan Sosial</p>
-                                <div>DITERIMA</div>
-                            </div>
-                        </div>
-                    </div>                    
+                        </div>                  
+                    @endforeach
                 </div>
             </div>
         </div>

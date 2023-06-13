@@ -17,6 +17,6 @@ class SiswaKonseling extends Model
     ];
 
     public function konseling() {
-        return $this->belongsToMany(KonselingBK::class);
+        return $this->belongsTo(KonselingBK::class);
     }
 }

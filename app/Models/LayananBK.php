@@ -18,7 +18,9 @@ class LayananBK extends Model
     public function siswas() {
         return $this->hasMany(Siswa::class);
     }
-    
+    public function konseling() {
+        return $this->belongsToMany(SiswaKonseling::class);
+    }
 
     
 

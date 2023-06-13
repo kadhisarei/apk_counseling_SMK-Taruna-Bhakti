@@ -62,8 +62,8 @@
                                     <i class="mdi mdi-check">Approve</i>
                                 </button>
                             </form>
-                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#signup-modal"><i class="mdi mdi-calendar">Reschedule</i></button>
-                                <div id="signup-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#signup-modal{{$item->id}}"><i class="mdi mdi-calendar">Reschedule</i></button>
+                                <div id="signup-modal{{$item->id}}" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-body">
@@ -76,19 +76,19 @@
                                                     @csrf
                                                     @method('PUT')
                                                     <div class="text-center mb-4">
-                                                        <span><img src="{{ asset('img/logo-consule.png') }}" alt="" width="150px"></span>
+                                                        <span><img src="{{ asset('img/logo-consule.png') }}" alt="" width="120px"></span>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="username" class="form-label">Tanggal Konseling</label>
-                                                        <input class="form-control" value="{{ $item->tanggal_konseling }}" type="date" required="" name="tanggal_konseling" placeholder="Input tanggal konseling">
+                                                        <input class="form-control" type="date" required="" name="tanggal_konseling" placeholder="Input tanggal konseling">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="username" class="form-label">Jam Konseling</label>
-                                                        <input class="form-control" value="{{ $item->jam_mulai }}" type="time" required="" name="jam_konseling">
+                                                        <input class="form-control" type="time" required="" name="jam_konseling">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="username" class="form-label">Tempat Konseling</label>
-                                                        <input class="form-control" value="{{ $item->tempat }}" type="text" required="" name="tempat_konseling" placeholder="Input tempat konseling">
+                                                        <input class="form-control" type="text" required="" name="tempat_konseling" placeholder="Input tempat konseling">
                                                     </div>
                                                     <div class="mb-3 text-center">
                                                         <button class="btn btn-primary" type="submit">Reschedule</button>
