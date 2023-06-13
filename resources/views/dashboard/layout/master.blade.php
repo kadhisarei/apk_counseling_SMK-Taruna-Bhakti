@@ -83,8 +83,13 @@
     <script src="{{asset('asset-db/js/vendor/responsive.bootstrap5.min.js')}}"></script>'
 
     <!-- Datatable Init js -->
-    <script src="assets/js/pages/demo.datatable-init.js"></script>
-
+    <script src="{{asset('asset-db/js/pages/demo.datatable-init.js')}}"></script>
+    
+    <script>
+        $(document).ready(function() {
+            $('#scroll-vertical-datatable').DataTable();
+        });
+    </script>    
 
 </body>
 
