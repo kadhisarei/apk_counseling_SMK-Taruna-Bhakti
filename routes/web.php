@@ -123,9 +123,8 @@ Route::middleware([
     Route::get('/guru/kerawanan/edit/{id}', [PetaKerawananController::class,'kerawanan_guru_edit']);
     Route::put('/guru/kerawanan/update/{id}', [PetaKerawananController::class,'kerawanan_guru_update']);
     Route::delete('/guru/kerawanan/delete/{id}', [PetaKerawananController::class, 'kerawanan_delete_guru']);
+    
     Route::get('/guru/layanan/request',[LayananController::class, 'indexRequest'])->name('requet-guru');
-
-
     Route::get('/guru/layanan/data',[LayananController::class, 'dataConfirm'])->name('data-confirm');
     Route::get('/guru/layanan/finished',[LayananController::class, 'konselingFinished'])->name('data-finished');
     Route::put('/guru/layanan/approve/{id}',[LayananController::class, 'approve'])->name('approve');
