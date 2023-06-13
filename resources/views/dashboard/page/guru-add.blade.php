@@ -15,10 +15,10 @@
             novalidate>
             @csrf
             <div class="mb-3">
-                    <label class="form-label">Foto</label>
-                    <img src="" class="img-preview img-fluid mb-3 col-sm-2" alt="">
-                    <input id="image" autocomplete="off" type="file" name="profile_photo_path" {{oLd('image')}} class="form-control" onchange="previewImage()">
-                </div>
+                <label class="form-label">Foto</label>
+                <img src="" class="img-preview img-fluid mb-3 col-sm-2" alt="">
+                <input id="image" autocomplete="off" type="file" name="profile_photo_path" {{oLd('image')}} class="form-control" onchange="previewImage()">
+            </div>
 
             <div class="mb-3">
                 <label class="form-label" for="validationCustom01">Nipd</label>

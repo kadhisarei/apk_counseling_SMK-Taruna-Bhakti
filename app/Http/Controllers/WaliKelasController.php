@@ -11,6 +11,6 @@ use Illuminate\Http\Request;
 class WaliKelasController extends Controller
 {
     public function index_walas(){
-        return view('dashboard.page.index');
+        return redirect('/walas/kerawanan');
     }
 }

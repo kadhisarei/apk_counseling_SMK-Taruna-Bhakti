@@ -8,6 +8,7 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\WaliKelasController;
 use App\Http\Controllers\PetaKerawananController;
+use App\Http\Controllers\SosialisasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -102,6 +103,7 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','r
     Route::put('/admin/dashboard/kelas/edit/{id}',[AdminController::class,'kelas_update']);
     Route::delete('/admin/dashboard/kelas/delete/{id}',[AdminController::class,'kelas_delete']);
 
+    Route::get('/admin/dashboard',[AdminController::class,'index_activity']);
 
     // Route::get('/admin/dashboard/profile/admin', function(){
     //     return view('profile.show');
@@ -122,6 +124,14 @@ Route::middleware([
     Route::put('/guru/kerawanan/update/{id}', [PetaKerawananController::class,'kerawanan_guru_update']);
     Route::delete('/guru/kerawanan/delete/{id}', [PetaKerawananController::class, 'kerawanan_delete_guru']);
     Route::get('/guru/layanan/request',[LayananController::class, 'indexRequest'])->name('requet-guru');
+
+    // sosialisasi
+    Route::get('/guru/sosialisasi', [SosialisasiController::class,'sosialisasi_index']);
+    Route::get('/guru/sosialisasi/create', [SosialisasiController::class,'sosialisasi_create']);
+    Route::post('/guru/sosialisasi/store', [SosialisasiController::class,'sosialisasi_store']);
+    Route::get('/guru/sosialisasi/edit/{id}', [SosialisasiController::class,'sosialisasi_edit']);
+    Route::put('/guru/sosialisasi/update/{id}', [SosialisasiController::class,'sosialisasi_update']);
+    Route::delete('/guru/sosialisasi/delete/{id}', [SosialisasiController::class,'sosialisasi_delete']);
 
 });
 
