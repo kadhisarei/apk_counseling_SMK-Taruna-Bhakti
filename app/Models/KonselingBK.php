@@ -28,7 +28,11 @@ class KonselingBK extends Model
     public function layanan() {
         return $this->belongsTo(LayananBK::class, 'id_layanan');
     }
-    
-
+    public function guru() {
+        return $this->belongsTo(Guru::class, 'id_bk','id');
+    }
+    public function walas() {
+        return $this->belongsTo(walas::class, 'id_walas', 'id');
+    }
 
 }

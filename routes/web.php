@@ -58,7 +58,7 @@ Route::middleware([
     //     return view('dashboard');
     // })->name('user.dashboard');
     Route::get('/user',[SiswaController::class,'index'])->name('user.dashboard');
-    Route::get('/layanan',[LayananController::class,'create'])->name('layanan');
+    Route::get('/layanan',[LayananController::class,'index'])->name('layanan');
     Route::post('/layanan-store',[LayananController::class,'store'])->name('layanan-store');
 });
 
@@ -67,7 +67,7 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','r
     // Route::get('/admin/dashboard', function () {
     //     return view('dashboard');
     // })->name('admin.dashboard');
-    Route::get('/admin/dashboard',[AdminController::class,'index'])->name('admin.dashboard');
+    // Route::get('/admin/dashboard',[AdminController::class,'index'])->name('admin.dashboard');
 
     // profil
 
@@ -103,7 +103,7 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','r
     Route::put('/admin/dashboard/kelas/edit/{id}',[AdminController::class,'kelas_update']);
     Route::delete('/admin/dashboard/kelas/delete/{id}',[AdminController::class,'kelas_delete']);
 
-    Route::get('/admin/dashboard',[AdminController::class,'index_activity']);
+    Route::get('/admin/dashboard',[AdminController::class,'index_activity'])->name('admin.dashboard');
 
     // Route::get('/admin/dashboard/profile/admin', function(){
     //     return view('profile.show');
@@ -123,7 +123,7 @@ Route::middleware([
     Route::get('/guru/kerawanan/edit/{id}', [PetaKerawananController::class,'kerawanan_guru_edit']);
     Route::put('/guru/kerawanan/update/{id}', [PetaKerawananController::class,'kerawanan_guru_update']);
     Route::delete('/guru/kerawanan/delete/{id}', [PetaKerawananController::class, 'kerawanan_delete_guru']);
-    
+
     Route::get('/guru/layanan/request',[LayananController::class, 'indexRequest'])->name('requet-guru');
     Route::get('/guru/layanan/data',[LayananController::class, 'dataConfirm'])->name('data-confirm');
     Route::get('/guru/layanan/finished',[LayananController::class, 'konselingFinished'])->name('data-finished');

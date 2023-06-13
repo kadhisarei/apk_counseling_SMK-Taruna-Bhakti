@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guru;
+use App\Models\Kelas;
 use App\Models\KonselingBK;
 use App\Models\LayananBK;
 use App\Models\Siswa;
@@ -19,7 +21,33 @@ class LayananController extends Controller
      */
     public function index()
     {
-        //
+        $layananBK = LayananBK::all();
+        $user = Auth::user();
+        $profile = $user->siswa;
+        $siswa = Siswa::all();
+
+        $userKonsul = Auth::user()->siswa;
+        $dataKonseling = SiswaKonseling::where('id_siswa', $userKonsul->id)->pluck('id_konseling')->toArray();
+        $konselingBK = KonselingBK::find($dataKonseling);
+        
+        $data = [];
+
+        foreach ($konselingBK as $konseling) {
+            $tanggal = $konseling->tanggal_konseling;
+            $tanggalArray = explode('-', $tanggal);
+            $tahun = $tanggalArray[0];
+            $bulan = $tanggalArray[1];
+            $hari = $tanggalArray[2];
+
+            $data[] = [
+                'hari' => $hari,
+                'bulan' => $bulan,
+                'tahun' => $tahun,
+                'layanan' => $konseling->layanan->jenis_layanan,
+                // Tambahkan data lain yang diperlukan
+            ];
+        }
+        return view('StudentInfo', compact('layananBK', 'siswa', 'profile','konselingBK','tahun','bulan','hari'));
     }
 
     /**
@@ -27,12 +55,6 @@ class LayananController extends Controller
      */
     public function create()
     {
-        $layananBK = LayananBK::all();
-        $user = Auth::user();
-        $profile = $user->siswa;
-        $siswa = Siswa::all();
-
-        return view('StudentInfo', compact('layananBK', 'siswa', 'profile'));
     }
     /**
      * Store a newly created resource in storage.
@@ -107,6 +129,13 @@ class LayananController extends Controller
         $user = Auth::user();
         $bk = $user->guru;
         $konseling = KonselingBK::where('id_bk', $bk->id)->where('status', 'Waiting')->get();
+        
+        // $layananBK = LayananBK::all();
+        // $guruBK = Guru::where('user_id', Auth()->id())->first();
+        // $walas = Kelas::where('guru_id', $guruBK->id)->first();
+
+        // $konseling =KonselingBK::where('id_bk', $walas->guru_id)->where('id_walas', $walas->id_walas)->where('id_layanan', 4)->where('status', 'Waiting')->get();
+
         return view('dashboard.page.konsul-request', compact('konseling'));
     }
     public function approve($id) {

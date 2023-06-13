@@ -18,7 +18,7 @@ class AdminController extends Controller
 {
     
     public function index(){
-        return view('dashboard.page.index');
+        return redirect('/admin/dashboard');
     }
 
     // crud siswa
