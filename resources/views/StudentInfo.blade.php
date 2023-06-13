@@ -75,6 +75,9 @@
                     </div> --}}
 
                     <input type="date" placeholder="Tanggal" class="service" name="tanggal_konseling">
+                    <input type="time" name="jam_mulai" id="">
+                    <input type="text" name="tempat">
+                    <textarea name="pesan" id="" cols="70" rows="5"></textarea>
                     <button type="submit">Ajukan</button>
                 </form>
             </div>
@@ -102,9 +105,9 @@
                     <div class="box">
                         <div class="datebox">
                             <div class="minidatebox">
-                                <input type="number">
-                                <input type="number">
-                                <input type="number">
+                                <h5>2023</h5>
+                                <h5>NOV</h5>
+                                <h5>23</h5>
                             </div>
                         </div>
                         <div class="descbox">

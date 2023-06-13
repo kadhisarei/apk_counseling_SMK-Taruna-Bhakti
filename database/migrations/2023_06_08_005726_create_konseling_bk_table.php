@@ -19,8 +19,11 @@ return new class extends Migration
             $table->foreign('id_layanan')->references('id')->on('layanan_bk');
             $table->foreign('id_bk')->references('id')->on('gurus');
             $table->foreign('id_walas')->references('id')->on('wali_kelas');
-            $table->string('status')->nullable();
             $table->date('tanggal_konseling');
+            $table->time('jam_mulai');
+            $table->string('tempat');
+            $table->string('pesan');
+            $table->string('status')->nullable();
             $table->string('hasil_konseling')->nullable();
             $table->timestamps();
         });

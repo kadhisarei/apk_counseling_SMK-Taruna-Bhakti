@@ -120,8 +120,9 @@
                 <div class="collapse" id="sidebarrequest">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="/guru/layanan/request">Request Konseling</a>
-                            <a href="/guru/kerawanan">Data Konseling</a>
+                            <a href="/guru/layanan/request">Data Permintaan</a>
+                            <a href="/guru/layanan/data">Data Konfirmasi</a>
+                            <a href="{{ route('data-finished') }}">Data Hasil</a>
                         </li>
                     </ul>
                 </div>
