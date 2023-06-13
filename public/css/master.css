@@ -19,7 +19,7 @@
     --white: #FEFDFF;
 }
 body{
-    background-color: var(--blueSecondary);
+    background-color: var(--bluePrimary);
 }
 body::-webkit-scrollbar {
     display: none;

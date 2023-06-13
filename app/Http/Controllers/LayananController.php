@@ -47,7 +47,7 @@ class LayananController extends Controller
                 // Tambahkan data lain yang diperlukan
             ];
         }
-        return view('StudentInfo', compact('layananBK', 'siswa', 'profile','konselingBK','tahun','bulan','hari'));
+        return view('profile', compact('layananBK', 'siswa', 'profile','konselingBK','tahun','bulan','hari'));
     }
 
     /**

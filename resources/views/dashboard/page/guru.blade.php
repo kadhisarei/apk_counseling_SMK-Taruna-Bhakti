@@ -21,7 +21,8 @@
     </div>     
     <!-- end page title --> 
     <div class="mb-3">
-        <a href="/admin/dashboard/guru/create" type="button" class="btn btn-success">Add New</a>
+    <a href="/admin/dashboard/guru/create" type="button" class="btn btn-success">Add New</a>
+    <a href="/admin/dashboard/guru/export/" type="button" class="btn btn-success">Download Data</a>
     </div>
 
     <div class="card">
