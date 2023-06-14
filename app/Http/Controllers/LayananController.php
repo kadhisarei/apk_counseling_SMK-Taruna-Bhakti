@@ -15,7 +15,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Redirect;
+use App\Models\LogActivity;
 
 class LayananController extends Controller
 {
@@ -75,7 +75,7 @@ class LayananController extends Controller
     }
     /**
      * Store a newly created resource in storage.
-     */
+     */ 
     public function store(Request $request)
     {
         $request->validate([
@@ -122,6 +122,9 @@ class LayananController extends Controller
                 'updated_at' => Carbon::now(),
             ]);
         }
+        LogActivity::create([
+            'Activity' => auth()->user()->name. ' telah membuat jadwal konseling  '
+        ]);
 
         if(Auth::user()->hasRole('user')) {
             return redirect('/');
@@ -214,6 +217,9 @@ class LayananController extends Controller
         $konseling->update([
             'status' => 'Approve'
         ]);
+        LogActivity::create([
+            'Activity' => auth()->user()->name. ' telah mengaprove   '
+        ]);
         return redirect('/guru/layanan/request')->with(['success' => 'Data sudah di approve']);
     }
     public function reschedule(Request $request,$id) {
@@ -223,6 +229,9 @@ class LayananController extends Controller
             'tanggal_konseling' => $request->tanggal_konseling,
             'jam_mulai' => $request->jam_konseling,
             'tempat' => $request->tempat_konseling,
+        ]);
+        LogActivity::create([
+            'Activity' => auth()->user()->name. ' telah mengatur ulang jadwal   '
         ]);
         return redirect('/guru/layanan/request')->with(['success' => 'Data sudah di reschedule']);
     }
@@ -237,6 +246,9 @@ class LayananController extends Controller
         $konseling->update([
             'status' => 'Finished',
             'hasil_konseling' => $request->hasil_konseling
+        ]);
+        LogActivity::create([
+            'Activity' => auth()->user()->name. ' telah membuat hasil konseling   '
         ]);
         return redirect('/guru/layanan/data')->with(['success' => 'Data konseling sudah selesai']);
     }

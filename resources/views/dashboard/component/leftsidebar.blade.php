@@ -52,6 +52,12 @@
             </li> --}}
 
             @hasrole('admin')
+            <li class="side-nav-item">
+                <a href="/admin/dashboard" target="_blank" class="side-nav-link">
+                    <i class=" uil-home-alt "></i>
+                    <span> Home </span>
+                </a>
+            </li>
             <li class="side-nav-title side-nav-item">Data User</li>
 
             <li class="side-nav-item">
@@ -78,20 +84,6 @@
                 </div>
             </li>
 
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
-                    <i class="uil-clipboard-alt"></i>
-                    <span> Activity </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="sidebarTasks">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a href="/admin/dashboard/activity">activity</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
             @endhasrole
 
             @hasrole('wali kelas')

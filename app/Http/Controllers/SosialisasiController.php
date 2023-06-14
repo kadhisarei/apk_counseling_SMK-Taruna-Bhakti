@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\LogActivity;
 use Illuminate\Http\Request;
 use App\Models\Sosialisasi;
 use Illuminate\Support\Facades\Storage;
+use App\Models\LogActivity;
 class SosialisasiController extends Controller
 {
     // di guru
@@ -24,15 +24,16 @@ class SosialisasiController extends Controller
             'judul' => 'required',
             'photo' =>'required',
             'tanggal' =>'required',
-            'tempat' => 'required'
+            'tempat' => 'required',
+            'waktu' => 'required'
         ]);
         $Sosialisasi = new Sosialisasi();
         $Sosialisasi->judul = $request->input('judul');
         $Sosialisasi->tempat = $request->input('tempat');
         $Sosialisasi->tanggal = $request->date('tanggal');
         $Sosialisasi->photo = $request->file('photo')->store('photos', 'public');
+        $Sosialisasi->waktu = $request->input('waktu');
         $Sosialisasi->save();
-
         LogActivity::create([
             'Activity' => auth()->user()->name. ' telah menambahkan sosialisasi baru dengan judul '.$Sosialisasi->judul
         ]);
@@ -75,6 +76,9 @@ class SosialisasiController extends Controller
         $Sosialisasi->delete();
         $Sosialisasi->judul;
         // Schema::enableForeignKeyConstraints();
+        LogActivity::create([
+            'Activity' => auth()->user()->name. ' telah menghapus data Sosialisasi '
+        ]);
 
         LogActivity::create([
             'Activity' => auth()->user()->name. ' telah menghapus data sosialisasi dengan nama '.$Sosialisasi->judul

@@ -3,7 +3,6 @@
 @section('content')
 
 <div class="container-fluid">
-                        
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -20,6 +19,12 @@
         </div>
     </div>     
     <!-- end page title --> 
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{ $message }}
+    </div>
+    @endif
     <div class="mb-3">
     <a href="/guru/kerawanan/index" type="button" class="btn btn-primary">Add New</a>
 
@@ -27,9 +32,10 @@
 
     <div class="card">
         <div class="card-body">
-            <table class="table table-hover table-centered mb-0">
-                <thead>
-                    <tr>
+            <h5 class="card-title">Data Kerawanan</h5>
+            <div class="table-responsive">
+                <table id="scroll-vertical-datatable" class="table dt-responsive nowrap">
+                    <thead>
                         <th>No</th>
                         <th>Siswa</th>
                         <th>Kelas</th>
@@ -37,25 +43,26 @@
                         <th>Wali Kelas</th>
                         <th>Kesimpulan</th>
                         <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($petaKerawanan as $item)
-                    <tr>
-                        <td>{{$loop->iteration}}</td>
-                        <td>{{$item->siswa->nama}}</td>
-                        <td>{{$item->siswa->kelas->nama}}</td>
-                        <td>{{$item->jenis_kerawanan}}</td>
-                        <td>{{$item->siswa->kelas->wali_kelas->nama}}</td>
-                        <td>{{$item->kesimpulan}}</td>
-                        <td>
-                            <a href="/guru/kerawanan/edit/{{$item->id}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                            <a href="javascript:void(0);" class="action-icon" onclick="showDeleteModal({{ $item->id }})"><i class="mdi mdi-delete"></i></a>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($petaKerawanan as $item)
+                        <tr>
+                            <td>{{$loop->iteration}}</td>
+                            <td>{{$item->siswa->nama}}</td>
+                            <td>{{$item->siswa->kelas->nama}}</td>
+                            <td>{{$item->jenis_kerawanan}}</td>
+                            <td>{{$item->siswa->kelas->wali_kelas->nama}}</td>
+                            <td>{{$item->kesimpulan}}</td>
+                            <td>
+                                <a href="/guru/kerawanan/edit/{{$item->id}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                <a href="javascript:void(0);" class="action-icon" onclick="showDeleteModal({{ $item->id }})"><i class="mdi mdi-delete"></i></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
                                                     

@@ -81,7 +81,7 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified','r
     Route::put('/admin/dashboard/siswa/edit/{id}',[AdminController::class,'siswa_update']);
     Route::delete('/admin/dashboard/siswa/delete/{id}', [AdminController::class, 'siswa_delete']);
     // wakel
-    Route::get('/admin/dashboard',[AdminController::class,'index'])->name('admin.dashboard');
+    // Route::get('/admin/dashboard',[AdminController::class,'index'])->name('admin.dashboard');
     Route::get('/admin/dashboard/wakel',[AdminController::class,'wakel_index']);
     Route::get('/admin/dashboard/wakel/export/', [AdminController::class, 'export2']);
     Route::get('/admin/dashboard/wakel/create',[AdminController::class,'wakel_create']);

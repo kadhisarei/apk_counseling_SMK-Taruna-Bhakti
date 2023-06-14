@@ -3,11 +3,6 @@
 @section('content')
 
 <div class="container-fluid">
-    @if ($message = Session::get('success'))
-      <div class="alert alert-success">
-        {{ $message }}
-    </div>
-    @endif
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -24,27 +19,34 @@
         </div>
     </div>     
     <!-- end page title --> 
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{ $message }}
+    </div>
+    @endif
     
-
     <div class="card">
         <div class="card-body">
             <div class="mb-3">
                 <a href="{{ route('create-input') }}" type="button" class="btn btn-primary">Add New</a>
             </div>
-            <table class="table table-hover table-centered mb-0">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Siswa</th>
-                        <th>Layanan</th>
-                        <th>Tanggal Pengajuan</th>
-                        <th>Jam Konseling</th>
-                        <th>Tempat Konseling</th>
-                        <th>Hasil Konseling</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($konselingConfirm as $item)
+            <h5 class="card-title">Data Guru</h5>
+            <div class="table-responsive">
+                <table id="scroll-vertical-datatable" class="table dt-responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Siswa</th>
+                            <th>Layanan</th>
+                            <th>Tanggal Pengajuan</th>
+                            <th>Jam Konseling</th>
+                            <th>Tempat Konseling</th>
+                            <th>Hasil Konseling</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($konselingConfirm as $item)
                     @foreach ($item->siswa as $siswa)                            
                     <tr style="height: 70px;">
                         <td>{{ $loop->iteration }}</td>
@@ -85,10 +87,11 @@
                     </tr>
                     @endforeach
                     @endforeach
-                </tbody>    
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>                                  
+    </div>                                
   </div>
 
 

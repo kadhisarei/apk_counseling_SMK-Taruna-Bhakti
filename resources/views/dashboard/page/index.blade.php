@@ -29,7 +29,7 @@
                       <div class="col-sm-6 col-xl-3">
                           <div class="card shadow-none m-0">
                               <div class="card-body text-center">
-                                  <i class="dripicons-user" style="font-size: 24px;"></i>
+                                    <i class="mdi mdi-school" style="font-size: 30px;"></i>
                                   <h3><span>{{$guru->count()}}</span></h3>
                                   <p class="text-muted font-15 mb-0">Total Guru Bk</p>
                               </div>
@@ -39,7 +39,7 @@
                       <div class="col-sm-6 col-xl-3">
                           <div class="card shadow-none m-0 border-start">
                               <div class="card-body text-center">
-                                  <i class="dripicons-user" style="font-size: 24px;"></i>
+                                  <i class="mdi mdi-school" style="font-size: 30px;"></i>
                                   <h3><span>{{$walas->count()}}</span></h3>
                                   <p class="text-muted font-15 mb-0">Total Wali Kelas</p>
                               </div>
@@ -49,7 +49,7 @@
                       <div class="col-sm-6 col-xl-3">
                           <div class="card shadow-none m-0 border-start">
                               <div class="card-body text-center">
-                                  <i class="dripicons-user-group text-muted" style="font-size: 24px;"></i>
+                                  <i class="dripicons-user-group text-muted" style="font-size: 30px;"></i>
                                   <h3><span>{{$siswa->count()}}</span></h3>
                                   <p class="text-muted font-15 mb-0">Total Siswa</p>
                               </div>
@@ -59,9 +59,9 @@
                       <div class="col-sm-6 col-xl-3">
                           <div class="card shadow-none m-0 border-start">
                               <div class="card-body text-center">
-                                  <i class="dripicons-graph-line text-muted" style="font-size: 24px;"></i>
-                                  <h3><span>{{$kelas->count()}}</span> <i class="mdi mdi-arrow-up text-success"></i></h3>
-                                  <p class="text-muted font-15 mb-0">Productivity</p>
+                                <i class="mdi mdi-book" style="font-size: 30px;"></i>
+                                  <h3><span>{{$kelas->count()}}</span></h3>
+                                  <p class="text-muted font-15 mb-0">Kelas</p>
                               </div>
                           </div>
                       </div>
