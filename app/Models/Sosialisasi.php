@@ -15,6 +15,7 @@ class Sosialisasi extends Model
         'photo',
         'judul',
         'tanggal',
-        'tempat'
+        'tempat',
+        'waktu'
     ];
 }

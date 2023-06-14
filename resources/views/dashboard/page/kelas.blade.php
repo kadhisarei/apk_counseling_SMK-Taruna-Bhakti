@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="container-fluid">
-
         <!-- start page title -->
         <div class="row">
             <div class="col-12">
@@ -19,6 +18,12 @@
             </div>
         </div>
         <!-- end page title -->
+        @if ($message = Session::get('success'))
+        <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            {{ $message }}
+        </div>
+        @endif
         <div class="mb-3">
             <a href="/admin/dashboard/kelas/create" type="button" class="btn btn-success">Add New</a>
             <a href="/admin/dashboard/kelas/export/" type="button" class="btn btn-success">Download Data</a>
@@ -27,17 +32,19 @@
 
         <div class="card">
             <div class="card-body">
-                <table class="table table-hover table-centered mb-0">
-                    <thead>
-                        <tr>
-                            <th>Kelas</th>
-                            <th>Guru Bk</th>
-                            <th>Walas</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($kelas as $item)
+                <h5 class="card-title">Data Kelas</h5>
+                <div class="table-responsive">
+                    <table id="scroll-vertical-datatable" class="table dt-responsive nowrap">
+                        <thead>
+                            <tr>
+                                <th>Kelas</th>
+                                <th>Guru Bk</th>
+                                <th>Walas</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($kelas as $item)
                             <tr>
                                 <td>{{ $item->nama }}</td>
                                 <td>
@@ -63,13 +70,13 @@
                                 </td>
                             </tr>
                         @endforeach
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
     </div>
-
     <!-- Delete Modal -->
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -92,7 +99,6 @@
             </div>
         </div>
     </div>
-
     <script>
         function showDeleteModal(KelasId) {
             var deleteForm = document.getElementById('deleteForm');

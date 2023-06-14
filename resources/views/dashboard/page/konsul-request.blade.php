@@ -3,11 +3,6 @@
 @section('content')
 
 <div class="container-fluid">
-    @if ($message = Session::get('success'))
-      <div class="alert alert-success">
-        {{ $message }}
-    </div>
-    @endif
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -23,28 +18,35 @@
             </div>
         </div>
     </div>     
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{ $message }}
+    </div>
+    @endif
     <!-- end page title --> 
 
 
     <div class="card">
         <div class="card-body">
-            <table class="table table-hover table-centered mb-0">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Siswa</th>
-                        <th>Layanan</th>
-                        <th>Tanggal Pengajuan</th>
-                        <th>Jam Pengajuan</th>
-                        <th>Tempat Pengajuan</th>
-                        <th>Pesan</th>
-                        <th style="width: 250px">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($konseling as $item)
+            <div class="table-responsive">
+                <table id="scroll-vertical-datatable" class="table dt-responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Siswa</th>
+                            <th>Layanan</th>
+                            <th>Tanggal Pengajuan</th>
+                            <th>Jam Pengajuan</th>
+                            <th>Tempat Pengajuan</th>
+                            <th>Pesan</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($konseling as $item)
                     @foreach ($item->siswa as $siswa)                            
-                    <tr style="height: 85px;">
+                    <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $siswa->nama }}</td>
                         <td>{{ $item->layanan->jenis_layanan }}</td>
@@ -52,11 +54,11 @@
                         <td>{{ $item->jam_mulai }}</td>
                         <td>{{ $item->tempat }}</td>
                         <td>{{ $item->pesan }}</td>
-                        <td style="display:flex;gap:10px;justify-content-center:center;allign-items:center;">
-                            <form action="{{ route('approve', $item->id) }}" method="post">
+                        <td style="display: flex">
+                            <form class="mb-2" action="{{ route('approve', $item->id) }}" method="post">
                                 @csrf
                                 @method('PUT')
-                                <button type="submit" class="btn btn-success">
+                                <button style="width: 119px" type="submit" class="btn btn-success">
                                     <i class="mdi mdi-check">Approve</i>
                                 </button>
                             </form>
@@ -101,10 +103,11 @@
                     </tr>
                     @endforeach
                     @endforeach
-                </tbody>    
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>                                  
+    </div>                                 
   </div>
 
 
