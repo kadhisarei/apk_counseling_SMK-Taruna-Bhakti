@@ -16,7 +16,7 @@
     <link href="{{ asset('asset-db/css/app-dark.min.css') }}" rel="stylesheet" type="text/css" id="dark-style">
     <link href="{{ asset('asset-db/css/vendor/dataTables.bootstrap5.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('asset-db/css/vendor/responsive.bootstrap5.css') }}" rel="stylesheet" type="text/css" />
-
+    @yield('css')
 </head>
 
 <body class="loading"

@@ -30,8 +30,7 @@ class SiswaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nipd'=> 'required
-            ',
+            'nipd'=> 'required',
             'nama_siswa'=> 'required',
             'kelas'=> 'required',
             'jenis_kelamin'=> 'required',
@@ -42,7 +41,7 @@ class SiswaController extends Controller
             Siswa::create($input);
       
             return redirect('')
-                    ->with('success','data disimpan');
+                    ->with('success','data berhasil disimpan');
     }
 
     /**

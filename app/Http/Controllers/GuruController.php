@@ -10,4 +10,6 @@ class GuruController extends Controller
     public function index(){
         return redirect('/guru/kerawanan');
     }
+
+    
 }

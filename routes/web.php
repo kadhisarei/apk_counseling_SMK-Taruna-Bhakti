@@ -8,6 +8,7 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\WaliKelasController;
 use App\Http\Controllers\PetaKerawananController;
+use App\Http\Controllers\QuotesController;
 use App\Http\Controllers\SosialisasiController;
 
 /*
@@ -134,6 +135,8 @@ Route::middleware([
     Route::put('/guru/layanan/approve/{id}',[LayananController::class, 'approve'])->name('approve');
     Route::put('/guru/layanan/reschedule/{id}',[LayananController::class, 'reschedule'])->name('reschedule');
     Route::put('/guru/layanan/confirm/{id}',[LayananController::class, 'confirmStore'])->name('confirm');
+    Route::get('guru/layanan/input', [LayananController::class, 'indexGuru'])->name('create-input');
+    Route::post('/layanan-store/guru',[LayananController::class,'storeFromGuru'])->name('store-guru');
 
     Route::get('/guru/sosialisasi', [SosialisasiController::class,'sosialisasi_index']);
     Route::get('/guru/sosialisasi/create', [SosialisasiController::class,'sosialisasi_create']);
@@ -142,6 +145,9 @@ Route::middleware([
     Route::put('/guru/sosialisasi/update/{id}', [SosialisasiController::class,'sosialisasi_update']);
     Route::delete('/guru/sosialisasi/delete/{id}', [SosialisasiController::class,'sosialisasi_delete']);
 
+    Route::get('/guru/quote',[QuotesController::class,'index'])->name('quote');
+    Route::get('/guru/quote/create',[QuotesController::class,'create'])->name('quote-create');
+    Route::post('/guru/quote/store',[QuotesController::class,'store'])->name('quote-store');
 });
 
 Route::middleware([

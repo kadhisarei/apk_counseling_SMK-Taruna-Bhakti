@@ -1,7 +1,8 @@
 /* Default styles */
 
 .fd {
-  background-color: white;
+  background-color: var(--blueSecondary);
+  border-top: 4px solid var(--border);
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
   width: 100%;
@@ -11,7 +12,7 @@
 }
 
 .fd .fl p {
-  color: rgb(27, 75, 108);
+  color: var(--white);
   font-size: 14px;
   margin: 0;
 }
@@ -21,7 +22,7 @@
 .fd p.footer-links {
   font-size: 18px;
   font-weight: bold;
-  color: rgb(27, 75, 108);
+  color: var(--white);
   margin: 0 0 10px;
   padding: 0;
   transition: ease .25s;
@@ -58,7 +59,7 @@
   display: inline-block;
   width: 35px;
   height: 35px;
-  background-color: rgb(27, 75, 108);
+  background-color: var(--bluePrimary);
   border: none;
   border-radius: 2px;
   font-size: 20px;

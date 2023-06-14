@@ -145,12 +145,12 @@
                 </div>
             </li>
             <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+                <a data-bs-toggle="collapse" href="#sidebarsosial" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
                     <i class="uil-clipboard-alt"></i>
                     <span> Sosialisasi </span>
                     <span class="menu-arrow"></span>
                 </a>
-                <div class="collapse" id="sidebarTasks">
+                <div class="collapse" id="sidebarsosial">
                     <ul class="side-nav-second-level">
                         <li>
                             <a href="/guru/sosialisasi">Sosialisasi</a>
@@ -158,6 +158,22 @@
                     </ul>
                 </div>
             </li>
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarquote" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+                    <i class="uil-clipboard-alt"></i>
+                    <span> Quotes </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarquote">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="{{ route('quote') }}">Data Quote</a>
+                            <a href="{{ route('quote-create') }}">Form Quote</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            
             @endhasrole
 
             {{-- <li class="side-nav-title side-nav-item">Custom</li>

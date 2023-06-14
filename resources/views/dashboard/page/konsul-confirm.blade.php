@@ -24,10 +24,13 @@
         </div>
     </div>     
     <!-- end page title --> 
-
+    
 
     <div class="card">
         <div class="card-body">
+            <div class="mb-3">
+                <a href="{{ route('create-input') }}" type="button" class="btn btn-primary">Add New</a>
+            </div>
             <table class="table table-hover table-centered mb-0">
                 <thead>
                     <tr>

@@ -8,11 +8,14 @@ use App\Models\KonselingBK;
 use App\Models\LayananBK;
 use App\Models\Siswa;
 use App\Models\SiswaKonseling;
+use App\Models\WaliKelas;
 use Carbon\Carbon;
 use Countable;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redirect;
 
 class LayananController extends Controller
 {
@@ -50,11 +53,25 @@ class LayananController extends Controller
         return view('profile', compact('layananBK', 'siswa', 'profile','konselingBK','tahun','bulan','hari'));
     }
 
+    public function indexGuru() {
+        $layananBK = LayananBK::all();
+        $user = Auth::user();
+        $profile = $user->siswa;
+        $siswa = Siswa::all();
+        // $dataKelas = Kelas::where('guru_id', Auth::user()->id);
+        // dd($dataKelas);
+        // $dataWalas = $dataKelas->walas_id; 
+
+
+        return view('dashboard.page.form-konsul-guru', compact('layananBK','profile','siswa'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
+        
     }
     /**
      * Store a newly created resource in storage.
@@ -77,21 +94,10 @@ class LayananController extends Controller
                 'tanggal_konseling' => $request->tanggal_konseling,
                 'jam_mulai' => $request->jam_mulai,
                 'tempat' => $request->tempat,
-                'pesan' => $request->pesan
+                'pesan' => $request->pesan,
+                'status' => 'Waiting'
             ]);
 
-            // dd($request->teman);
-
-            if(Auth::user()->hasRole('user')) {
-                $konseling->update([
-                    'status' => 'Waiting',
-                ]);
-            };
-            if(Auth::user()->hasRole('guru')) {
-                $konseling->update([
-                    'status' => 'Approve',
-                ]);
-            };
 
         if($request->teman != [] && sizeof($request->teman) >= 1 ) {
             foreach($request->teman as $item) {
@@ -124,6 +130,71 @@ class LayananController extends Controller
         };
 
         
+    }
+
+    public function storeFromGuru(Request $request) {
+    $validate = $request->validate([
+        'siswa' => 'required'
+    ]);
+
+        $user = Auth::user();
+        $dataGuru = Guru::where('user_id', $user->id)->first();
+        $dataKelas = Kelas::where('guru_id', $dataGuru->id)->first();
+        $dataWalas = WaliKelas::where('id', $dataKelas->wali_kelas_id)->first();
+        // dd($dataKelas);
+
+        $request->validate([
+            'id_layanan' => 'required',
+            'tanggal_konseling' => 'required',
+            'jam_mulai' => 'required',
+            'tempat' => 'required',
+            'pesan' => 'required',
+        ]);
+
+        $konseling = KonselingBK::create([
+            'id_layanan' => $request->id_layanan,
+            'id_bk' => $dataGuru->id,
+            'id_walas' => $dataWalas->id,
+            'tanggal_konseling' => $request->tanggal_konseling,
+            'jam_mulai' => $request->jam_mulai,
+            'tempat' => $request->tempat,
+            'pesan' => $request->pesan,
+            'status' => 'Approved'
+        ]);
+
+
+        foreach ($validate['siswa'] as $item) {
+            SiswaKonseling::create([
+                'id_siswa' => $item,
+                'id_konseling' => $konseling->id
+            ]);
+        }
+
+        // if($request->teman != [] && sizeof($request->teman) >= 1 ) {
+        //     foreach($request->teman as $item) {
+        //         SiswaKonseling::insert([
+        //             'id_siswa' => $item,
+        //             'id_konseling' => $konseling->id,
+        //             'created_at' => Carbon::now(),
+        //             'updated_at' => Carbon::now(),
+        //         ]);
+        //     }
+        //     SiswaKonseling::insert([
+        //         'id_siswa' => Auth::user()->siswa->id,
+        //         'id_konseling' => $konseling->id,
+        //         'created_at' => Carbon::now(),
+        //         'updated_at' => Carbon::now(),
+        //     ]);
+        // }else{
+        //     SiswaKonseling::insert([
+        //         'id_siswa' => Auth::user()->siswa->id,
+        //         'id_konseling' => $konseling->id,
+        //         'created_at' => Carbon::now(),
+        //         'updated_at' => Carbon::now(),
+        //     ]);
+        // }
+
+        return redirect('/guru/layanan/data');
     }
     public function indexRequest() {
         $user = Auth::user();

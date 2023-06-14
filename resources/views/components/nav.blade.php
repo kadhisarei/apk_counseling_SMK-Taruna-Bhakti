@@ -13,7 +13,7 @@
                 <div class="profile-hoverable">
                     <a href="">Profile</a>
                     <div>
-                        <a href="">Add Email</a>
+                        <a href="{{ route('profile') }}">Add Email</a>
                         <form action="/logout" method="post" id="logoutform">
                             @csrf
                             <a onclick="document.getElementById('logoutform').submit(); return false;" >Logout</a>

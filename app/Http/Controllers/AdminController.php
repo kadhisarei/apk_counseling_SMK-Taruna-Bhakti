@@ -179,7 +179,7 @@ class AdminController extends Controller
         LogActivity::create([
             'Activity' => auth()->user()->name. ' telah menambahkan guru baru dengan nama '.$guru->user->name
         ]);
-        return redirect('/admin/dashboard/guru')->with('success', 'siswa berhasil dibuat');
+        return redirect('/admin/dashboard/guru')->with('success', 'Guru berhasil ditambahkan');
     }
 
     public function guru_edit($id){
@@ -246,7 +246,7 @@ class AdminController extends Controller
             'Activity' => auth()->user()->name. ' telah menghapus data guru '
         ]);    
     
-        return redirect('/admin/dashboard/guru')->with('success', 'Siswa berhasil dihapus');
+        return redirect('/admin/dashboard/guru')->with('success', 'Guru berhasil dihapus');
     }
     
     // wakel
@@ -316,7 +316,7 @@ class AdminController extends Controller
         LogActivity::create([
             'Activity' => auth()->user()->name. ' telah mengubah data wali kelas '
         ]);
-        return redirect('/admin/dashboard/wakel')->with('success', 'siswa berhasil diedit');
+        return redirect('/admin/dashboard/wakel')->with('success', 'Wali Kelas berhasil diedit');
     }
 
     public function wakel_delete($id)
@@ -399,7 +399,7 @@ class AdminController extends Controller
         LogActivity::create([
             'Activity' => auth()->user()->name. ' telah menghapus data siswa '
         ]);
-        return redirect('/admin/dashboard/kelas')->with('success', 'siswa berhasil dibuat');
+        return redirect('/admin/dashboard/kelas')->with('success', 'Kelas berhasil dihapus');
     }
 
     public function index_activity(){
