@@ -179,7 +179,9 @@
                 <h1>Quotes Of The Day</h1>
             </div>
             <div class="text-quote">
-                <h1>"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam nostrum non qui quasi quo autem architecto. Doloribus, est?"</h1>
+                @foreach ($quotes as $item)
+                <h1>"{{ $item->quotes }}"</h1>
+                @endforeach
             </div>
         </div>
     </div>

@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use App\Models\LogActivity;
+use App\Models\Quote;
 
 class LayananController extends Controller
 {
@@ -32,7 +33,7 @@ class LayananController extends Controller
         $userKonsul = Auth::user()->siswa;
         $dataKonseling = SiswaKonseling::where('id_siswa', $userKonsul->id)->pluck('id_konseling')->toArray();
         $konselingBK = KonselingBK::find($dataKonseling);
-        
+        $quotes = Quote::all();
         $data = [];
 
         foreach ($konselingBK as $konseling) {
@@ -50,7 +51,8 @@ class LayananController extends Controller
                 // Tambahkan data lain yang diperlukan
             ];
         }
-        return view('profile', compact('layananBK', 'siswa', 'profile','konselingBK','tahun','bulan','hari'));
+
+        return view('profile', compact('layananBK', 'siswa', 'profile','konselingBK','tahun','bulan','hari','quotes'));
     }
 
     public function indexGuru() {

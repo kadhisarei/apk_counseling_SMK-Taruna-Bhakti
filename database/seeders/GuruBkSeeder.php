@@ -16,12 +16,12 @@ class GuruBkSeeder extends Seeder
     public function run(): void
     {
         $guru_bk = User::create([
-            'name' => 'Ricky',
+            'name' => 'Ricky Sudrajat',
             'email' => 'Ricky@gmail.com',
             'password' => bcrypt('password')
         ]);
         Guru::create([
-            'nipd' => '085685274',
+            'nipd' => '0018575',
             'nama' => $guru_bk->name,
             'user_id' => $guru_bk->id,
             'jenis_kelamin'=> 'Pria'
@@ -30,12 +30,12 @@ class GuruBkSeeder extends Seeder
 
         //2 
         $guru_bk = User::create([
-            'name' => 'Heni',
+            'name' => 'Heni Putri',
             'email' => 'heni@gmail.com',
             'password' => bcrypt('password')
         ]);
         Guru::create([
-            'nipd' => '0855698',
+            'nipd' => '0018580',
             'nama' => $guru_bk->name,
             'user_id' => $guru_bk->id,
             'jenis_kelamin'=> 'perempuan'
@@ -44,15 +44,28 @@ class GuruBkSeeder extends Seeder
 
         // 3
         $guru_bk = User::create([
-            'name' => 'Abdul',
+            'name' => 'Abdul Fatah',
             'email' => 'abduly@gmail.com',
             'password' => bcrypt('password')
         ]);
         Guru::create([
-            'nipd' => '0854587',
+            'nipd' => '0018585',
             'nama' => $guru_bk->name,
             'user_id' => $guru_bk->id,
             'jenis_kelamin'=> 'Pria'
+        ]);
+        $guru_bk->assignRole('guru bk');
+
+        $guru_bk = User::create([
+            'name' => 'Sheyla putri',
+            'email' => 'sheyla@gmail.com',
+            'password' => bcrypt('password')
+        ]);
+        Guru::create([
+            'nipd' => '0018790',
+            'nama' => $guru_bk->name,
+            'user_id' => $guru_bk->id,
+            'jenis_kelamin'=> 'Perempuan'
         ]);
         $guru_bk->assignRole('guru bk');
         

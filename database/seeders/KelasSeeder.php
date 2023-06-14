@@ -21,15 +21,16 @@ class KelasSeeder extends Seeder
         ]);
 
         $kelas = Kelas::create([
-            'nama' => 'XI PPLG 2',
+            'nama' => 'XI ANIMASI 2',
             'wali_kelas_id' => '2',
             'guru_id' => '2',
         ]);
 
         $kelas = Kelas::create([
-            'nama' => 'X PPLG 1',
+            'nama' => 'X TE 1',
             'wali_kelas_id' => '3',
             'guru_id' => '3',
         ]);
+        
     }
 }
