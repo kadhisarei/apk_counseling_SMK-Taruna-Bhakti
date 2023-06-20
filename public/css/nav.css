@@ -43,7 +43,7 @@ a:hover{
 
 .menu-nav ul {
     display: flex;
-    gap: 50px;
+    gap: 25px;
 }
 
 .menu-nav ul li {
